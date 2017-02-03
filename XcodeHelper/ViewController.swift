@@ -25,6 +25,6 @@ class ViewController: NSViewController {
     @IBAction func activateExtension(_ sender: AnyObject) {
         
     }
-
+    
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0820"
    wasCreatedForAppExtension = "YES"
    version = "1.3">
    <BuildAction
@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "384E51C71DC6B38500FAC6C1"
-               BuildableName = "SourceExtension.appex"
+               BuildableName = "Xcode Helper.appex"
                BlueprintName = "SourceExtension"
                ReferencedContainer = "container:XcodeHelper.xcodeproj">
             </BuildableReference>
@@ -48,7 +48,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "384E51C71DC6B38500FAC6C1"
-            BuildableName = "SourceExtension.appex"
+            BuildableName = "Xcode Helper.appex"
             BlueprintName = "SourceExtension"
             ReferencedContainer = "container:XcodeHelper.xcodeproj">
          </BuildableReference>

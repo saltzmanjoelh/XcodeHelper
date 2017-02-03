@@ -7,56 +7,36 @@
 //
 
 import Cocoa
+import XcodeHelperKit
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
 
-    let status = NSStatusBar.system().statusItem(withLength: -1.0)
+    @IBOutlet weak var statusMenu: NSMenu?
+    
+    let status = NSStatusBar.system().statusItem(withLength: 30.0)
+    let commandHandler = CommandHandler()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        getCurrentProject()
-        return;
-        print("Bundle: \(Bundle.main.bundleIdentifier)")
-        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(self.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
-        getCurrentProject()
         
-        status.title = "xchelper"
-        //statusItem.image = icon
-        //statusItem.menu = mainMenu
+        //Handle xcodehelper:// urls
+        NSAppleEventManager.shared().setEventHandler(commandHandler, andSelector: #selector(CommandHandler.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
         
-        //Build in Linux Instructions (help item?)
-        //Update Dependencies
-        //Increment Git Tag
-        //Create & Upload Archive
-        
-        //BUILD_DIR == .../Build/Products -> ../../Logs/Build
-    }
-    func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
-        if let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue {
-            print("got urlString \(urlString)")
-            
-        }
-    }
-    func getCurrentProject() {
-        let text = "tell application \"Xcode\"\nget path of first document\nend tell"
-        
-        var error: NSDictionary?
-        print("creating NSAppleScript")
-        if let scriptObject = NSAppleScript(source: text) {
-            print("preparing to execute")
-            let output: NSAppleEventDescriptor = scriptObject.executeAndReturnError(&error)
-            print("Output: \(output.stringValue)")
-            if (error != nil) {
-                print("error: \(error)")
-            }
-            print("done executing")
-        }else{
-            print("Failed to create NSAppleScript")
+        //Statusbar Icon
+        if let image = NSImage.init(named: "AppIcon") {
+            let percentage: CGFloat = 0.13
+            image.size = NSMakeSize(image.size.width * percentage, image.size.height * percentage)
+            status.image = image
         }
         
-        print("done")
+        //Statusbar Menu
+        status.menu = MenuManager.newStatusMenu(with: commandHandler)
     }
     
+    
+    public func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
+    }
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }

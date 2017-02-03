@@ -3,10 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>com.apple.security.app-sandbox</key>
-	<true/>
+	<false/>
 	<key>com.apple.security.temporary-exception.apple-events</key>
 	<array>
 		<string>com.apple.dt.xcode</string>
+		<string>com.apple.dt.document.workspace</string>
 	</array>
 </dict>
 </plist>
