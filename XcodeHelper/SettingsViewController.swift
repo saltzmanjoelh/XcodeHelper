@@ -19,6 +19,9 @@ class SettingsViewController: NSViewController {
     var xcode = Xcode()
     
     override func viewDidLoad() {
+        guard ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else {
+            return
+        }
         prepareTargetsPopUp()
         preparePathLabel()
         if let popUp = commandsPopUp {
@@ -28,11 +31,11 @@ class SettingsViewController: NSViewController {
     }
     func prepareTargetsPopUp() {
         targetsPopUp?.removeAllItems()
-        guard let project = xcode.getCurrentProject(), let targets = project.targetNames() else {
+        guard let projectable = xcode.getCurrentProject(), let targets = projectable.orderedTargets() else {
             return
         }
         for target in targets {
-            targetsPopUp?.addItem(withTitle: target)
+            targetsPopUp?.addItem(withTitle: target.1)
         }
     }
     func preparePathLabel() {

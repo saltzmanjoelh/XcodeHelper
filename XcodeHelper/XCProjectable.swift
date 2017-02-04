@@ -14,8 +14,9 @@ protocol XCProjectable {
     var currentUser: String? { get set }
     
     init(at path: String)
+    func getXcUserStateUrl(for user: String, at path: String) -> URL?
     func currentTargetName() -> String?
-    func targetNames() -> [String]?
+    func orderedTargets() -> [(Int, String)]?
 }
 
 extension XCProjectable {
@@ -23,9 +24,7 @@ extension XCProjectable {
         let result = Process.run("/usr/bin/whoami", arguments: nil, printOutput: false, outputPrefix: nil)
         return result.output?.trimmingCharacters(in: .newlines)
     }
-    func getXcUserStateUrl(for user: String, at path: String) -> URL? {
-        return URL.init(fileURLWithPath: path).appendingPathComponent("xcuserdata/\(user).xcuserdatad/UserInterfaceState.xcuserstate")
-    }
+    
     func getXCUserStateContents(at getXcUserStateUrl: URL) -> NSDictionary? {
         guard FileManager.default.fileExists(atPath: getXcUserStateUrl.path) else {
             return nil

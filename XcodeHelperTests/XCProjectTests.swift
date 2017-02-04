@@ -46,22 +46,48 @@ class XCProjectTests: XCTestCase {
         super.tearDown()
     }
     
-    func testGetObjects(){
+//    func testGetObjects(){
+//        let project = XCProject(at: XCProjectTests.projectPath)
+//        let contents = project.getPbxProjectContents(at: project.pbxProjectPath);
+//        
+//        let result = project.getObjects(from: contents!)
+//        
+//        XCTAssertNotNil(result)
+//    }
+    
+    
+    func testGetXcSchemeManagement(){
         let project = XCProject(at: XCProjectTests.projectPath)
-        let contents = project.getPbxProjectContents(at: project.pbxProjectPath);
+        let url = project.getXcSchemesUrl(for: project.getCurrentUser()!, at: project.path)
         
-        let result = project.getObjects(from: contents!)
+        let result = project.getXcSchemeManagement(from: url!.appendingPathComponent(project.managementPlistName))
+        
+        XCTAssertNotNil(result)
+        XCTAssertNotNil(result!["SchemeUserState"])
+    }
+    func testGetXcSchemeFiles(){
+        let project = XCProject(at: XCProjectTests.projectPath)
+        let url = project.getXcSchemesUrl(for: project.getCurrentUser()!, at: project.path)
+        
+        let result = project.getXcSchemeFiles(at: url!.path)
         
         XCTAssertNotNil(result)
     }
     func testTargetNames() {
         let project = XCProject(at: XCProjectTests.projectPath)
-        let contents = project.getPbxProjectContents(at: project.pbxProjectPath);
         
-        let result = project.getTargetNames(from: contents!)
+        let result = project.orderedTargets()
         
         XCTAssertNotNil(result)
-        XCTAssertTrue(result!.contains("ProjectOne"))
-        XCTAssertTrue(result!.contains("TargetB"))
+        XCTAssertEqual(result![0].1, "ProjectOne")
+        XCTAssertEqual(result![1].1, "TargetB")
+    }
+    func testCurrentTargetName() {
+        let project = XCProject(at: XCProjectTests.projectPath)
+        
+        let result = project.currentTargetName()
+        
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result, "ProjectOne")
     }
 }

@@ -84,13 +84,23 @@ class XCWorkspaceTests: XCTestCase {
         XCTAssertTrue(result!.count == 2)
         XCTAssertTrue(type(of: result!.first!) == XCProject.self)
     }
+    
+    func testTargetNames() {
+        let workspace = XCWorkspace(at: XCWorkspaceTests.workspacePath)
+        
+        let result = workspace.orderedTargets()
+        
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result!.count, 4)
+        XCTAssertEqual(result![0].1, "ProjectOne")
+        XCTAssertEqual(result![1].1, "ProjectTwo")
+        XCTAssertEqual(result![2].1, "TargetB")
+        XCTAssertEqual(result![3].1, "TargetB")
+    }
     func testCurrentTargetName() {
         let workspace = XCWorkspace(at: XCWorkspaceTests.workspacePath)
-        let user = workspace.getCurrentUser()
-        let stateUrl = workspace.getXcUserStateUrl(for: user!, at: workspace.path)
-        let contents = workspace.getXCUserStateContents(at: stateUrl!)
-        
-        let result = workspace.getCurrentTargetName(from: contents!)
+
+        let result = workspace.currentTargetName()
         
         XCTAssertNotNil(result)
         XCTAssertEqual(result!, "TargetB")

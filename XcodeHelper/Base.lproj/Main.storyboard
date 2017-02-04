@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="0e0-xk-ZYZ">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="0e0-xk-ZYZ">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
@@ -802,6 +802,7 @@
                         <outlet property="commandsPopUp" destination="Mra-4H-bqs" id="Smv-3z-Ati"/>
                         <outlet property="containerView" destination="n4E-M2-Qw7" id="xe7-9T-Uec"/>
                         <outlet property="pathLabel" destination="Pb3-ux-9Sz" id="xoS-Bt-ex9"/>
+                        <outlet property="targetsPopUp" destination="akH-yF-WWD" id="cgr-7p-py7"/>
                     </connections>
                 </viewController>
                 <customObject id="gZI-08-0bw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
