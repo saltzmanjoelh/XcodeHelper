@@ -6,38 +6,29 @@
 //  Copyright © 2017 Joel Saltzman. All rights reserved.
 //
 
+//TODO: write failure tests to get better code coverage
+
 import Foundation
 import SynchronousProcess
 
 struct Xcode {
     
-    var currentProjectScript: NSAppleScript?
+    var currentDocumentScript: NSAppleScript?
+    var currentDocument: XCDocumentable?
     
     init() {
-        
-        currentProjectScript = createScript()
-        if currentProjectScript == nil{
+        currentDocumentScript = createScript()
+        if currentDocumentScript == nil{
             print("Failed to create NSAppleScript")
         }
     }
-    func getCurrentProject() -> XCProjectable? {
-        guard let path = getCurrentProjectPath() else {
-            return nil
-        }
-        if projectIsWorkspace(projectPath: path) {
-            return XCWorkspace(at: path)
-        }else{
-            return XCProject(at: path)
-        }
-    }
-    
     private func createScript() -> NSAppleScript? {
         let text = "tell application \"Xcode\"\nget path of first document\nend tell"
         return NSAppleScript(source: text)
     }
 
-    private func getCurrentProjectPath() -> String? {
-        guard let scriptObject = currentProjectScript else {
+    private func getCurrentDocumentPath() -> String? {
+        guard let scriptObject = currentDocumentScript else {
             return nil
         }
         
@@ -52,6 +43,22 @@ struct Xcode {
     private func projectIsWorkspace(projectPath: String) -> Bool {
         return projectPath.hasSuffix("xcworkspace")
     }
-    
-    
+    func getCurrentDocumentable() -> XCDocumentable? {
+        guard let path = getCurrentDocumentPath() else {
+            return nil
+        }
+        if projectIsWorkspace(projectPath: path) {
+            return XCWorkspace(at: path)
+        }else{
+            return XCProject(at: path)
+        }
+    }
+    func getProjects(from document: XCDocumentable) -> [XCProject]? {
+        if let workspace = document as? XCWorkspace {
+            return workspace.projects
+        }else if let project = document as? XCProject {
+            return [project]
+        }
+        return nil
+    }
 }

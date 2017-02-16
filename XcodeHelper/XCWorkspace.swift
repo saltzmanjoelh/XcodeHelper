@@ -8,11 +8,14 @@
 
 import Foundation
 
-struct XCWorkspace: XCProjectable {
+struct XCWorkspace: XCDocumentable, CustomStringConvertible {
     
     var path: String
     var currentUser: String?
     var projects: [XCProject]?
+    public var description: String {
+        return URL(fileURLWithPath: path).deletingPathExtension().lastPathComponent
+    }
     
     init(at path: String){
         self.path = path
@@ -42,11 +45,11 @@ struct XCWorkspace: XCProjectable {
         }
         return projectPaths.map{ XCProject(at: $0) }
     }
-    func orderedTargets() -> [(Int, String)]? {
+    func orderedTargets() -> [XCTarget]? {
         guard let projects = getProjects(from: path) else {
             return nil
         }
-        return projects.flatMap({ $0.orderedTargets() }).flatMap({ $0 }).sorted(by: { $0.0 < $1.0 })
+        return projects.flatMap({ $0.orderedTargets() }).flatMap({ $0 }).sorted(by: { $0.orderHint < $1.orderHint })
     }
     func currentTargetName() -> String? {
         //get current project.currentTargetName()

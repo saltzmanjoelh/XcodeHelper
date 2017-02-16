@@ -34,7 +34,7 @@ extension CommandHandler: StatusMenuDelegate {
 
     @IBAction
     func preferences(sender: Any){
-        
+        NSApplication.shared().mainWindow?.makeKeyAndOrderFront(nil)
     }
     @IBAction
     func quit(sender: Any){

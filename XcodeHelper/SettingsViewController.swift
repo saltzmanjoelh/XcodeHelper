@@ -15,12 +15,16 @@ class SettingsViewController: NSViewController {
     @IBOutlet var pathLabel: NSTextField?
     @IBOutlet var commandsPopUp: NSPopUpButton?
     @IBOutlet var containerView: NSView?
+    @IBOutlet var projectListController: TargetListController?
     
     var xcode = Xcode()
     
     override func viewDidLoad() {
         guard ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else {
             return
+        }
+        if let document = xcode.getCurrentDocumentable() {
+            xcode.currentDocument = document
         }
         prepareTargetsPopUp()
         preparePathLabel()
@@ -31,15 +35,15 @@ class SettingsViewController: NSViewController {
     }
     func prepareTargetsPopUp() {
         targetsPopUp?.removeAllItems()
-        guard let projectable = xcode.getCurrentProject(), let targets = projectable.orderedTargets() else {
+        guard let targets = xcode.currentDocument?.orderedTargets() else {
             return
         }
         for target in targets {
-            targetsPopUp?.addItem(withTitle: target.1)
+            targetsPopUp?.addItem(withTitle: target.name)
         }
     }
     func preparePathLabel() {
-        if let path = xcode.getCurrentProject()?.path {
+        if let path = xcode.getCurrentDocumentable()?.path {
             pathLabel?.stringValue = path
         }else{
             pathLabel?.stringValue = ""

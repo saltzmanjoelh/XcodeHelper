@@ -1,5 +1,5 @@
 //
-//  XCProjectable.swift
+//  XCDocumentable.swift
 //  XcodeHelper
 //
 //  Created by Joel Saltzman on 1/25/17.
@@ -9,17 +9,17 @@
 import Foundation
 
 
-protocol XCProjectable {
+protocol XCDocumentable {
     var path: String { get set }
     var currentUser: String? { get set }
     
     init(at path: String)
     func getXcUserStateUrl(for user: String, at path: String) -> URL?
     func currentTargetName() -> String?
-    func orderedTargets() -> [(Int, String)]?
+    func orderedTargets() -> [XCTarget]?
 }
 
-extension XCProjectable {
+extension XCDocumentable {
     public func getCurrentUser() -> String? {
         let result = Process.run("/usr/bin/whoami", arguments: nil, printOutput: false, outputPrefix: nil)
         return result.output?.trimmingCharacters(in: .newlines)

@@ -7,16 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		381E29F71E544DDB00557BB1 /* XCTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E29F61E544DDB00557BB1 /* XCTargetTests.swift */; };
 		3836A7601E38A3BE0098CE9A /* XCProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A75F1E38A3BE0098CE9A /* XCProject.swift */; };
 		3836A7621E38A3C70098CE9A /* XCWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7611E38A3C70098CE9A /* XCWorkspace.swift */; };
-		3836A7641E38A3FF0098CE9A /* XCProjectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7631E38A3FF0098CE9A /* XCProjectable.swift */; };
+		3836A7641E38A3FF0098CE9A /* XCDocumentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7631E38A3FF0098CE9A /* XCDocumentable.swift */; };
 		3836A7661E3B302B0098CE9A /* XCWorkspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7651E3B302B0098CE9A /* XCWorkspaceTests.swift */; };
 		3836A7931E3EDEEA0098CE9A /* SynchronousProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DFD6C11E2AB29500C3D931 /* SynchronousProcess.framework */; };
 		384E51A81DC6B36700FAC6C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51A71DC6B36700FAC6C1 /* AppDelegate.swift */; };
 		384E51AA1DC6B36700FAC6C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51A91DC6B36700FAC6C1 /* ViewController.swift */; };
 		384E51AC1DC6B36700FAC6C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384E51AB1DC6B36700FAC6C1 /* Assets.xcassets */; };
 		384E51AF1DC6B36700FAC6C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 384E51AD1DC6B36700FAC6C1 /* Main.storyboard */; };
-		384E51BA1DC6B36700FAC6C1 /* XcodeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51B91DC6B36700FAC6C1 /* XcodeHelperTests.swift */; };
+		384E51BA1DC6B36700FAC6C1 /* XcodeHelperTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51B91DC6B36700FAC6C1 /* XcodeHelperTestCase.swift */; };
 		384E51CB1DC6B38500FAC6C1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384E51CA1DC6B38500FAC6C1 /* Cocoa.framework */; };
 		384E51D01DC6B38500FAC6C1 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51CF1DC6B38500FAC6C1 /* SourceEditorExtension.swift */; };
 		384E51D21DC6B38500FAC6C1 /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51D11DC6B38500FAC6C1 /* SourceEditorCommand.swift */; };
@@ -35,6 +36,10 @@
 		38DFD6C61E2AB29500C3D931 /* CliRunnable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38DFD6C91E2AB8F300C3D931 /* CommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DFD6C81E2AB8F300C3D931 /* CommandHandler.swift */; };
 		38E7A2AA1E3FA463007EA9A6 /* XCProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */; };
+		38E8F74B1E468FBF00097EEC /* TargetListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E8F74A1E468FBF00097EEC /* TargetListController.swift */; };
+		38E8F7951E471AF400097EEC /* TargetListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E8F7941E471AF400097EEC /* TargetListControllerTests.swift */; };
+		38E8F7971E48093B00097EEC /* XCTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E8F7961E48093B00097EEC /* XCTarget.swift */; };
+		38E8F79A1E4813BD00097EEC /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E8F7991E4813BD00097EEC /* CollectionExtension.swift */; };
 		38EEE9201E352D7900779CB9 /* Xcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EEE91F1E352D7900779CB9 /* Xcode.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,9 +90,10 @@
 
 /* Begin PBXFileReference section */
 		380B81621E269262003E0951 /* Defaultable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaultable.swift; sourceTree = "<group>"; };
+		381E29F61E544DDB00557BB1 /* XCTargetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTargetTests.swift; sourceTree = "<group>"; };
 		3836A75F1E38A3BE0098CE9A /* XCProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCProject.swift; sourceTree = "<group>"; };
 		3836A7611E38A3C70098CE9A /* XCWorkspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCWorkspace.swift; sourceTree = "<group>"; };
-		3836A7631E38A3FF0098CE9A /* XCProjectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCProjectable.swift; sourceTree = "<group>"; };
+		3836A7631E38A3FF0098CE9A /* XCDocumentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCDocumentable.swift; sourceTree = "<group>"; };
 		3836A7651E3B302B0098CE9A /* XCWorkspaceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCWorkspaceTests.swift; sourceTree = "<group>"; };
 		384E51A41DC6B36700FAC6C1 /* XcodeHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		384E51A71DC6B36700FAC6C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +102,7 @@
 		384E51AE1DC6B36700FAC6C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		384E51B01DC6B36700FAC6C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		384E51B51DC6B36700FAC6C1 /* XcodeHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		384E51B91DC6B36700FAC6C1 /* XcodeHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeHelperTests.swift; sourceTree = "<group>"; };
+		384E51B91DC6B36700FAC6C1 /* XcodeHelperTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeHelperTestCase.swift; sourceTree = "<group>"; };
 		384E51BB1DC6B36700FAC6C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		384E51C81DC6B38500FAC6C1 /* Xcode Helper.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Xcode Helper.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		384E51CA1DC6B38500FAC6C1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -117,6 +123,10 @@
 		38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CliRunnable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DFD6C81E2AB8F300C3D931 /* CommandHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandHandler.swift; sourceTree = "<group>"; };
 		38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCProjectTests.swift; sourceTree = "<group>"; };
+		38E8F74A1E468FBF00097EEC /* TargetListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetListController.swift; sourceTree = "<group>"; };
+		38E8F7941E471AF400097EEC /* TargetListControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetListControllerTests.swift; sourceTree = "<group>"; };
+		38E8F7961E48093B00097EEC /* XCTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTarget.swift; sourceTree = "<group>"; };
+		38E8F7991E4813BD00097EEC /* CollectionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		38EEE91F1E352D7900779CB9 /* Xcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xcode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,10 +195,13 @@
 				38DFD6C81E2AB8F300C3D931 /* CommandHandler.swift */,
 				380B81621E269262003E0951 /* Defaultable.swift */,
 				389D2D4A1E33FDB60034E802 /* SettingsViewController.swift */,
+				38E8F7981E4813AC00097EEC /* Extensions */,
+				38E8F7491E468F0C00097EEC /* Controllers */,
 				38EEE91F1E352D7900779CB9 /* Xcode.swift */,
-				3836A7631E38A3FF0098CE9A /* XCProjectable.swift */,
-				3836A75F1E38A3BE0098CE9A /* XCProject.swift */,
+				3836A7631E38A3FF0098CE9A /* XCDocumentable.swift */,
 				3836A7611E38A3C70098CE9A /* XCWorkspace.swift */,
+				3836A75F1E38A3BE0098CE9A /* XCProject.swift */,
+				38E8F7961E48093B00097EEC /* XCTarget.swift */,
 				384E51AB1DC6B36700FAC6C1 /* Assets.xcassets */,
 				384E51AD1DC6B36700FAC6C1 /* Main.storyboard */,
 				384E51B01DC6B36700FAC6C1 /* Info.plist */,
@@ -199,9 +212,11 @@
 		384E51B81DC6B36700FAC6C1 /* XcodeHelperTests */ = {
 			isa = PBXGroup;
 			children = (
-				384E51B91DC6B36700FAC6C1 /* XcodeHelperTests.swift */,
+				384E51B91DC6B36700FAC6C1 /* XcodeHelperTestCase.swift */,
 				3836A7651E3B302B0098CE9A /* XCWorkspaceTests.swift */,
 				38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */,
+				381E29F61E544DDB00557BB1 /* XCTargetTests.swift */,
+				38E8F7941E471AF400097EEC /* TargetListControllerTests.swift */,
 				384E51BB1DC6B36700FAC6C1 /* Info.plist */,
 			);
 			path = XcodeHelperTests;
@@ -233,6 +248,22 @@
 				384E51CE1DC6B38500FAC6C1 /* SourceExtension.entitlements */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		38E8F7491E468F0C00097EEC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				38E8F74A1E468FBF00097EEC /* TargetListController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		38E8F7981E4813AC00097EEC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				38E8F7991E4813BD00097EEC /* CollectionExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,15 +436,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				389D2D421E33E4930034E802 /* MenuManager.swift in Sources */,
+				38E8F79A1E4813BD00097EEC /* CollectionExtension.swift in Sources */,
 				38DFD6C91E2AB8F300C3D931 /* CommandHandler.swift in Sources */,
 				3836A7601E38A3BE0098CE9A /* XCProject.swift in Sources */,
-				3836A7641E38A3FF0098CE9A /* XCProjectable.swift in Sources */,
+				3836A7641E38A3FF0098CE9A /* XCDocumentable.swift in Sources */,
 				384E51AA1DC6B36700FAC6C1 /* ViewController.swift in Sources */,
+				38E8F74B1E468FBF00097EEC /* TargetListController.swift in Sources */,
 				389D2D451E33EC790034E802 /* StatusMenuDelegate.swift in Sources */,
 				384E51A81DC6B36700FAC6C1 /* AppDelegate.swift in Sources */,
 				3836A7621E38A3C70098CE9A /* XCWorkspace.swift in Sources */,
 				389D2D3F1E33E0480034E802 /* Command.swift in Sources */,
 				389D2D4B1E33FDB60034E802 /* SettingsViewController.swift in Sources */,
+				38E8F7971E48093B00097EEC /* XCTarget.swift in Sources */,
 				38EEE9201E352D7900779CB9 /* Xcode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,9 +456,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38E8F7951E471AF400097EEC /* TargetListControllerTests.swift in Sources */,
 				3836A7661E3B302B0098CE9A /* XCWorkspaceTests.swift in Sources */,
-				384E51BA1DC6B36700FAC6C1 /* XcodeHelperTests.swift in Sources */,
+				384E51BA1DC6B36700FAC6C1 /* XcodeHelperTestCase.swift in Sources */,
 				38E7A2AA1E3FA463007EA9A6 /* XCProjectTests.swift in Sources */,
+				381E29F71E544DDB00557BB1 /* XCTargetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

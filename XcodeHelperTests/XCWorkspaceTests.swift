@@ -10,43 +10,7 @@ import XCTest
 import SynchronousProcess
 @testable import XcodeHelper
 
-class XCWorkspaceTests: XCTestCase {
-    
-    //xcworkspace for use with testing
-    static let workspaceRepoURL = "https://github.com/saltzmanjoelh/HelloWorkspace"
-    static let workspaceFilename: String = "Workspace.xcworkspace"
-    static var workspacePath: String = {
-        guard let tempDirectoryPath = XCWorkspaceTests.cloneToTempDirectory(repoURL: workspaceRepoURL) else {
-            XCTFail("Failed to clone workspace repo")
-            return ""
-        }
-        return URL(fileURLWithPath: tempDirectoryPath).appendingPathComponent(XCWorkspaceTests.workspaceFilename).path
-    }()
-    
-    override func setUp() {
-        super.setUp()
-        self.continueAfterFailure = false
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    private static func cloneToTempDirectory(repoURL:String) -> String? {
-        let tempDir = "/tmp/\(UUID())"
-        if !FileManager.default.fileExists(atPath: tempDir) {
-            do {
-                try FileManager.default.createDirectory(atPath: tempDir, withIntermediateDirectories: false, attributes: nil)
-            }catch _{
-                
-            }
-        }
-        let cloneResult = Process.run("/usr/bin/env", arguments: ["git", "clone", repoURL, tempDir], printOutput: true)
-        XCTAssert(cloneResult.exitCode == 0, "Failed to clone repo: \(cloneResult.error)")
-        XCTAssert(FileManager.default.fileExists(atPath: tempDir))
-        print("done cloning temp dir: \(tempDir)")
-        return tempDir
-    }
+class XCWorkspaceTests: XcodeHelperTestCase {
     
     func testGetCurrentUser() {
         let workspace = XCWorkspace(at: XCWorkspaceTests.workspacePath)
@@ -91,11 +55,11 @@ class XCWorkspaceTests: XCTestCase {
         let result = workspace.orderedTargets()
         
         XCTAssertNotNil(result)
-        XCTAssertEqual(result!.count, 4)
-        XCTAssertEqual(result![0].1, "ProjectOne")
-        XCTAssertEqual(result![1].1, "ProjectTwo")
-        XCTAssertEqual(result![2].1, "TargetB")
-        XCTAssertEqual(result![3].1, "TargetB")
+        XCTAssertEqual(result!.count, XCWorkspaceTests.projectOneTargetCount+XCWorkspaceTests.projectTwoTargetCount)
+        XCTAssertEqual(result![0].name, "ProjectOne")
+        XCTAssertEqual(result![1].name, "ProjectTwo")
+        XCTAssertEqual(result![2].name, "TargetB")
+        XCTAssertEqual(result![3].name, "TargetB")
     }
     func testCurrentTargetName() {
         let workspace = XCWorkspace(at: XCWorkspaceTests.workspacePath)
@@ -103,6 +67,6 @@ class XCWorkspaceTests: XCTestCase {
         let result = workspace.currentTargetName()
         
         XCTAssertNotNil(result)
-        XCTAssertEqual(result!, "TargetB")
+        XCTAssertEqual(result!, "MessagesExtension")
     }
 }

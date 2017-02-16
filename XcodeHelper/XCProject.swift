@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct XCProject: XCProjectable {
+struct XCProject: XCDocumentable, CustomStringConvertible {
     
     let managementPlistName = "xcschememanagement.plist"
     var path: String
@@ -17,6 +17,9 @@ struct XCProject: XCProjectable {
 //        return URL.init(fileURLWithPath: self.path).appendingPathComponent("project.pbxproj").path
 //    }
     var pbxProjectContents: NSDictionary?
+    public var description: String {
+        return URL(fileURLWithPath: path).deletingPathExtension().lastPathComponent
+    }
     
     init(at path: String){
         self.path = path
@@ -39,6 +42,7 @@ struct XCProject: XCProjectable {
 //            return targetName as? String
 //        })
 //    }
+    
     func getXcUserStateUrl(for user: String, at path: String) -> URL? {
         return URL.init(fileURLWithPath: path).appendingPathComponent("project.xcworkspace/xcuserdata/\(user).xcuserdatad/UserInterfaceState.xcuserstate")
     }
@@ -48,48 +52,71 @@ struct XCProject: XCProjectable {
     func getXcSchemeManagement(from schemeManagementURL: URL) -> NSDictionary? {
         return NSDictionary.init(contentsOf: schemeManagementURL)
     }
-    func getOrderedTargets(from xcSchemeManagement: NSDictionary) -> [(Int, String)]? {
+    func getOrderedTargets(at xcSchemesUrl: URL, from xcSchemeManagement: NSDictionary) -> [XCTarget]? {
         guard let schemes = xcSchemeManagement["SchemeUserState"] as? NSDictionary,
             let keys = schemes.allKeys as? [String] else {
             return nil
         }
-        var targets = [(Int, String)]()
+        var targets = [XCTarget]()
         for key in keys {
             if !key.hasSuffix(".xcscheme") {
                 continue;
             }
             if let scheme = schemes[key] as? NSDictionary {
                 if let orderHint = scheme["orderHint"] as? NSNumber {
-                    //targetNames[orderHint.intValue] = key.replacingOccurrences(of: ".xcscheme", with: "")
-                    targets.append( (orderHint.intValue,key.replacingOccurrences(of: ".xcscheme", with: "")) )
+                    if let targetType = getTargetType(for: key, at: xcSchemesUrl) {
+                        targets.append(XCTarget(name: key.replacingOccurrences(of: ".xcscheme", with: ""),
+                                                orderHint: orderHint.intValue,
+                                                targetType: targetType))
+                    }
                 }
             }
         }
-        return targets.count > 0 ? targets.sorted{ $0.0 < $1.0 } : nil
+        return targets.count > 0 ? targets.sorted{ $0.orderHint < $1.orderHint } : nil
     }
-    func orderedTargets() -> [(Int, String)]? {
+    
+    func getTargetType(for scheme: String, at xcSchemesUrl: URL) -> XCTarget.TargetType? {
+        do {
+            let xcScheme = try String.init(contentsOfFile: xcSchemesUrl.appendingPathComponent(scheme).path)
+            let regex = try NSRegularExpression(pattern: "BuildableName = \"(.*)\"", options: [])
+            let matches = regex.matches(in: xcScheme, options: [], range: NSMakeRange(0, xcScheme.utf8.count))
+            for result in matches {
+                let resultRange = result.range
+                let nameRange = xcScheme.index(xcScheme.startIndex, offsetBy: resultRange.location+17) ..< // BuildableName = "
+                    xcScheme.index(xcScheme.startIndex, offsetBy: resultRange.location+resultRange.length-1)
+                let buildableName = xcScheme.substring(with: nameRange)
+                return XCTarget.TargetType(from: URL.init(fileURLWithPath: buildableName).pathExtension)
+            }
+        }catch _{
+           
+        }
+        return nil
+    }
+    func orderedTargets() -> [XCTarget]? {
         guard let currentUser = getCurrentUser(),
               let xcSchemesUrl = getXcSchemesUrl(for: currentUser, at: path),
               let xcSchemeManagement = getXcSchemeManagement(from: xcSchemesUrl.appendingPathComponent(managementPlistName)) else {
             return nil
         }
-        if let targets = getOrderedTargets(from: xcSchemeManagement).flatMap({ $0.flatMap({ $0 }) }) {
-            return targets
-        }
-        return getXcSchemeFiles(at: xcSchemesUrl.path)
-    }
-    
-    func getXcSchemeFiles(at xcschemesPath: String) -> [(Int, String)]? {
-        do{
-            //get the targets like mytarget.xcsheme
-            let targets = try FileManager.default.contentsOfDirectory(atPath: xcschemesPath).filter{ $0.hasSuffix("xcscheme") }
-            //remove .xcscheme and return them with a position
-            return targets.flatMap{ (targets.index(of: $0)!, $0.replacingOccurrences(of: ".xcscheme", with: "")) }
-        }catch _ {
+        guard let targets = getOrderedTargets(at: xcSchemesUrl, from: xcSchemeManagement).flatMap({ $0.flatMap({ $0 }) }) else {
             return nil
         }
-        
+        return targets
+//        return getXcSchemeFiles(at: xcSchemesUrl.path)
     }
+    
+//    func getXcSchemeFiles(at xcschemesPath: String) -> [XCTarget]? {
+//        do{
+//            //get the targets like mytarget.xcsheme
+//            let targets = try FileManager.default.contentsOfDirectory(atPath: xcschemesPath).filter{ $0.hasSuffix("xcscheme") }
+//            //remove .xcscheme and return them with a position
+//            return targets.flatMap{ XCTarget(named: $0.replacingOccurrences(of: ".xcscheme", with: ""),
+//                                             orderHint: targets.index(of: $0)!) }
+//        }catch _ {
+//            return nil
+//        }
+//        
+//    }
     func currentTargetName() -> String? {
         guard let user = getCurrentUser(),
               let url = getXcUserStateUrl(for: user, at: path),
