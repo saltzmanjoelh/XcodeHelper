@@ -6,8 +6,6 @@
 //  Copyright © 2017 Joel Saltzman. All rights reserved.
 //
 
-//TODO: write failure tests to get better code coverage
-
 import Foundation
 import SynchronousProcess
 

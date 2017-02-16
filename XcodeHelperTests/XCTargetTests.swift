@@ -34,5 +34,11 @@ class XCTargetTests: XcodeHelperTestCase {
         XCTAssertEqual(result.count, XCTarget.TargetType.allValues().count)
         XCTAssertEqual(Set(result).count, 8, "There should have been 8 different images")
     }
-
+    func testUnknownTargetType() {
+        let fileExtension = UUID().uuidString
+        
+        let result = XCTarget.TargetType.init(from: fileExtension)
+        
+        XCTAssertEqual(result, XCTarget.TargetType.unknown)
+    }
 }
