@@ -35,8 +35,19 @@ class XcodeHelperTestCase: XCTestCase {
         }
         return URL(fileURLWithPath: tempDirectoryPath).appendingPathComponent("ProjectTwo/ProjectTwo.xcodeproj").path
     }()
+    
     static var projectOneTargetCount = 2
     static var projectTwoTargetCount = 40
+    static var currentUser = XCProject.getCurrentUser()!
+    lazy var workspace: XCWorkspace = {
+        return XCWorkspace(at: XcodeHelperTestCase.workspacePath, currentUser: currentUser)
+    }()
+    lazy var projectOne: XCProject = {
+        return XCProject(at: XcodeHelperTestCase.projectOnePath, currentUser: currentUser)
+    }()
+    lazy var projectTwo: XCProject = {
+        return XCProject(at: XcodeHelperTestCase.projectTwoPath, currentUser: currentUser)
+    }()
     
     override func setUp() {
         super.setUp()

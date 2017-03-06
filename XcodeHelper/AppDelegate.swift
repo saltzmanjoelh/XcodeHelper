@@ -14,23 +14,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     @IBOutlet weak var statusMenu: NSMenu?
     
-    let status = NSStatusBar.system().statusItem(withLength: 30.0)
-    let commandHandler = CommandHandler()
+    var menuController: StatusMenuController?
+    let xcode = Xcode()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        menuController = StatusMenuController(statusItem: NSStatusBar.system().statusItem(withLength: 30.0),
+                                              xcode: xcode)
+        let statusItem = menuController!.statusItem
+        
         //Handle xcodehelper:// urls
-        NSAppleEventManager.shared().setEventHandler(commandHandler, andSelector: #selector(CommandHandler.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
+        NSAppleEventManager.shared().setEventHandler(menuController!, andSelector: #selector(StatusMenuController.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
         
         //Statusbar Icon
         if let image = NSImage.init(named: "AppIcon") {
             let percentage: CGFloat = 0.13
             image.size = NSMakeSize(image.size.width * percentage, image.size.height * percentage)
-            status.image = image
+            statusItem.image = image
         }
         
         //Statusbar Menu
-        status.menu = MenuManager.newStatusMenu(with: commandHandler)
+        statusItem.menu = menuController!.newStatusMenu()
     }
     
     

@@ -8,9 +8,31 @@
 
 import Foundation
 
-struct XCTarget: CustomStringConvertible {
+struct XCTarget: CustomStringConvertible, XCItem, Equatable {
     
-    enum TargetType {
+    let name: String
+    var orderHint: Int
+    var type: XCTarget.TargetType
+    let project: XCProject
+    
+    public var description: String {
+        return name
+    }
+    
+    init(name: String, orderHint: Int, targetType: TargetType, project: XCProject) {
+        self.name = name
+        self.orderHint = orderHint
+        self.type = targetType
+        self.project = project
+    }
+    
+    public func imageData() -> Data? {
+        //TODO: add option to parse plist and get image name - ProjectOne/App/Info.plist CFBundleIconFile
+        //TODO: add option to parse pbxproj and get AppIcon - ProjectOne/ProjectOne.xcodeproj/project.pbxproj ASSETCATALOG_COMPILER_APPICON_NAME
+        return try? Data.init(contentsOf: URL(fileURLWithPath: defaultImagePath(for: type)))
+    }
+    
+    enum TargetType: Equatable {
         case app
         case binary
         case framework
@@ -66,6 +88,13 @@ struct XCTarget: CustomStringConvertible {
 
         }
     }
+    
+    
+    var imagePath: String {
+        get {
+            return defaultImagePath(for: self.type)
+        }
+    }
     func defaultImagePath(for targetType: TargetType) -> String {
         switch targetType {
         case .app:
@@ -93,23 +122,7 @@ struct XCTarget: CustomStringConvertible {
         }
     }
 
-    let name: String
-    var orderHint: Int
-    var type: XCTarget.TargetType
-
-    public var description: String {
-        return name
-    }
-    
-    init(name: String, orderHint: Int, targetType: TargetType) {
-        self.name = name
-        self.orderHint = orderHint
-        self.type = targetType
-    }
-    
-    public func imageData() -> Data? {
-        //TODO: add option to parse plist and get image name - ProjectOne/App/Info.plist CFBundleIconFile
-        //TODO: add option to parse pbxproj and get AppIcon - ProjectOne/ProjectOne.xcodeproj/project.pbxproj ASSETCATALOG_COMPILER_APPICON_NAME
-        return try? Data.init(contentsOf: URL(fileURLWithPath: defaultImagePath(for: type)))
+    public static func ==(lhs: XCTarget, rhs: XCTarget) -> Bool {
+        return lhs.name == rhs.name && lhs.type == rhs.type && lhs.project.path == rhs.project.path
     }
 }

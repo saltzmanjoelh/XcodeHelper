@@ -16,20 +16,20 @@ protocol XCDocumentable {
     init(at path: String)
     func getXcUserStateUrl(for user: String, at path: String) -> URL?
     func currentTargetName() -> String?
-    func orderedTargets() -> [XCTarget]?
+    func orderedTargets() -> [XCTarget]
 }
 
 extension XCDocumentable {
-    public func getCurrentUser() -> String? {
+    public static func getCurrentUser() -> String? {
         let result = Process.run("/usr/bin/whoami", arguments: nil, printOutput: false, outputPrefix: nil)
         return result.output?.trimmingCharacters(in: .newlines)
     }
     
-    func getXCUserStateContents(at getXcUserStateUrl: URL) -> NSDictionary? {
-        guard FileManager.default.fileExists(atPath: getXcUserStateUrl.path) else {
+    func getXcUserStateContents(at xcUserStateUrl: URL) -> NSDictionary? {
+        guard FileManager.default.fileExists(atPath: xcUserStateUrl.path) else {
             return nil
         }
-        return NSDictionary.init(contentsOfFile: getXcUserStateUrl.path)
+        return NSDictionary.init(contentsOfFile: xcUserStateUrl.path)
     }
     func getCurrentTargetName(from XCUserStateContents: NSDictionary) -> String? {
         guard let objects = XCUserStateContents.object(forKey: "$objects") as? NSArray else {

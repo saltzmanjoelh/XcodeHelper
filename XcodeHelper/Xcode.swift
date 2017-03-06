@@ -1,62 +1,56 @@
 //
-//  XcodeProject.swift
+//  Xcode.swift
 //  XcodeHelper
 //
 //  Created by Joel Saltzman on 1/22/17.
 //  Copyright © 2017 Joel Saltzman. All rights reserved.
 //
 
+//TODO: look at datasourcable project to see why no targets are showing up
+
 import Foundation
 import SynchronousProcess
 
+protocol XCItem: CustomStringConvertible {
+    var imagePath: String { get }
+}
+
 struct Xcode {
     
-    var currentDocumentScript: NSAppleScript?
-    var currentDocument: XCDocumentable?
+    let currentDocumentScript: NSAppleScript
+    let currentUser: String = XCWorkspace.getCurrentUser()!
     
     init() {
-        currentDocumentScript = createScript()
-        if currentDocumentScript == nil{
-            print("Failed to create NSAppleScript")
-        }
-    }
-    private func createScript() -> NSAppleScript? {
-        let text = "tell application \"Xcode\"\nget path of first document\nend tell"
-        return NSAppleScript(source: text)
+        currentDocumentScript = NSAppleScript(source: "tell application \"Xcode\"\nget path of first document\nend tell")!
     }
 
-    private func getCurrentDocumentPath() -> String? {
-        guard let scriptObject = currentDocumentScript else {
-            return nil
-        }
-        
+    func getCurrentDocumentPath(using script: NSAppleScript) -> String? {
         var error: NSDictionary?
-        let output: NSAppleEventDescriptor = scriptObject.executeAndReturnError(&error)
+        let output: NSAppleEventDescriptor = script.executeAndReturnError(&error)
         if (error != nil) {
             print("error: \(error)")
             return nil
         }
         return output.stringValue
     }
-    private func projectIsWorkspace(projectPath: String) -> Bool {
-        return projectPath.hasSuffix("xcworkspace")
-    }
-    func getCurrentDocumentable() -> XCDocumentable? {
-        guard let path = getCurrentDocumentPath() else {
+    func getCurrentDocumentable(using script: NSAppleScript) -> XCDocumentable? {
+        guard let path = getCurrentDocumentPath(using: script) else {
             return nil
         }
         if projectIsWorkspace(projectPath: path) {
-            return XCWorkspace(at: path)
-        }else{
-            return XCProject(at: path)
+            return XCWorkspace(at: path, currentUser: currentUser)
         }
+        return XCProject(at: path, currentUser: currentUser)
     }
-    func getProjects(from document: XCDocumentable) -> [XCProject]? {
-        if let workspace = document as? XCWorkspace {
-            return workspace.projects
+    private func projectIsWorkspace(projectPath: String) -> Bool {
+        return projectPath.hasSuffix("xcworkspace")
+    }
+    func getProjects(from document: XCDocumentable) -> [XCProject] {
+        if let workspace = document as? XCWorkspace, let projects = workspace.projects {
+            return projects
         }else if let project = document as? XCProject {
             return [project]
         }
-        return nil
+        return []
     }
 }

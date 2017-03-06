@@ -18,18 +18,13 @@ extension XCTarget.TargetType {
 class XCTargetTests: XcodeHelperTestCase {
 
     override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+        self.continueAfterFailure = false
     }
 
     func testImage() {
+        let project = XCProject(at: "")
 
-        let result = XCTarget.TargetType.allValues().flatMap{ XCTarget(name: "", orderHint: 0, targetType: $0).imageData() }
+        let result = XCTarget.TargetType.allValues().flatMap{ XCTarget(name: "", orderHint: 0, targetType: $0, project: project).imageData() }
         
         XCTAssertEqual(result.count, XCTarget.TargetType.allValues().count)
         XCTAssertEqual(Set(result).count, 8, "There should have been 8 different images")
@@ -40,5 +35,22 @@ class XCTargetTests: XcodeHelperTestCase {
         let result = XCTarget.TargetType.init(from: fileExtension)
         
         XCTAssertEqual(result, XCTarget.TargetType.unknown)
+    }
+    func testImagePath() {
+        let project = XCProject(at: "")
+        let target = XCTarget(name: "", orderHint: 0, targetType: .app, project: project)
+        
+        let result = target.imagePath
+        
+        XCTAssertEqual(result, "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Application/Cocoa Application.xctemplate/TemplateIcon.icns")
+    }
+    func testEquality() {
+        let project = XCProject(at: "")
+        let targetOne = XCTarget(name: UUID().uuidString, orderHint: 0, targetType: .app, project: project)
+        let targetTwo = XCTarget(name: targetOne.name, orderHint: 0, targetType: .app, project: project)
+        
+        let result = targetOne == targetTwo
+        
+        XCTAssertTrue(result)
     }
 }

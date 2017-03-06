@@ -11,7 +11,6 @@ import AppKit
 
 class SettingsViewController: NSViewController {
     
-    @IBOutlet var targetsPopUp: NSPopUpButton?
     @IBOutlet var pathLabel: NSTextField?
     @IBOutlet var commandsPopUp: NSPopUpButton?
     @IBOutlet var containerView: NSView?
@@ -23,10 +22,6 @@ class SettingsViewController: NSViewController {
         guard ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] == nil else {
             return
         }
-        if let document = xcode.getCurrentDocumentable() {
-            xcode.currentDocument = document
-        }
-        prepareTargetsPopUp()
         preparePathLabel()
         if let popUp = commandsPopUp {
             prepareCommandsPopUp(popUp)
@@ -35,7 +30,7 @@ class SettingsViewController: NSViewController {
     }
     func prepareTargetsPopUp() {
         targetsPopUp?.removeAllItems()
-        guard let targets = xcode.currentDocument?.orderedTargets() else {
+        guard let targets = xcode.getCurrentDocumentable()?.orderedTargets() else {
             return
         }
         for target in targets {
@@ -58,51 +53,6 @@ class SettingsViewController: NSViewController {
         }
         popUp.target = self
         popUp.action = #selector(SettingsViewController.commandPopUpChanged)
-    }
-    
-    @IBAction
-    func commandPopUpChanged(sender: Any){
-        if let menuItem = sender as? NSMenuItem {
-            performSwap(menuItem: menuItem)
-        }
-        else if let popUp = sender as? NSPopUpButton, let menuItem = popUp.selectedItem {
-            performSwap(menuItem: menuItem)
-        }
-    }
-    
-    func performSwap(menuItem: NSMenuItem){
-        guard let childViewController = storyboard?.instantiateController(withIdentifier: menuItem.title) as? NSViewController else {
-            return
-        }
-        //remove existing child
-        while childViewControllers.count > 0 {
-            childViewControllers.first?.view.removeFromSuperview()
-            removeChildViewController(at: 0)
-        }
-        
-        prepare(childViewController: childViewController)
-        
-        //add new child
-        if let container = containerView {
-            addChildViewController(childViewController)
-            container.addSubview(childViewController.view)
-            childViewController.view.frame = container.bounds
-            childViewController.view.translatesAutoresizingMaskIntoConstraints = false
-            container.addConstraint(NSLayoutConstraint.init(item: container, attribute: .top, relatedBy: .equal, toItem: childViewController.view, attribute: .top, multiplier: 1.0, constant: 0))
-            container.addConstraint(NSLayoutConstraint.init(item: container, attribute: .bottom, relatedBy: .equal, toItem: childViewController.view, attribute: .bottom, multiplier: 1.0, constant: 0))
-            container.addConstraint(NSLayoutConstraint.init(item: container, attribute: .left, relatedBy: .equal, toItem: childViewController.view, attribute: .left, multiplier: 1.0, constant: 0))
-            container.addConstraint(NSLayoutConstraint.init(item: container, attribute: .right, relatedBy: .equal, toItem: childViewController.view, attribute: .right, multiplier: 1.0, constant: 0))
-        }
-    }
-    
-    func prepare(childViewController: NSViewController){
-        guard let identifier = childViewController.identifier, let command = Command(rawValue: identifier) else {
-            return
-        }
-        
-        //get a list of all keys available from xchelper.cliOptionGroups
-        //save in the form [ProjectIdentifier: [key:value]
-        //execute xchelper.run( [key="value"]
     }
     
 }
