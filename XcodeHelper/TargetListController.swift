@@ -34,10 +34,27 @@ class TargetListController: NSObject {
         self.xcodeViewModel =  XcodeViewModel(xcode: xcode, document: xcode.getCurrentDocumentable(using: xcode.currentDocumentScript))
     }
 }
-
+class GroupRow: NSTableRowView {
+    override func draw(_ dirtyRect: NSRect) {
+        if isGroupRowStyle {
+            backgroundColor.setFill()
+            NSBezierPath.fill(dirtyRect)
+        }else{
+            super.draw(dirtyRect)
+        }
+    }
+}
 extension TargetListController: NSTableViewDataSource, NSTableViewDelegate {
     public func numberOfRows(in tableView: NSTableView) -> Int {
         return xcodeViewModel.flatList.count
+    }
+    public func tableView(_ theTableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return tableView(theTableView, isGroupRow: row) ? 24.0 : 18.0
+    }
+    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
+        let groupRow = GroupRow()
+        groupRow.backgroundColor = NSColor.white
+        return groupRow
     }
     public func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return xcodeViewModel.flatList[safe: row];

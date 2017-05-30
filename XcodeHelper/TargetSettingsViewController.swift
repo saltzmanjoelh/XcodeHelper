@@ -70,7 +70,7 @@ extension TargetSettingsViewController: NSTableViewDataSource, NSTableViewDelega
     }
     public func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         if row%2 == 0 {
-            return 20.0
+            return 24.0
         }
         guard let item = data[safe: row] as? String,
               let viewController = viewControllers[item] else { return defaultHeights[row/2] }
