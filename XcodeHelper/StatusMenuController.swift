@@ -14,6 +14,8 @@ import AppKit
 class StatusMenuController: NSObject {
     
     public let statusItem: NSStatusItem
+    var windowController: NSWindowController?
+    
     let xcode: Xcode
     var document: XCDocumentable?
     var projectModificationDate: NSDate? //if the document is an XCProject, this is the modification date from the scheme management plist
@@ -27,6 +29,9 @@ class StatusMenuController: NSObject {
         self.statusItem = statusItem
         self.xcode = xcode
         document = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)
+        if let windowController = NSApplication.shared().windows.first?.delegate as? NSWindowController {
+            self.windowController = windowController
+        }
     }
     
     //handle xcodehelper:// urls
@@ -201,7 +206,12 @@ extension StatusMenuController: NSMenuDelegate {
 extension StatusMenuController {
     @IBAction
     func preferences(sender: Any){
-        NSApplication.shared().mainWindow?.makeKeyAndOrderFront(nil)
+        NSApplication.shared().activate(ignoringOtherApps: true)
+        DispatchQueue.main.async {
+            print(String(describing: self.windowController?.window))
+            self.windowController?.window?.makeKeyAndOrderFront(nil)
+        }
+        
     }
     @IBAction
     func quit(sender: Any){

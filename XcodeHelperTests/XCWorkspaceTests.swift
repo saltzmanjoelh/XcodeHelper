@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import SynchronousProcess
+import ProcessRunner
 @testable import XcodeHelper
 
 class XCWorkspaceTests: XcodeHelperTestCase {

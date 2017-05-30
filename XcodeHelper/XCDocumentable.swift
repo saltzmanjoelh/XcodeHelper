@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import ProcessRunner
 
 protocol XCDocumentable {
     var path: String { get set }
@@ -21,7 +21,7 @@ protocol XCDocumentable {
 
 extension XCDocumentable {
     public static func getCurrentUser() -> String? {
-        let result = Process.run("/usr/bin/whoami", arguments: nil, printOutput: false, outputPrefix: nil)
+        let result = ProcessRunner.synchronousRun("/usr/bin/whoami")
         return result.output?.trimmingCharacters(in: .newlines)
     }
     

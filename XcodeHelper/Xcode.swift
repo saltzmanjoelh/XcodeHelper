@@ -9,7 +9,7 @@
 //TODO: look at datasourcable project to see why no targets are showing up
 
 import Foundation
-import SynchronousProcess
+import ProcessRunner
 
 protocol XCItem: CustomStringConvertible {
     var imagePath: String { get }
@@ -28,7 +28,7 @@ struct Xcode {
         var error: NSDictionary?
         let output: NSAppleEventDescriptor = script.executeAndReturnError(&error)
         if (error != nil) {
-            print("error: \(error)")
+            print("error: \(String(describing: error))")
             return nil
         }
         return output.stringValue

@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-import SynchronousProcess
+import ProcessRunner
 @testable import XcodeHelper
 
 class TargetListControllerTests: XcodeHelperTestCase {

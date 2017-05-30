@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		381E29F71E544DDB00557BB1 /* XCTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E29F61E544DDB00557BB1 /* XCTargetTests.swift */; };
 		381E29F91E560A9300557BB1 /* XcodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E29F81E560A9300557BB1 /* XcodeViewModel.swift */; };
+		381EF0E71E73092B008A3717 /* TargetSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381EF0E61E73092B008A3717 /* TargetSettingsViewController.swift */; };
 		3836A7601E38A3BE0098CE9A /* XCProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A75F1E38A3BE0098CE9A /* XCProject.swift */; };
 		3836A7621E38A3C70098CE9A /* XCWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7611E38A3C70098CE9A /* XCWorkspace.swift */; };
 		3836A7641E38A3FF0098CE9A /* XCDocumentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7631E38A3FF0098CE9A /* XCDocumentable.swift */; };
 		3836A7661E3B302B0098CE9A /* XCWorkspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7651E3B302B0098CE9A /* XCWorkspaceTests.swift */; };
-		3836A7931E3EDEEA0098CE9A /* SynchronousProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DFD6C11E2AB29500C3D931 /* SynchronousProcess.framework */; };
 		384E51A81DC6B36700FAC6C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51A71DC6B36700FAC6C1 /* AppDelegate.swift */; };
 		384E51AA1DC6B36700FAC6C1 /* TargetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51A91DC6B36700FAC6C1 /* TargetsViewController.swift */; };
 		384E51AC1DC6B36700FAC6C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384E51AB1DC6B36700FAC6C1 /* Assets.xcassets */; };
@@ -29,9 +29,11 @@
 		3857C25F1E6C76DE00731BE7 /* XCDocumentableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857C25E1E6C76DE00731BE7 /* XCDocumentableTests.swift */; };
 		389D2D3F1E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
 		389D2D401E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
+		38A420E71E76F0C10030BB19 /* CommandSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */; };
+		38DC32711EDD02660095F5DA /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DC32701EDD02660095F5DA /* ProcessRunner.framework */; };
+		38DC32731EDD02830095F5DA /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DC32721EDD02830095F5DA /* ProcessRunner.framework */; };
 		38DFD6BE1E2AB28C00C3D931 /* XcodeHelperKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6BD1E2AB28C00C3D931 /* XcodeHelperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38DFD6C01E2AB29000C3D931 /* S3Kit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6BF1E2AB29000C3D931 /* S3Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38DFD6C41E2AB29500C3D931 /* SynchronousProcess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6C11E2AB29500C3D931 /* SynchronousProcess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38DFD6C51E2AB29500C3D931 /* DockerProcess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6C21E2AB29500C3D931 /* DockerProcess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38DFD6C61E2AB29500C3D931 /* CliRunnable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38DFD6C91E2AB8F300C3D931 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */; };
@@ -82,7 +84,6 @@
 			files = (
 				38DFD6BE1E2AB28C00C3D931 /* XcodeHelperKit.framework in CopyFiles */,
 				38DFD6C01E2AB29000C3D931 /* S3Kit.framework in CopyFiles */,
-				38DFD6C41E2AB29500C3D931 /* SynchronousProcess.framework in CopyFiles */,
 				38DFD6C51E2AB29500C3D931 /* DockerProcess.framework in CopyFiles */,
 				38DFD6C61E2AB29500C3D931 /* CliRunnable.framework in CopyFiles */,
 			);
@@ -94,7 +95,7 @@
 		380B81621E269262003E0951 /* Defaultable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaultable.swift; sourceTree = "<group>"; };
 		381E29F61E544DDB00557BB1 /* XCTargetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTargetTests.swift; sourceTree = "<group>"; };
 		381E29F81E560A9300557BB1 /* XcodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeViewModel.swift; sourceTree = "<group>"; };
-		381E29FA1E568B5800557BB1 /* Interstellar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Interstellar.framework; path = "../../../Library/Developer/Xcode/DerivedData/XcodeHelper-bnycykzuhbgssghgkzpuxjdzlecf/Build/Products/Debug/Interstellar.framework"; sourceTree = "<group>"; };
+		381EF0E61E73092B008A3717 /* TargetSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetSettingsViewController.swift; sourceTree = "<group>"; };
 		3836A75F1E38A3BE0098CE9A /* XCProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCProject.swift; sourceTree = "<group>"; };
 		3836A7611E38A3C70098CE9A /* XCWorkspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCWorkspace.swift; sourceTree = "<group>"; };
 		3836A7631E38A3FF0098CE9A /* XCDocumentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCDocumentable.swift; sourceTree = "<group>"; };
@@ -119,9 +120,11 @@
 		3857C25E1E6C76DE00731BE7 /* XCDocumentableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCDocumentableTests.swift; sourceTree = "<group>"; };
 		387BF3881DC6F07200318807 /* XcodeHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeHelper.entitlements; sourceTree = "<group>"; };
 		389D2D3E1E33E0480034E802 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingsViewController.swift; sourceTree = "<group>"; };
+		38DC32701EDD02660095F5DA /* ProcessRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProcessRunner.framework; path = "../../../Library/Developer/Xcode/DerivedData/XcodeHelper-bnycykzuhbgssghgkzpuxjdzlecf/Build/Products/Debug/ProcessRunner.framework"; sourceTree = "<group>"; };
+		38DC32721EDD02830095F5DA /* ProcessRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProcessRunner.framework; path = ../XcodeHelperKit/build/Release/ProcessRunner.framework; sourceTree = "<group>"; };
 		38DFD6BD1E2AB28C00C3D931 /* XcodeHelperKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XcodeHelperKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DFD6BF1E2AB29000C3D931 /* S3Kit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = S3Kit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38DFD6C11E2AB29500C3D931 /* SynchronousProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SynchronousProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DFD6C21E2AB29500C3D931 /* DockerProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DockerProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CliRunnable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38DC32731EDD02830095F5DA /* ProcessRunner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3836A7931E3EDEEA0098CE9A /* SynchronousProcess.framework in Frameworks */,
+				38DC32711EDD02660095F5DA /* ProcessRunner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,12 +169,10 @@
 		384E519B1DC6B36700FAC6C1 = {
 			isa = PBXGroup;
 			children = (
-				38DFD6C11E2AB29500C3D931 /* SynchronousProcess.framework */,
 				38DFD6C21E2AB29500C3D931 /* DockerProcess.framework */,
 				38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */,
 				38DFD6BF1E2AB29000C3D931 /* S3Kit.framework */,
 				38DFD6BD1E2AB28C00C3D931 /* XcodeHelperKit.framework */,
-				381E29FA1E568B5800557BB1 /* Interstellar.framework */,
 				384E51A61DC6B36700FAC6C1 /* XcodeHelper */,
 				384E51B81DC6B36700FAC6C1 /* XcodeHelperTests */,
 				384E51CC1DC6B38500FAC6C1 /* SourceExtension */,
@@ -227,6 +229,8 @@
 		384E51C91DC6B38500FAC6C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38DC32721EDD02830095F5DA /* ProcessRunner.framework */,
+				38DC32701EDD02660095F5DA /* ProcessRunner.framework */,
 				384E51CA1DC6B38500FAC6C1 /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -267,6 +271,8 @@
 		3853F83E1E64BD4300A39C1A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				381EF0E61E73092B008A3717 /* TargetSettingsViewController.swift */,
+				38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -301,7 +307,6 @@
 				384E51A11DC6B36700FAC6C1 /* Frameworks */,
 				384E51A21DC6B36700FAC6C1 /* Resources */,
 				384E51DA1DC6B38500FAC6C1 /* Embed App Extensions */,
-				38E7B8D11DCC01EB008ACB33 /* ShellScript */,
 				38DFD6BC1E2AB28100C3D931 /* CopyFiles */,
 			);
 			buildRules = (
@@ -438,22 +443,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		38E7B8D11DCC01EB008ACB33 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = printenv;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		384E51A01DC6B36700FAC6C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -467,10 +456,12 @@
 				3836A7641E38A3FF0098CE9A /* XCDocumentable.swift in Sources */,
 				384E51AA1DC6B36700FAC6C1 /* TargetsViewController.swift in Sources */,
 				38E8F74B1E468FBF00097EEC /* TargetListController.swift in Sources */,
+				381EF0E71E73092B008A3717 /* TargetSettingsViewController.swift in Sources */,
 				384E51A81DC6B36700FAC6C1 /* AppDelegate.swift in Sources */,
 				3836A7621E38A3C70098CE9A /* XCWorkspace.swift in Sources */,
 				389D2D3F1E33E0480034E802 /* Command.swift in Sources */,
 				38E8F7971E48093B00097EEC /* XCTarget.swift in Sources */,
+				38A420E71E76F0C10030BB19 /* CommandSettingsViewController.swift in Sources */,
 				38EEE9201E352D7900779CB9 /* Xcode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

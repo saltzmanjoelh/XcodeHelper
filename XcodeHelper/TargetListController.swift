@@ -44,71 +44,33 @@ extension TargetListController: NSTableViewDataSource, NSTableViewDelegate {
     }
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let item = xcodeViewModel.flatList[safe: row] else { return nil }
-        guard let view = tableView.make(withIdentifier: DataCell.identifier, owner: self) as? DataCell else { return nil }
+        if item is XCProject {
+            guard let view = tableView.make(withIdentifier: "HeaderCell", owner: self) as? NSTableCellView else { return nil }
+            
+            view.textField?.stringValue = item.description
+            return view
+            
+        }else{
+            guard let view = tableView.make(withIdentifier: DataCell.identifier, owner: self) as? DataCell else { return nil }
+            
+            view.textField?.stringValue = item.description
+            view.imageView?.image = NSImage.init(contentsOfFile: item.imagePath)
+            view.indentationLevel = item is XCProject ? 0 : 1
+            return view
+        }
         
-        view.textField?.stringValue = item.description
-        view.imageView?.image = NSImage.init(contentsOfFile: item.imagePath)
-        view.indentationLevel = item is XCProject ? 0 : 1
         
-        return view
+    }
+    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+        guard let item = xcodeViewModel.flatList[safe: row] else { return false }
+        return item is XCTarget
+    }
+    public func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
+        guard let item = xcodeViewModel.flatList[safe: row] else { return false }
+        return item is XCProject
+    }
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        
     }
 }
 
-extension TargetListController: NSOutlineViewDataSource, NSOutlineViewDelegate {
-    
-    
-    public func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        guard let project = item as? XCProject else {
-            return xcodeViewModel.projects.count
-        }
-        
-        return xcodeViewModel.targets[project] != nil ? xcodeViewModel.targets[project]!.count : 0
-    }
-    
-    public func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        guard let project = item as? XCProject else {
-            return xcodeViewModel.projects[safe: index] as Any
-        }
-        return xcodeViewModel.targets[project]?[safe: index] as Any
-    }
-    
-    public func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return item as? XCProject != nil
-    }
-    
-    public func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        if let project = item as? XCProject {
-            return self.outlineView(outlineView, viewFor: project)
-        }else if let target = item as? XCTarget {
-            return self.outlineView(outlineView, viewFor: target)
-        }
-        return nil
-    }
-    func outlineView(_ outlineView: NSOutlineView, shouldExpandItem item: Any) -> Bool {
-        //        let path = NSIndexPath.init(forItem: <#T##Int#>, inSection: <#T##Int#>)
-        return true
-    }
-    func outlineView(_ outlineView: NSOutlineView, shouldShowCellExpansionFor tableColumn: NSTableColumn?, item: Any) -> Bool {
-        return false
-    }
-    func outlineView(_ outlineView: NSOutlineView, viewFor project: XCProject) -> NSView? {
-        guard let view = outlineView.make(withIdentifier: "HeaderCell", owner: self) as? NSTableCellView else {
-            return nil
-        }
-        
-        view.textField?.stringValue = project.description
-        view.imageView?.image = NSImage.init(contentsOfFile: XCProject.defaultImagePath)
-        
-        return view
-    }
-    func outlineView(_ outlineView: NSOutlineView, viewFor target: XCTarget) -> NSView? {
-        guard let view = outlineView.make(withIdentifier: "DataCell", owner: self) as? NSTableCellView else {
-            return nil
-        }
-        
-        view.textField?.stringValue = target.description
-        view.imageView?.image = NSImage.init(contentsOfFile: target.imagePath)
-        
-        return view
-    }
-}
