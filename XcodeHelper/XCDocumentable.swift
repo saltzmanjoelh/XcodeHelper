@@ -16,6 +16,7 @@ protocol XCDocumentable {
     init(at path: String)
     func getXcUserStateUrl(for user: String, at path: String) -> URL?
     func currentTargetName() -> String?
+    func currentTargetPath() -> String?
     func orderedTargets() -> [XCTarget]
 }
 

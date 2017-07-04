@@ -18,8 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let xcode = Xcode()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
-        menuController = StatusMenuController(statusItem: NSStatusBar.system().statusItem(withLength: 30.0),
+        UserDefaults.initializeDefaults()
+        NSUserNotificationCenter.default.delegate = self
+        menuController = StatusMenuController(statusItem: NSStatusBar.system.statusItem(withLength: 30.0),
                                               xcode: xcode)
         let statusItem = menuController!.statusItem
         
@@ -27,7 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSAppleEventManager.shared().setEventHandler(menuController!, andSelector: #selector(StatusMenuController.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
         
         //Statusbar Icon
-        if let image = NSImage.init(named: "AppIcon") {
+        if let image = NSImage.init(named: NSImage.Name(rawValue: "AppIcon")) {
             let percentage: CGFloat = 0.13
             image.size = NSMakeSize(image.size.width * percentage, image.size.height * percentage)
             statusItem.image = image
@@ -40,6 +41,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     public func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
+    }
+    public func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        //Only notification action available currenly is to silence user notifications
+        UserDefaults.standard.set(false, forKey: Preference.logging.stringValue)
     }
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application

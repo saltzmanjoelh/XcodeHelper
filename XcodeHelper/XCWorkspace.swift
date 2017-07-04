@@ -70,4 +70,7 @@ struct XCWorkspace: XCDocumentable, CustomStringConvertible {
         }
         return getCurrentTargetName(from: contents)
     }
+    func currentTargetPath() -> String? {
+        return getProjects(from: self.path)?.first(where: { $0.currentTargetName() == currentTargetName() })?.path
+    }
 }

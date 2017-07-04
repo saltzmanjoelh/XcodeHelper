@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.19"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -727,9 +727,9 @@
                 <windowController storyboardIdentifier="PreferencesWindow" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
-                        <rect key="contentRect" x="408" y="322" width="672" height="534"/>
+                        <rect key="contentRect" x="408" y="322" width="672" height="578"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="672" height="534"/>
+                        <value key="minSize" type="size" width="672" height="578"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="liJ-TZ-uRH"/>
                         </connections>
@@ -757,6 +757,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="ljF-OB-0eF" name="value" keyPath="values.UpdatePackages.macOS.symlinkDependencies" id="Z9G-3R-HcD"/>
+                                </connections>
                             </button>
                             <button toolTip="Generate a new Xcode project after updating packages. Useful if you have new files and/or aren't symlinking the dependencies" translatesAutoresizingMaskIntoConstraints="NO" id="yPM-Zp-snf">
                                 <rect key="frame" x="18" y="18" width="233" height="18"/>
@@ -764,6 +767,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="ljF-OB-0eF" name="value" keyPath="values.UpdatePackages.macOS.generateXcodeproj" id="1RI-9E-1vS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -778,6 +784,7 @@
                     </view>
                 </viewController>
                 <customObject id="0ut-1g-79Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="ljF-OB-0eF"/>
             </objects>
             <point key="canvasLocation" x="2162" y="393"/>
         </scene>
@@ -882,7 +889,7 @@
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="Cdn-iB-T9x"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tx-Ap-Kes">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="5Tx-Ap-Kes">
                                                                     <rect key="frame" x="15" y="0.0" width="153" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="U90-x0-bOD">
                                                                         <font key="font" metaFont="system"/>
@@ -949,7 +956,7 @@
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="Eya-y7-cCy">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="Eya-y7-cCy" customClass="TrackingTableView" customModule="XcodeHelper" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -1040,15 +1047,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="259" height="22"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AaI-9x-Kir">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AaI-9x-Kir">
                                 <rect key="frame" x="134" y="0.0" width="115" height="22"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Docker Image Name" drawsBackground="YES" id="sil-Yg-9zj">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Docker Image Name" drawsBackground="YES" id="sil-Yg-9zj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="iDo-wx-Zeo" name="value" keyPath="values.UpdatePackages.Docker.imageName" id="un8-yc-xIS">
+                                        <dictionary key="options">
+                                            <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                            <bool key="NSConditionallySetsEditable" value="NO"/>
+                                            <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </textField>
-                            <textField toolTip="Name of image to use with Docker when updating packages" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXY-a8-Nh9">
+                            <textField toolTip="Name of image to use with Docker when updating packages" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zXY-a8-Nh9">
                                 <rect key="frame" x="18" y="3" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Name" id="FNB-U5-yxo">
                                     <font key="font" metaFont="system"/>
@@ -1067,6 +1083,7 @@
                     </view>
                 </viewController>
                 <customObject id="Oh5-9n-h0p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="iDo-wx-Zeo"/>
             </objects>
             <point key="canvasLocation" x="2162" y="466"/>
         </scene>
@@ -1084,8 +1101,11 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="nl2-CX-nGd" name="value" keyPath="values.BuildInDocker.buildOnSuccess" id="Eo5-Mi-OL5"/>
+                                </connections>
                             </button>
-                            <textField toolTip="Build configuration to use with `swift build --configuration`. Project defaults to the project's current setting." horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpB-oS-ETT">
+                            <textField toolTip="Build configuration to use with `swift build --configuration`. Project defaults to the project's current setting." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wpB-oS-ETT">
                                 <rect key="frame" x="18" y="32" width="87" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Configuration" id="f1Q-FY-aR3">
                                     <font key="font" metaFont="system"/>
@@ -1106,16 +1126,22 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <binding destination="nl2-CX-nGd" name="selectedIndex" keyPath="values.BuildInDocker.configuration" id="VaW-NK-87o"/>
+                                </connections>
                             </popUpButton>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLs-E5-RVF">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JLs-E5-RVF">
                                 <rect key="frame" x="134" y="4" width="115" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Docker Image Name" drawsBackground="YES" id="fdZ-Mj-BTD">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="nl2-CX-nGd" name="value" keyPath="values.BuildInDocker.imageName" id="qIA-Uq-E3Y"/>
+                                </connections>
                             </textField>
-                            <textField toolTip="Name of image to use with Docker when building" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpA-ET-yB4">
+                            <textField toolTip="Name of image to use with Docker when building" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kpA-ET-yB4">
                                 <rect key="frame" x="18" y="7" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Name" id="161-z1-pZD">
                                     <font key="font" metaFont="system"/>
@@ -1142,6 +1168,7 @@
                     </view>
                 </viewController>
                 <customObject id="eda-vQ-OGA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="nl2-CX-nGd"/>
             </objects>
             <point key="canvasLocation" x="2162" y="556"/>
         </scene>
@@ -1159,6 +1186,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="Tar-it-5AE" name="value" keyPath="values.CreateXCArchive.flatList" id="7Xs-G4-gkG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -1169,6 +1199,7 @@
                     </view>
                 </viewController>
                 <customObject id="8Rs-mU-SYE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="Tar-it-5AE"/>
             </objects>
             <point key="canvasLocation" x="2162" y="692"/>
         </scene>
@@ -1180,31 +1211,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="260" height="98"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDy-jt-OrJ">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nDy-jt-OrJ">
                                 <rect key="frame" x="135" y="76" width="115" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="uwy-9b-zzX">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="1fp-n2-TMx" name="value" keyPath="values.UploadArchive.bucket" id="aeV-vu-yFQ"/>
+                                </connections>
                             </textField>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scc-mo-9sb">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Scc-mo-9sb">
                                 <rect key="frame" x="135" y="51" width="115" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="gHW-x3-Z6k">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="1fp-n2-TMx" name="value" keyPath="values.UploadArchive.region" id="vYc-m4-lBL"/>
+                                </connections>
                             </textField>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OV-3g-tOD">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4OV-3g-tOD">
                                 <rect key="frame" x="135" y="26" width="115" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="5bC-aX-BqW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <binding destination="1fp-n2-TMx" name="value" keyPath="values.UploadArchive.key" id="U1j-Xx-FS2"/>
+                                </connections>
                             </textField>
-                            <secureTextField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dax-F1-u3D">
+                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dax-F1-u3D">
                                 <rect key="frame" x="135" y="1" width="115" height="22"/>
                                 <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="ALs-2i-RdA">
                                     <font key="font" metaFont="system"/>
@@ -1214,8 +1254,11 @@
                                         <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                     </allowedInputSourceLocales>
                                 </secureTextFieldCell>
+                                <connections>
+                                    <binding destination="1fp-n2-TMx" name="value" keyPath="values.UploadArchive.secret" id="VAz-Wy-VAj"/>
+                                </connections>
                             </secureTextField>
-                            <textField toolTip="S3 region" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z31-TT-WZd">
+                            <textField toolTip="S3 region" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z31-TT-WZd">
                                 <rect key="frame" x="18" y="54" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Region" id="BaY-R9-IRl">
                                     <font key="font" metaFont="system"/>
@@ -1223,7 +1266,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField toolTip="AWS Key for S3" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfy-Yj-nSr">
+                            <textField toolTip="AWS Key for S3" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfy-Yj-nSr">
                                 <rect key="frame" x="18" y="29" width="27" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Key" id="qUp-gI-waU">
                                     <font key="font" metaFont="system"/>
@@ -1231,7 +1274,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField toolTip="Secret for AWS key" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kzm-Cf-kY3">
+                            <textField toolTip="Secret for AWS key" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kzm-Cf-kY3">
                                 <rect key="frame" x="18" y="4" width="44" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Secret" id="pcV-G6-Qlb">
                                     <font key="font" metaFont="system"/>
@@ -1239,7 +1282,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField toolTip="S3 bucket name" horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-RI-gAM">
+                            <textField toolTip="S3 bucket name" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-RI-gAM">
                                 <rect key="frame" x="18" y="79" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bucket" id="111-T2-25A">
                                     <font key="font" metaFont="system"/>
@@ -1273,6 +1316,7 @@
                     </view>
                 </viewController>
                 <customObject id="DMd-M5-TfG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="1fp-n2-TMx"/>
             </objects>
             <point key="canvasLocation" x="2162" y="789"/>
         </scene>
@@ -1290,6 +1334,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="Hfu-kz-QEg" name="value" keyPath="values.CreateArchive.flatList" id="isS-yZ-8OS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -1300,6 +1347,7 @@
                     </view>
                 </viewController>
                 <customObject id="Vj6-xb-Aaz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="Hfu-kz-QEg"/>
             </objects>
             <point key="canvasLocation" x="2162" y="636"/>
         </scene>
@@ -1311,7 +1359,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDH-Rw-N7U">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KDH-Rw-N7U">
                                 <rect key="frame" x="117" y="22" width="30" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="3dV-v5-UID"/>
@@ -1322,7 +1370,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="es4-nC-ZUU">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="es4-nC-ZUU">
                                 <rect key="frame" x="18" y="26" width="50" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version" id="6Il-Y2-PoM">
                                     <font key="font" metaFont="system"/>
@@ -1334,7 +1382,7 @@
                                 <rect key="frame" x="146" y="19" width="19" height="27"/>
                                 <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="2Nf-gc-sQq"/>
                             </stepper>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-MJ-Ixq">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SBH-MJ-Ixq">
                                 <rect key="frame" x="166" y="22" width="30" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="ZfB-Ba-gsl"/>
@@ -1349,7 +1397,7 @@
                                 <rect key="frame" x="195" y="19" width="19" height="27"/>
                                 <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="tMX-xw-0wu"/>
                             </stepper>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zad-CU-2Gq">
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zad-CU-2Gq">
                                 <rect key="frame" x="215" y="22" width="30" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="6Mp-iK-7uy"/>
@@ -1370,6 +1418,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <binding destination="h0y-Vx-HZh" name="value" keyPath="values.GitTag.push" id="fSE-8U-c3G"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -1396,8 +1447,40 @@
                     </view>
                 </viewController>
                 <customObject id="r5R-D9-DFG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="h0y-Vx-HZh"/>
             </objects>
             <point key="canvasLocation" x="2167" y="895"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Efp-bc-ezX">
+            <objects>
+                <viewController identifier="General" storyboardIdentifier="General" id="XRK-BJ-ISa" sceneMemberID="viewController">
+                    <view key="view" id="RRJ-8j-bgH">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="c29-aZ-c7S">
+                                <rect key="frame" x="18" y="18" width="246" height="18"/>
+                                <buttonCell key="cell" type="check" title="Silence Alerts" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="wgn-sd-8mg">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="jmj-ys-zpp" name="value" keyPath="values.General.alerts" id="1ZU-Wr-dIy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="c29-aZ-c7S" secondAttribute="trailing" constant="8" id="8Gq-0W-npk"/>
+                            <constraint firstItem="c29-aZ-c7S" firstAttribute="top" secondItem="RRJ-8j-bgH" secondAttribute="top" constant="10" id="Ntv-iG-YUK"/>
+                            <constraint firstItem="c29-aZ-c7S" firstAttribute="leading" secondItem="RRJ-8j-bgH" secondAttribute="leading" constant="20" id="m2r-5e-l2m"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Nb1-CP-jne" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="jmj-ys-zpp"/>
+            </objects>
+            <point key="canvasLocation" x="2167" y="983"/>
         </scene>
     </scenes>
 </document>

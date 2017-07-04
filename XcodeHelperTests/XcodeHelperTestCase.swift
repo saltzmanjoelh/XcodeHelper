@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import ProcessRunner
 @testable import XcodeHelper
 
 class XcodeHelperTestCase: XCTestCase {
@@ -69,8 +70,8 @@ class XcodeHelperTestCase: XCTestCase {
                 
             }
         }
-        let cloneResult = Process.run("/usr/bin/env", arguments: ["git", "clone", repoURL, tempDir], printOutput: true)
-        XCTAssert(cloneResult.exitCode == 0, "Failed to clone repo: \(cloneResult.error)")
+        let cloneResult = ProcessRunner.synchronousRun("/usr/bin/env", arguments: ["git", "clone", repoURL, tempDir], printOutput: true)
+        XCTAssert(cloneResult.exitCode == 0, "Failed to clone repo: \(String(describing: cloneResult.error))")
         XCTAssert(FileManager.default.fileExists(atPath: tempDir))
         print("done cloning temp dir: \(tempDir)")
         return tempDir

@@ -185,4 +185,7 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
         }
         return getCurrentTargetName(from: contents)
     }
+    func currentTargetPath() -> String? {
+        return self.path
+    }
 }

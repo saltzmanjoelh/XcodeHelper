@@ -19,7 +19,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
         print("starting")
-        NSWorkspace.shared().open(URL.init(string: "xcodehelper://test123")!)
+        NSWorkspace.shared.open(URL.init(string: "xcodehelper://test123")!)
         print("done")
         
         //the extension seems to have a problem with apple script getting the info from xcode so we have to simply open an xcode helper URL

@@ -27,6 +27,8 @@
 		384E51DD1DC6B3DA00FAC6C1 /* GetCurrentDocument.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 384E51DB1DC6B3DA00FAC6C1 /* GetCurrentDocument.scpt */; };
 		3857C25D1E6C68E100731BE7 /* XcodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857C25C1E6C68E100731BE7 /* XcodeTests.swift */; };
 		3857C25F1E6C76DE00731BE7 /* XCDocumentableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857C25E1E6C76DE00731BE7 /* XCDocumentableTests.swift */; };
+		388739C21EE50AEA003B6106 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388739C11EE50AEA003B6106 /* Preference.swift */; };
+		388739C41EE50BA7003B6106 /* PreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388739C31EE50BA7003B6106 /* PreferenceTests.swift */; };
 		389D2D3F1E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
 		389D2D401E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
 		38A420E71E76F0C10030BB19 /* CommandSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */; };
@@ -61,6 +63,69 @@
 			proxyType = 1;
 			remoteGlobalIDString = 384E51C71DC6B38500FAC6C1;
 			remoteInfo = SourceExtension;
+		};
+		389CA0D11F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_47;
+			remoteInfo = Yaml;
+		};
+		389CA0D31F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_48;
+			remoteInfo = CliRunnable;
+		};
+		389CA0D51F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_49;
+			remoteInfo = ProcessRunner;
+		};
+		389CA0D71F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_50;
+			remoteInfo = DockerProcess;
+		};
+		389CA0D91F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_51;
+			remoteInfo = S3Kit;
+		};
+		389CA0DB1F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_52;
+			remoteInfo = XcodeHelperKit;
+		};
+		389CA0DD1F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_53;
+			remoteInfo = XcodeHelperCliKit;
+		};
+		389CA0DF1F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_54;
+			remoteInfo = xchelper;
+		};
+		389CA0E11F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = OBJ_55;
+			remoteInfo = XcodeHelperCliKitTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -119,6 +184,9 @@
 		3857C25C1E6C68E100731BE7 /* XcodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeTests.swift; sourceTree = "<group>"; };
 		3857C25E1E6C76DE00731BE7 /* XCDocumentableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCDocumentableTests.swift; sourceTree = "<group>"; };
 		387BF3881DC6F07200318807 /* XcodeHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeHelper.entitlements; sourceTree = "<group>"; };
+		388739C11EE50AEA003B6106 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
+		388739C31EE50BA7003B6106 /* PreferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceTests.swift; sourceTree = "<group>"; };
+		389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XcodeHelperCli.xcodeproj; path = ../XcodeHelperCli/XcodeHelperCli.xcodeproj; sourceTree = "<group>"; };
 		389D2D3E1E33E0480034E802 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingsViewController.swift; sourceTree = "<group>"; };
 		38DC32701EDD02660095F5DA /* ProcessRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProcessRunner.framework; path = "../../../Library/Developer/Xcode/DerivedData/XcodeHelper-bnycykzuhbgssghgkzpuxjdzlecf/Build/Products/Debug/ProcessRunner.framework"; sourceTree = "<group>"; };
@@ -169,6 +237,7 @@
 		384E519B1DC6B36700FAC6C1 = {
 			isa = PBXGroup;
 			children = (
+				389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */,
 				38DFD6C21E2AB29500C3D931 /* DockerProcess.framework */,
 				38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */,
 				38DFD6BF1E2AB29000C3D931 /* S3Kit.framework */,
@@ -198,6 +267,7 @@
 				384E51A71DC6B36700FAC6C1 /* AppDelegate.swift */,
 				389D2D3E1E33E0480034E802 /* Command.swift */,
 				38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */,
+				388739C11EE50AEA003B6106 /* Preference.swift */,
 				380B81621E269262003E0951 /* Defaultable.swift */,
 				38E8F7981E4813AC00097EEC /* Extensions */,
 				38E8F7491E468F0C00097EEC /* Targets */,
@@ -221,6 +291,7 @@
 				38E66AFF1E66475100B6C75C /* XcodeViewModelTests.swift */,
 				3857C25C1E6C68E100731BE7 /* XcodeTests.swift */,
 				3857C25E1E6C76DE00731BE7 /* XCDocumentableTests.swift */,
+				388739C31EE50BA7003B6106 /* PreferenceTests.swift */,
 				384E51BB1DC6B36700FAC6C1 /* Info.plist */,
 			);
 			path = XcodeHelperTests;
@@ -275,6 +346,22 @@
 				38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		389CA0C61F0A1ADD007E2350 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				389CA0D21F0A1ADD007E2350 /* Yaml.framework */,
+				389CA0D41F0A1ADD007E2350 /* CliRunnable.framework */,
+				389CA0D61F0A1ADD007E2350 /* ProcessRunner.framework */,
+				389CA0D81F0A1ADD007E2350 /* DockerProcess.framework */,
+				389CA0DA1F0A1ADD007E2350 /* S3Kit.framework */,
+				389CA0DC1F0A1ADD007E2350 /* XcodeHelperKit.framework */,
+				389CA0DE1F0A1ADD007E2350 /* XcodeHelperCliKit.framework */,
+				389CA0E01F0A1ADD007E2350 /* xchelper */,
+				389CA0E21F0A1ADD007E2350 /* XcodeHelperCliKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		38E8F7491E468F0C00097EEC /* Targets */ = {
@@ -361,12 +448,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Joel Saltzman";
 				TargetAttributes = {
 					384E51A31DC6B36700FAC6C1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A43A74F4MB;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -380,12 +468,14 @@
 					384E51B41DC6B36700FAC6C1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A43A74F4MB;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 384E51A31DC6B36700FAC6C1;
 					};
 					384E51C71DC6B38500FAC6C1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A43A74F4MB;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -406,6 +496,12 @@
 			mainGroup = 384E519B1DC6B36700FAC6C1;
 			productRefGroup = 384E51A51DC6B36700FAC6C1 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 389CA0C61F0A1ADD007E2350 /* Products */;
+					ProjectRef = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				384E51A31DC6B36700FAC6C1 /* XcodeHelper */,
@@ -414,6 +510,72 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		389CA0D21F0A1ADD007E2350 /* Yaml.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Yaml.framework;
+			remoteRef = 389CA0D11F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		389CA0D41F0A1ADD007E2350 /* CliRunnable.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CliRunnable.framework;
+			remoteRef = 389CA0D31F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		389CA0D61F0A1ADD007E2350 /* ProcessRunner.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ProcessRunner.framework;
+			remoteRef = 389CA0D51F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		389CA0D81F0A1ADD007E2350 /* DockerProcess.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DockerProcess.framework;
+			remoteRef = 389CA0D71F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		389CA0DA1F0A1ADD007E2350 /* S3Kit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = S3Kit.framework;
+			remoteRef = 389CA0D91F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		389CA0DC1F0A1ADD007E2350 /* XcodeHelperKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XcodeHelperKit.framework;
+			remoteRef = 389CA0DB1F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		389CA0DE1F0A1ADD007E2350 /* XcodeHelperCliKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XcodeHelperCliKit.framework;
+			remoteRef = 389CA0DD1F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		389CA0E01F0A1ADD007E2350 /* xchelper */ = {
+			isa = PBXReferenceProxy;
+			fileType = text;
+			path = xchelper;
+			remoteRef = 389CA0DF1F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		389CA0E21F0A1ADD007E2350 /* XcodeHelperCliKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = file;
+			path = XcodeHelperCliKitTests.xctest;
+			remoteRef = 389CA0E11F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		384E51A21DC6B36700FAC6C1 /* Resources */ = {
@@ -462,6 +624,7 @@
 				389D2D3F1E33E0480034E802 /* Command.swift in Sources */,
 				38E8F7971E48093B00097EEC /* XCTarget.swift in Sources */,
 				38A420E71E76F0C10030BB19 /* CommandSettingsViewController.swift in Sources */,
+				388739C21EE50AEA003B6106 /* Preference.swift in Sources */,
 				38EEE9201E352D7900779CB9 /* Xcode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +636,7 @@
 				38E8F7951E471AF400097EEC /* TargetListControllerTests.swift in Sources */,
 				3836A7661E3B302B0098CE9A /* XCWorkspaceTests.swift in Sources */,
 				384E51BA1DC6B36700FAC6C1 /* XcodeHelperTestCase.swift in Sources */,
+				388739C41EE50BA7003B6106 /* PreferenceTests.swift in Sources */,
 				3857C25D1E6C68E100731BE7 /* XcodeTests.swift in Sources */,
 				38E7A2AA1E3FA463007EA9A6 /* XCProjectTests.swift in Sources */,
 				3857C25F1E6C76DE00731BE7 /* XCDocumentableTests.swift in Sources */,
@@ -527,7 +691,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -535,7 +701,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -577,7 +747,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -585,7 +757,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -626,7 +802,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -646,7 +823,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -662,7 +840,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XcodeHelper.app/Contents/MacOS/XcodeHelper";
 			};
 			name = Debug;
@@ -679,7 +858,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XcodeHelper.app/Contents/MacOS/XcodeHelper";
 			};
 			name = Release;
@@ -697,7 +877,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper.SourceExtension;
 				PRODUCT_NAME = "Xcode Helper";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -714,7 +895,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper.SourceExtension;
 				PRODUCT_NAME = "Xcode Helper";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

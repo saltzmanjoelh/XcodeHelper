@@ -62,13 +62,13 @@ extension TargetListController: NSTableViewDataSource, NSTableViewDelegate {
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let item = xcodeViewModel.flatList[safe: row] else { return nil }
         if item is XCProject {
-            guard let view = tableView.make(withIdentifier: "HeaderCell", owner: self) as? NSTableCellView else { return nil }
+            guard let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"), owner: self) as? NSTableCellView else { return nil }
             
             view.textField?.stringValue = item.description
             return view
             
         }else{
-            guard let view = tableView.make(withIdentifier: DataCell.identifier, owner: self) as? DataCell else { return nil }
+            guard let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: DataCell.identifier), owner: self) as? DataCell else { return nil }
             
             view.textField?.stringValue = item.description
             view.imageView?.image = NSImage.init(contentsOfFile: item.imagePath)

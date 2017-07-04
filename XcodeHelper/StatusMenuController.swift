@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import XcodeHelperKit
 
 //Populates the status menu and handles the commands
 
@@ -15,6 +16,7 @@ class StatusMenuController: NSObject {
     
     public let statusItem: NSStatusItem
     var windowController: NSWindowController?
+    let xcodeHelper = XcodeHelper()
     
     let xcode: Xcode
     var document: XCDocumentable?
@@ -29,7 +31,7 @@ class StatusMenuController: NSObject {
         self.statusItem = statusItem
         self.xcode = xcode
         document = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)
-        if let windowController = NSApplication.shared().windows.first?.delegate as? NSWindowController {
+        if let windowController = NSApplication.shared.windows.first?.delegate as? NSWindowController {
             self.windowController = windowController
         }
     }
@@ -115,7 +117,7 @@ extension StatusMenuController: NSMenuDelegate {
         
         //Auto Target
         menu.addItem(withTitle: "Automatic Target", action: #selector(StatusMenuController.selectTarget), keyEquivalent: "")
-        menu.items.last!.state = NSOnState
+        menu.items.last!.state = NSControl.StateValue.onState
         menu.items.last!.target = self
         
         //Manual Targets
@@ -167,12 +169,12 @@ extension StatusMenuController: NSMenuDelegate {
     func updateSelectedTarget() {
         guard let menu = statusItem.menu else { return }
         guard let autoItem = menu.items[safe: 0], let manualItem = menu.items[safe: 1] else { return }
-        autoItem.state = target == nil ? NSOnState : NSOffState
-        manualItem.state = target != nil ? NSOnState : NSOffState
+        autoItem.state = target == nil ? NSControl.StateValue.onState : NSControl.StateValue.offState
+        manualItem.state = target != nil ? NSControl.StateValue.onState : NSControl.StateValue.offState
         if let submenu = manualItem.submenu {
             for item in submenu.items {
                 if let itemTarget = item.representedObject as? XCTarget {
-                    item.state = target == itemTarget ? NSOnState : NSOffState
+                    item.state = target == itemTarget ? NSControl.StateValue.onState : NSControl.StateValue.offState
                 }
             }
         }
@@ -206,7 +208,7 @@ extension StatusMenuController: NSMenuDelegate {
 extension StatusMenuController {
     @IBAction
     func preferences(sender: Any){
-        NSApplication.shared().activate(ignoringOtherApps: true)
+        NSApplication.shared.activate(ignoringOtherApps: true)
         DispatchQueue.main.async {
             print(String(describing: self.windowController?.window))
             self.windowController?.window?.makeKeyAndOrderFront(nil)
@@ -218,7 +220,7 @@ extension StatusMenuController {
         NSApp.terminate(nil)
     }
     
-    func selectTarget(sender: Any) {
+    @objc func selectTarget(sender: Any) {
         if let menuItem = sender as? NSMenuItem, let target = menuItem.representedObject as? XCTarget {
             self.target = target
         }
@@ -227,28 +229,47 @@ extension StatusMenuController {
         }
     }
     
-    func updateMacOsPackages(){
-        print("updateMacOsPackages")
+    func currentPath() -> String? {
+        guard let document = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript) else { return nil }
+        return document.currentTargetPath()
     }
-    func updateDockerPackages(){
+    
+    @objc func updateMacOsPackages(_ sender: NSMenuItem){
+        guard let document = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript),
+                let xcodeprojPath = document.currentTargetPath() else { return }
+        let url = URL.init(fileURLWithPath: xcodeprojPath)//return source directory instead of project path
+        DispatchQueue.global().async {
+            do {
+                let sourcePath = url.deletingLastPathComponent().path
+                let result = try self.xcodeHelper.updateMacOsPackages(at: sourcePath)
+                if result.exitCode != 0 { return }
+                if UserDefaults.standard.bool(forKey: Preference.UpdatePackages.macOS.symlinkDependencies.rawValue) {
+                    _ = try self.xcodeHelper.symlinkDependencies(at: sourcePath)
+                }
+            }catch let e{
+                print("Error: \(e)")
+            }
+        }
+    }
+    @objc func updateDockerPackages(){
         print("updateDockerPackages")
     }
-    func buildInDocker(){
+    @objc func buildInDocker(){
         print("buildInDocker")
     }
-    func symlinkDependencies(){
+    @objc func symlinkDependencies(){
         
     }
-    func createArchive(){
+    @objc func createArchive(){
         
     }
-    func createXCArchive(){
+    @objc func createXCArchive(){
         
     }
-    func uploadArchive(){
+    @objc func uploadArchive(){
         
     }
-    func gitTag(){
+    @objc func gitTag(){
         
     }
     func createXcarchive(){

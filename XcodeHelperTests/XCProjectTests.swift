@@ -78,7 +78,7 @@ class XCProjectTests: XcodeHelperTestCase {
         let xcUserSchemesUrl = projectTwo.getUserXcSchemesURL(projectTwo.currentUser!, at: projectTwo.path)
         let xcSchemeManagement = projectTwo.getXcSchemeManagement(from: xcUserSchemesUrl!.appendingPathComponent(projectTwo.managementPlistName))
         let schemes = xcSchemeManagement?["SchemeUserState"] as? NSDictionary
-        let expected: Set<XCTarget.TargetType>= Set([.app, .binary, .framework, .appExtension, .bundle, .xpc, .appleScriptAction, .kernelExtension, .staticLib, .metalLib, .prefPane, .plugin, .screenSaver, .spotlightImporter, .quartzPlugin])
+        let expected: Set<XCTarget.TargetType> = Set([.app, .binary, .framework, .appExtension, .bundle, .xpc, .appleScriptAction, .kernelExtension, .staticLib, .metalLib, .prefPane, .plugin, .screenSaver, .spotlightImporter, .quartzPlugin])
         
         
         let result = schemes!.allKeys.flatMap{ projectTwo.getTargetType(for: $0 as! String, from: [xcUserSchemesUrl!, xcSharedSchemesUrl!]) }
