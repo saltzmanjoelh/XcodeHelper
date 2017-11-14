@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.19"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -726,8 +726,8 @@
             <objects>
                 <windowController storyboardIdentifier="PreferencesWindow" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
-                        <rect key="contentRect" x="408" y="322" width="672" height="578"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="408" y="322" width="672" height="736"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="672" height="578"/>
                         <connections>
@@ -740,35 +740,35 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="525" y="143"/>
+            <point key="canvasLocation" x="525" y="222"/>
         </scene>
         <!--Update Packages - macOS-->
         <scene sceneID="j3D-bq-aHb">
             <objects>
-                <viewController title="Update Packages - macOS" identifier="Update Packages - macOS" storyboardIdentifier="Update Packages - macOS" id="q9W-mG-0oR" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Update Packages - macOS" identifier="update-macos-packages" storyboardIdentifier="update-macos-packages" id="q9W-mG-0oR" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="U1T-S5-Cab">
                         <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="yZ6-h4-YEy">
-                                <rect key="frame" x="18" y="-2" width="233" height="18"/>
-                                <string key="toolTip">Create symlinks to your packages after updating them and update your Xcode project to use those symlinks. Useful if your packages aren't getting new files often. </string>
-                                <buttonCell key="cell" type="check" title="Symlink Dependencies" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="jp1-KK-2gH">
+                            <button identifier="update-macos-packages.--generate" toolTip="Generate a new Xcode project after updating packages. Useful if you have new files and/or aren't symlinking the dependencies" translatesAutoresizingMaskIntoConstraints="NO" id="yPM-Zp-snf">
+                                <rect key="frame" x="18" y="18" width="233" height="18"/>
+                                <buttonCell key="cell" type="check" title="Generate New Xcode Project" bezelStyle="regularSquare" imagePosition="right" inset="2" id="4QX-XJ-mRm">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="ljF-OB-0eF" name="value" keyPath="values.UpdatePackages.macOS.symlinkDependencies" id="Z9G-3R-HcD"/>
+                                    <action selector="saveButtonValue:" target="3xR-fs-oRz" id="gHS-Eg-BKd"/>
                                 </connections>
                             </button>
-                            <button toolTip="Generate a new Xcode project after updating packages. Useful if you have new files and/or aren't symlinking the dependencies" translatesAutoresizingMaskIntoConstraints="NO" id="yPM-Zp-snf">
-                                <rect key="frame" x="18" y="18" width="233" height="18"/>
-                                <buttonCell key="cell" type="check" title="Generate New Xcode Project" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="4QX-XJ-mRm">
+                            <button identifier="updateMacosPackages.--symlink" translatesAutoresizingMaskIntoConstraints="NO" id="yZ6-h4-YEy">
+                                <rect key="frame" x="18" y="-2" width="233" height="18"/>
+                                <string key="toolTip">Create symlinks to your packages after updating them and update your Xcode project to use those symlinks. Useful if your packages aren't getting new files often. </string>
+                                <buttonCell key="cell" type="check" title="Symlink Dependencies" bezelStyle="regularSquare" imagePosition="right" inset="2" id="jp1-KK-2gH">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="ljF-OB-0eF" name="value" keyPath="values.UpdatePackages.macOS.generateXcodeproj" id="1RI-9E-1vS"/>
+                                    <action selector="saveButtonValue:" target="soC-SZ-SfT" id="Svg-zJ-SD2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -784,9 +784,18 @@
                     </view>
                 </viewController>
                 <customObject id="0ut-1g-79Y" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController representsSharedInstance="YES" id="ljF-OB-0eF"/>
+                <customObject id="3xR-fs-oRz" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="yPM-Zp-snf" id="RJl-JD-OVX"/>
+                    </connections>
+                </customObject>
+                <customObject id="soC-SZ-SfT" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="yZ6-h4-YEy" id="9Xy-9W-jX8"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="2162" y="393"/>
+            <point key="canvasLocation" x="2162" y="337"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="hVN-Y0-woo">
@@ -800,8 +809,12 @@
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="1Ns-2E-UhX">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="eVh-E6-DfI" id="lqW-Wu-GhN"/>
+                        </connections>
                     </splitView>
                     <connections>
+                        <outlet property="splitView" destination="1Ns-2E-UhX" id="U5S-tl-SvU"/>
                         <segue destination="pIM-5I-gGd" kind="relationship" relationship="splitItems" id="ypX-PG-04I"/>
                         <segue destination="0Cb-nk-rth" kind="relationship" relationship="splitItems" id="Bd0-9Q-6wi"/>
                     </connections>
@@ -1042,31 +1055,44 @@
         <!--Update Packages - Docker-->
         <scene sceneID="EKm-uH-I1n">
             <objects>
-                <viewController title="Update Packages - Docker" identifier="Update Packages - Docker" storyboardIdentifier="Update Packages - Docker" id="aHl-9L-Zwt" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Update Packages - Docker" identifier="update-docker-packages" storyboardIdentifier="update-docker-packages" id="aHl-9L-Zwt" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Q7L-Wd-Kfq">
-                        <rect key="frame" x="0.0" y="0.0" width="259" height="22"/>
+                        <rect key="frame" x="0.0" y="0.0" width="259" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AaI-9x-Kir">
-                                <rect key="frame" x="134" y="0.0" width="115" height="22"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Docker Image Name" drawsBackground="YES" id="sil-Yg-9zj">
+                            <textField identifier="update-docker-packages.--image-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AaI-9x-Kir">
+                                <rect key="frame" x="134" y="34" width="115" height="22"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="swift" drawsBackground="YES" id="sil-Yg-9zj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="iDo-wx-Zeo" name="value" keyPath="values.UpdatePackages.Docker.imageName" id="un8-yc-xIS">
-                                        <dictionary key="options">
-                                            <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
-                                            <bool key="NSConditionallySetsEditable" value="NO"/>
-                                            <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
-                                        </dictionary>
-                                    </binding>
+                                    <action selector="saveTextFieldValue:" target="Fim-dR-lqZ" id="E49-s7-Hp0"/>
                                 </connections>
                             </textField>
                             <textField toolTip="Name of image to use with Docker when updating packages" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zXY-a8-Nh9">
-                                <rect key="frame" x="18" y="3" width="80" height="17"/>
+                                <rect key="frame" x="18" y="37" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Name" id="FNB-U5-yxo">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField identifier="update-docker-packages.--volume-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BDe-4R-c0h">
+                                <rect key="frame" x="134" y="7" width="115" height="22"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Docker Volume Name" drawsBackground="YES" id="hr3-qF-V9L">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="saveTextFieldValue:" target="c02-cZ-vHd" id="T2T-DG-nM6"/>
+                                </connections>
+                            </textField>
+                            <textField toolTip="Name of image to use with Docker when updating packages" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g6H-SQ-bEl">
+                                <rect key="frame" x="18" y="10" width="88" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume Name" id="qoS-0S-MdV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1077,118 +1103,218 @@
                             <constraint firstItem="zXY-a8-Nh9" firstAttribute="baseline" secondItem="AaI-9x-Kir" secondAttribute="baseline" id="4au-dU-36y"/>
                             <constraint firstItem="AaI-9x-Kir" firstAttribute="top" secondItem="Q7L-Wd-Kfq" secondAttribute="top" id="9FE-uY-iFR"/>
                             <constraint firstItem="AaI-9x-Kir" firstAttribute="leading" secondItem="zXY-a8-Nh9" secondAttribute="trailing" constant="38" id="OHB-lV-KpT"/>
+                            <constraint firstItem="g6H-SQ-bEl" firstAttribute="top" secondItem="zXY-a8-Nh9" secondAttribute="bottom" constant="10" id="Prv-bw-lSj"/>
+                            <constraint firstItem="BDe-4R-c0h" firstAttribute="leading" secondItem="AaI-9x-Kir" secondAttribute="leading" id="fz2-wZ-7yT"/>
+                            <constraint firstItem="BDe-4R-c0h" firstAttribute="baseline" secondItem="g6H-SQ-bEl" secondAttribute="baseline" id="gne-sU-VTD"/>
                             <constraint firstAttribute="trailing" secondItem="AaI-9x-Kir" secondAttribute="trailing" constant="10" id="ia5-SW-Kaa"/>
+                            <constraint firstAttribute="trailing" secondItem="BDe-4R-c0h" secondAttribute="trailing" constant="10" id="pCn-Yg-MQ1"/>
+                            <constraint firstItem="g6H-SQ-bEl" firstAttribute="leading" secondItem="zXY-a8-Nh9" secondAttribute="leading" id="s54-Po-ZxK"/>
                             <constraint firstItem="zXY-a8-Nh9" firstAttribute="leading" secondItem="Q7L-Wd-Kfq" secondAttribute="leading" constant="20" id="yHO-zV-iqc"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="Oh5-9n-h0p" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="iDo-wx-Zeo"/>
+                <customObject id="Fim-dR-lqZ" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="AaI-9x-Kir" id="EhR-Wa-jc5"/>
+                    </connections>
+                </customObject>
+                <customObject id="c02-cZ-vHd" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="BDe-4R-c0h" id="vrf-cq-Ps0"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="2162" y="466"/>
+            <point key="canvasLocation" x="2161.5" y="427"/>
         </scene>
         <!--Build in Docker-->
         <scene sceneID="4wg-Q2-SlM">
             <objects>
-                <viewController title="Build in Docker" identifier="Build in Docker" storyboardIdentifier="Build in Docker" id="g1i-5y-Zrz" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Build in Docker" identifier="docker-build" storyboardIdentifier="docker-build" id="g1i-5y-Zrz" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="hhq-tn-Tc9">
-                        <rect key="frame" x="0.0" y="0.0" width="259" height="71"/>
+                        <rect key="frame" x="0.0" y="0.0" width="259" height="150"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button toolTip="Only build in Docker if the macOS build was successful" translatesAutoresizingMaskIntoConstraints="NO" id="97g-hK-v6n">
-                                <rect key="frame" x="18" y="55" width="233" height="18"/>
-                                <buttonCell key="cell" type="check" title="Build on Success" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="zYa-rA-gBZ">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <binding destination="nl2-CX-nGd" name="value" keyPath="values.BuildInDocker.buildOnSuccess" id="Eo5-Mi-OL5"/>
-                                </connections>
-                            </button>
                             <textField toolTip="Build configuration to use with `swift build --configuration`. Project defaults to the project's current setting." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wpB-oS-ETT">
-                                <rect key="frame" x="18" y="32" width="87" height="17"/>
+                                <rect key="frame" x="18" y="86" width="87" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Configuration" id="f1Q-FY-aR3">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="75O-Uz-kQD">
-                                <rect key="frame" x="132" y="26" width="120" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Project" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="0qt-bB-m0V" id="Gdv-Vd-q1Z">
+                            <popUpButton identifier="docker-build.--build-configuration" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="75O-Uz-kQD">
+                                <rect key="frame" x="140" y="80" width="112" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="debug" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Slh-w9-hi2" id="Gdv-Vd-q1Z">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="6FY-JQ-eY3">
                                         <items>
-                                            <menuItem title="Project" state="on" id="0qt-bB-m0V"/>
-                                            <menuItem title="debug" id="Slh-w9-hi2"/>
+                                            <menuItem title="debug" state="on" id="Slh-w9-hi2"/>
                                             <menuItem title="release" id="b3p-gR-q52"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
                                 <connections>
-                                    <binding destination="nl2-CX-nGd" name="selectedIndex" keyPath="values.BuildInDocker.configuration" id="VaW-NK-87o"/>
+                                    <action selector="savePopUpValue:" target="2Z5-DU-XUz" id="vfo-36-bMn"/>
                                 </connections>
                             </popUpButton>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JLs-E5-RVF">
-                                <rect key="frame" x="134" y="4" width="115" height="22"/>
+                            <textField identifier="docker-build.--image-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JLs-E5-RVF">
+                                <rect key="frame" x="142" y="58" width="107" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Docker Image Name" drawsBackground="YES" id="fdZ-Mj-BTD">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="nl2-CX-nGd" name="value" keyPath="values.BuildInDocker.imageName" id="qIA-Uq-E3Y"/>
+                                    <action selector="saveTextFieldValue:" target="HMD-0x-Cl8" id="hPf-g6-tZK"/>
                                 </connections>
                             </textField>
                             <textField toolTip="Name of image to use with Docker when building" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kpA-ET-yB4">
-                                <rect key="frame" x="18" y="7" width="80" height="17"/>
+                                <rect key="frame" x="18" y="61" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Name" id="161-z1-pZD">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="kpA-ET-yB4" firstAttribute="baseline" secondItem="JLs-E5-RVF" secondAttribute="baseline" id="2S5-AN-dkO"/>
-                            <constraint firstItem="wpB-oS-ETT" firstAttribute="leading" secondItem="hhq-tn-Tc9" secondAttribute="leading" constant="20" id="Bh6-Ik-IAc"/>
-                            <constraint firstAttribute="trailing" secondItem="JLs-E5-RVF" secondAttribute="trailing" constant="10" id="D84-CX-yf9"/>
-                            <constraint firstAttribute="trailing" secondItem="97g-hK-v6n" secondAttribute="trailing" constant="10" id="EBv-ws-6XM"/>
-                            <constraint firstItem="kpA-ET-yB4" firstAttribute="leading" secondItem="hhq-tn-Tc9" secondAttribute="leading" constant="20" id="MWW-3k-n3y"/>
-                            <constraint firstItem="75O-Uz-kQD" firstAttribute="top" secondItem="97g-hK-v6n" secondAttribute="bottom" constant="7" id="Pae-je-XYi"/>
-                            <constraint firstItem="JLs-E5-RVF" firstAttribute="leading" secondItem="75O-Uz-kQD" secondAttribute="leading" id="QVr-8Q-DRN"/>
-                            <constraint firstItem="JLs-E5-RVF" firstAttribute="leading" secondItem="kpA-ET-yB4" secondAttribute="trailing" constant="38" id="apO-bC-MTI"/>
-                            <constraint firstAttribute="trailing" secondItem="75O-Uz-kQD" secondAttribute="trailing" constant="10" id="h4p-GM-EHO"/>
-                            <constraint firstItem="JLs-E5-RVF" firstAttribute="top" secondItem="75O-Uz-kQD" secondAttribute="bottom" constant="3" id="ifP-9O-Fmh"/>
-                            <constraint firstItem="97g-hK-v6n" firstAttribute="top" secondItem="hhq-tn-Tc9" secondAttribute="top" id="m5q-zv-jpk"/>
-                            <constraint firstItem="97g-hK-v6n" firstAttribute="leading" secondItem="hhq-tn-Tc9" secondAttribute="leading" constant="20" id="mVm-mo-kWt"/>
-                            <constraint firstItem="wpB-oS-ETT" firstAttribute="baseline" secondItem="75O-Uz-kQD" secondAttribute="baseline" id="z3Y-GK-Zbm"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <customObject id="eda-vQ-OGA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="nl2-CX-nGd"/>
-            </objects>
-            <point key="canvasLocation" x="2162" y="556"/>
-        </scene>
-        <!--Create XCArchive-->
-        <scene sceneID="C2o-B1-nbD">
-            <objects>
-                <viewController title="Create XCArchive" identifier="Create XCArchive" storyboardIdentifier="Create XCArchive" id="979-of-5pV" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Gfe-VV-fTx">
-                        <rect key="frame" x="0.0" y="0.0" width="259" height="14"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button toolTip="Flat list of files in archive" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-Nw-nfh">
-                                <rect key="frame" x="18" y="-2" width="233" height="18"/>
-                                <buttonCell key="cell" type="check" title="Flat List" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="lXE-jf-NBN">
+                            <textField identifier="docker-build.--container-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="THQ-xb-g23">
+                                <rect key="frame" x="142" y="33" width="107" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Docker Container Name" drawsBackground="YES" id="2nz-xD-WHs">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="saveTextFieldValue:" target="rNi-wn-pQR" id="L86-fn-UZx"/>
+                                </connections>
+                            </textField>
+                            <textField toolTip="Name of container to use with Docker when building" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fYp-KI-60o">
+                                <rect key="frame" x="18" y="36" width="102" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Container Name" id="fau-4g-Taj">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField identifier="docker-build.--volume" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CYe-9r-v2b">
+                                <rect key="frame" x="142" y="8" width="107" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Docker Volume Name" drawsBackground="YES" id="DX8-oO-zWH">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="saveTextFieldValue:" target="Syj-1D-uPq" id="zAv-kA-PUH"/>
+                                </connections>
+                            </textField>
+                            <textField toolTip="Name of volume to store build artifacts across builds. Storing the .build directory in a volume helps with build times." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y3Z-0h-oCG">
+                                <rect key="frame" x="18" y="11" width="88" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume Name" id="YDa-xP-UQJ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button identifier="docker-build.--after-success" toolTip="Only build in Docker if the macOS build was successful" translatesAutoresizingMaskIntoConstraints="NO" id="BdE-AL-SOa">
+                                <rect key="frame" x="18" y="134" width="233" height="18"/>
+                                <buttonCell key="cell" type="check" title="Build on Success" bezelStyle="regularSquare" imagePosition="right" inset="2" id="ZxK-t7-ZIf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="Tar-it-5AE" name="value" keyPath="values.CreateXCArchive.flatList" id="7Xs-G4-gkG"/>
+                                    <action selector="saveButtonValue:" target="en9-aO-NYR" id="cfZ-IZ-awc"/>
                                 </connections>
+                            </button>
+                            <button identifier="docker-build.--rm" toolTip="Delete the Docker container after building" translatesAutoresizingMaskIntoConstraints="NO" id="y9i-N9-In8">
+                                <rect key="frame" x="18" y="110" width="233" height="18"/>
+                                <buttonCell key="cell" type="check" title="Auto Delete" bezelStyle="regularSquare" imagePosition="right" inset="2" id="guL-hj-n0t">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="saveButtonValue:" target="wKX-1J-cNa" id="gDu-1v-d9I"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="wpB-oS-ETT" firstAttribute="leading" secondItem="BdE-AL-SOa" secondAttribute="leading" id="2Ls-Pp-aYx"/>
+                            <constraint firstItem="75O-Uz-kQD" firstAttribute="leading" secondItem="wpB-oS-ETT" secondAttribute="trailing" constant="39" id="4Jn-rR-HAo"/>
+                            <constraint firstItem="THQ-xb-g23" firstAttribute="baseline" secondItem="fYp-KI-60o" secondAttribute="baseline" id="AcF-PE-69k"/>
+                            <constraint firstItem="Y3Z-0h-oCG" firstAttribute="top" secondItem="fYp-KI-60o" secondAttribute="bottom" constant="8" id="Jtd-zC-if7"/>
+                            <constraint firstAttribute="trailing" secondItem="y9i-N9-In8" secondAttribute="trailing" constant="10" id="K0u-uf-D1i"/>
+                            <constraint firstItem="BdE-AL-SOa" firstAttribute="leading" secondItem="hhq-tn-Tc9" secondAttribute="leading" constant="20" id="KUJ-mn-c2v"/>
+                            <constraint firstAttribute="trailing" secondItem="75O-Uz-kQD" secondAttribute="trailing" constant="10" id="Kzb-6k-kCJ"/>
+                            <constraint firstItem="BdE-AL-SOa" firstAttribute="top" secondItem="hhq-tn-Tc9" secondAttribute="top" id="PbS-Hc-D8K"/>
+                            <constraint firstItem="fYp-KI-60o" firstAttribute="leading" secondItem="BdE-AL-SOa" secondAttribute="leading" id="Ptq-iC-rmp"/>
+                            <constraint firstItem="JLs-E5-RVF" firstAttribute="leading" secondItem="75O-Uz-kQD" secondAttribute="leading" id="Sfs-tk-Q0X"/>
+                            <constraint firstItem="75O-Uz-kQD" firstAttribute="baseline" secondItem="wpB-oS-ETT" secondAttribute="baseline" id="V4i-bP-kvu"/>
+                            <constraint firstItem="CYe-9r-v2b" firstAttribute="baseline" secondItem="Y3Z-0h-oCG" secondAttribute="baseline" id="YuY-oe-tIK"/>
+                            <constraint firstItem="fYp-KI-60o" firstAttribute="top" secondItem="kpA-ET-yB4" secondAttribute="bottom" constant="8" id="a8j-Fb-ZAc"/>
+                            <constraint firstAttribute="trailing" secondItem="THQ-xb-g23" secondAttribute="trailing" constant="10" id="cKP-fI-IYE"/>
+                            <constraint firstItem="y9i-N9-In8" firstAttribute="top" secondItem="BdE-AL-SOa" secondAttribute="bottom" constant="10" id="eZN-MK-UZh"/>
+                            <constraint firstItem="CYe-9r-v2b" firstAttribute="leading" secondItem="75O-Uz-kQD" secondAttribute="leading" id="gSd-Ny-g7u"/>
+                            <constraint firstItem="JLs-E5-RVF" firstAttribute="baseline" secondItem="kpA-ET-yB4" secondAttribute="baseline" id="iRG-mj-kHr"/>
+                            <constraint firstAttribute="trailing" secondItem="JLs-E5-RVF" secondAttribute="trailing" constant="10" id="imw-gs-ete"/>
+                            <constraint firstItem="y9i-N9-In8" firstAttribute="leading" secondItem="BdE-AL-SOa" secondAttribute="leading" id="kJl-5v-Emm"/>
+                            <constraint firstItem="kpA-ET-yB4" firstAttribute="leading" secondItem="BdE-AL-SOa" secondAttribute="leading" id="o3l-rR-rHb"/>
+                            <constraint firstItem="wpB-oS-ETT" firstAttribute="top" secondItem="y9i-N9-In8" secondAttribute="bottom" constant="9" id="oPk-5H-fEO"/>
+                            <constraint firstItem="kpA-ET-yB4" firstAttribute="top" secondItem="wpB-oS-ETT" secondAttribute="bottom" constant="8" id="oUC-Qj-EZ4"/>
+                            <constraint firstAttribute="trailing" secondItem="BdE-AL-SOa" secondAttribute="trailing" constant="10" id="tTm-kX-6Ze"/>
+                            <constraint firstItem="THQ-xb-g23" firstAttribute="leading" secondItem="75O-Uz-kQD" secondAttribute="leading" id="v8N-5E-BTQ"/>
+                            <constraint firstItem="Y3Z-0h-oCG" firstAttribute="leading" secondItem="BdE-AL-SOa" secondAttribute="leading" id="yIP-uC-Afv"/>
+                            <constraint firstAttribute="trailing" secondItem="CYe-9r-v2b" secondAttribute="trailing" constant="10" id="znp-wa-vT3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="eda-vQ-OGA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="en9-aO-NYR" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="BdE-AL-SOa" id="gWW-iy-8cj"/>
+                    </connections>
+                </customObject>
+                <customObject id="wKX-1J-cNa" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="y9i-N9-In8" id="aKS-2Q-r8x"/>
+                    </connections>
+                </customObject>
+                <customObject id="2Z5-DU-XUz" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="75O-Uz-kQD" id="iEN-fL-vUP"/>
+                    </connections>
+                </customObject>
+                <customObject id="HMD-0x-Cl8" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="JLs-E5-RVF" id="iPY-tA-0jp"/>
+                    </connections>
+                </customObject>
+                <customObject id="rNi-wn-pQR" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="THQ-xb-g23" id="hYQ-KR-plA"/>
+                    </connections>
+                </customObject>
+                <customObject id="Syj-1D-uPq" customClass="ConfigController" customModule="XcodeHelper" customModuleProvider="target">
+                    <connections>
+                        <outlet property="control" destination="CYe-9r-v2b" id="SpB-md-KDv"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="2161.5" y="594.5"/>
+        </scene>
+        <!--Create XCArchive-->
+        <scene sceneID="C2o-B1-nbD">
+            <objects>
+                <viewController title="Create XCArchive" identifier="create-xcarchive" storyboardIdentifier="create-xcarchive" id="979-of-5pV" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Gfe-VV-fTx">
+                        <rect key="frame" x="0.0" y="0.0" width="259" height="14"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button identifier="create-xcarchive.--flat-list" toolTip="Flat list of files in archive" translatesAutoresizingMaskIntoConstraints="NO" id="fxX-Nw-nfh">
+                                <rect key="frame" x="18" y="-2" width="233" height="18"/>
+                                <buttonCell key="cell" type="check" title="Flat List" bezelStyle="regularSquare" imagePosition="right" inset="2" id="lXE-jf-NBN">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
                             </button>
                         </subviews>
                         <constraints>
@@ -1199,67 +1325,43 @@
                     </view>
                 </viewController>
                 <customObject id="8Rs-mU-SYE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="Tar-it-5AE"/>
             </objects>
-            <point key="canvasLocation" x="2162" y="692"/>
+            <point key="canvasLocation" x="2162" y="855"/>
         </scene>
         <!--Upload Archive-->
         <scene sceneID="rY0-PP-Pq8">
             <objects>
-                <viewController title="Upload Archive" identifier="Upload Archive" storyboardIdentifier="Upload Archive" id="sUW-rK-gME" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Upload Archive" identifier="upload-archive" storyboardIdentifier="upload-archive" id="sUW-rK-gME" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Ckf-Qu-2xn">
-                        <rect key="frame" x="0.0" y="0.0" width="260" height="98"/>
+                        <rect key="frame" x="0.0" y="0.0" width="260" height="82"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nDy-jt-OrJ">
-                                <rect key="frame" x="135" y="76" width="115" height="22"/>
+                            <textField identifier="upload-archive.--bucket" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nDy-jt-OrJ">
+                                <rect key="frame" x="135" y="60" width="115" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="uwy-9b-zzX">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="1fp-n2-TMx" name="value" keyPath="values.UploadArchive.bucket" id="aeV-vu-yFQ"/>
-                                </connections>
                             </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Scc-mo-9sb">
-                                <rect key="frame" x="135" y="51" width="115" height="22"/>
+                            <textField identifier="upload-archive.--region" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Scc-mo-9sb">
+                                <rect key="frame" x="135" y="35" width="115" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="gHW-x3-Z6k">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="1fp-n2-TMx" name="value" keyPath="values.UploadArchive.region" id="vYc-m4-lBL"/>
-                                </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4OV-3g-tOD">
-                                <rect key="frame" x="135" y="26" width="115" height="22"/>
+                                <rect key="frame" x="135" y="10" width="115" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="5bC-aX-BqW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="1fp-n2-TMx" name="value" keyPath="values.UploadArchive.key" id="U1j-Xx-FS2"/>
-                                </connections>
                             </textField>
-                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dax-F1-u3D">
-                                <rect key="frame" x="135" y="1" width="115" height="22"/>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="ALs-2i-RdA">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <allowedInputSourceLocales>
-                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                    </allowedInputSourceLocales>
-                                </secureTextFieldCell>
-                                <connections>
-                                    <binding destination="1fp-n2-TMx" name="value" keyPath="values.UploadArchive.secret" id="VAz-Wy-VAj"/>
-                                </connections>
-                            </secureTextField>
                             <textField toolTip="S3 region" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z31-TT-WZd">
-                                <rect key="frame" x="18" y="54" width="46" height="17"/>
+                                <rect key="frame" x="18" y="38" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Region" id="BaY-R9-IRl">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1267,23 +1369,15 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="AWS Key for S3" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfy-Yj-nSr">
-                                <rect key="frame" x="18" y="29" width="27" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Key" id="qUp-gI-waU">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField toolTip="Secret for AWS key" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kzm-Cf-kY3">
-                                <rect key="frame" x="18" y="4" width="44" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Secret" id="pcV-G6-Qlb">
+                                <rect key="frame" x="18" y="13" width="65" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cred Path" id="qUp-gI-waU">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="S3 bucket name" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GLC-RI-gAM">
-                                <rect key="frame" x="18" y="79" width="46" height="17"/>
+                                <rect key="frame" x="18" y="63" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bucket" id="111-T2-25A">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1292,7 +1386,6 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Dax-F1-u3D" secondAttribute="trailing" constant="10" id="0yC-wG-55X"/>
                             <constraint firstAttribute="trailing" secondItem="4OV-3g-tOD" secondAttribute="trailing" constant="10" id="20k-Mo-URq"/>
                             <constraint firstItem="GLC-RI-gAM" firstAttribute="leading" secondItem="Ckf-Qu-2xn" secondAttribute="leading" constant="20" id="7jt-fb-atQ"/>
                             <constraint firstAttribute="trailing" secondItem="nDy-jt-OrJ" secondAttribute="trailing" constant="10" id="8Rf-gv-4qP"/>
@@ -1300,43 +1393,35 @@
                             <constraint firstItem="Scc-mo-9sb" firstAttribute="top" secondItem="nDy-jt-OrJ" secondAttribute="bottom" constant="3" id="Gpr-CY-TSE"/>
                             <constraint firstItem="Z31-TT-WZd" firstAttribute="baseline" secondItem="Scc-mo-9sb" secondAttribute="baseline" id="Hs5-zC-2st"/>
                             <constraint firstAttribute="trailing" secondItem="Scc-mo-9sb" secondAttribute="trailing" constant="10" id="Ouo-WW-I61"/>
-                            <constraint firstItem="Dax-F1-u3D" firstAttribute="leading" secondItem="nDy-jt-OrJ" secondAttribute="leading" id="Sf8-vu-lsd"/>
-                            <constraint firstItem="Kzm-Cf-kY3" firstAttribute="leading" secondItem="Ckf-Qu-2xn" secondAttribute="leading" constant="20" id="UKS-d0-wph"/>
                             <constraint firstItem="bfy-Yj-nSr" firstAttribute="leading" secondItem="Ckf-Qu-2xn" secondAttribute="leading" constant="20" id="Xz6-k1-cSe"/>
-                            <constraint firstItem="Kzm-Cf-kY3" firstAttribute="baseline" secondItem="Dax-F1-u3D" secondAttribute="baseline" id="d8l-Ql-vR3"/>
                             <constraint firstItem="Z31-TT-WZd" firstAttribute="leading" secondItem="Ckf-Qu-2xn" secondAttribute="leading" constant="20" id="dgO-rd-pzJ"/>
                             <constraint firstItem="bfy-Yj-nSr" firstAttribute="baseline" secondItem="4OV-3g-tOD" secondAttribute="baseline" id="fam-vv-S0M"/>
                             <constraint firstItem="GLC-RI-gAM" firstAttribute="baseline" secondItem="nDy-jt-OrJ" secondAttribute="baseline" id="gh4-o4-biV"/>
                             <constraint firstItem="Scc-mo-9sb" firstAttribute="leading" secondItem="nDy-jt-OrJ" secondAttribute="leading" id="mIT-1U-IcB"/>
                             <constraint firstItem="nDy-jt-OrJ" firstAttribute="top" secondItem="Ckf-Qu-2xn" secondAttribute="top" id="og8-FC-4Kk"/>
-                            <constraint firstItem="Dax-F1-u3D" firstAttribute="top" secondItem="4OV-3g-tOD" secondAttribute="bottom" constant="3" id="rMa-hZ-dFa"/>
                             <constraint firstItem="4OV-3g-tOD" firstAttribute="leading" secondItem="nDy-jt-OrJ" secondAttribute="leading" id="thA-rs-MwE"/>
                             <constraint firstItem="4OV-3g-tOD" firstAttribute="top" secondItem="Scc-mo-9sb" secondAttribute="bottom" constant="3" id="xjL-6g-TnA"/>
                         </constraints>
                     </view>
                 </viewController>
                 <customObject id="DMd-M5-TfG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="1fp-n2-TMx"/>
             </objects>
-            <point key="canvasLocation" x="2162" y="789"/>
+            <point key="canvasLocation" x="2162" y="944"/>
         </scene>
         <!--Create Archive-->
         <scene sceneID="FoI-oE-8vc">
             <objects>
-                <viewController title="Create Archive" identifier="Create Archive" storyboardIdentifier="Create Archive" id="XJR-nH-Li1" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Create Archive" identifier="create-archive" storyboardIdentifier="create-archive" id="XJR-nH-Li1" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="tYu-gM-I6Z">
                         <rect key="frame" x="0.0" y="0.0" width="259" height="14"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button toolTip="Flat list of files in archive" translatesAutoresizingMaskIntoConstraints="NO" id="VlQ-lH-pOC">
+                            <button identifier="create-archive.--flat-list" toolTip="Flat list of files in archive" translatesAutoresizingMaskIntoConstraints="NO" id="VlQ-lH-pOC">
                                 <rect key="frame" x="18" y="-2" width="233" height="18"/>
-                                <buttonCell key="cell" type="check" title="Flat List" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="JXT-NJ-HPA">
+                                <buttonCell key="cell" type="check" title="Flat List" bezelStyle="regularSquare" imagePosition="right" inset="2" id="JXT-NJ-HPA">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <binding destination="Hfu-kz-QEg" name="value" keyPath="values.CreateArchive.flatList" id="isS-yZ-8OS"/>
-                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -1347,14 +1432,13 @@
                     </view>
                 </viewController>
                 <customObject id="Vj6-xb-Aaz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="Hfu-kz-QEg"/>
             </objects>
-            <point key="canvasLocation" x="2162" y="636"/>
+            <point key="canvasLocation" x="2162" y="799"/>
         </scene>
         <!--Git Tag-->
         <scene sceneID="2q0-mq-9cb">
             <objects>
-                <viewController title="Git Tag" identifier="Git Tag" storyboardIdentifier="Git Tag" id="Lkh-1c-mWq" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Git Tag" identifier="git-tag" storyboardIdentifier="git-tag" id="Lkh-1c-mWq" customClass="CommandSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Zfs-jD-Eto">
                         <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1414,13 +1498,10 @@
                             </stepper>
                             <button toolTip="Push after updating git tag" translatesAutoresizingMaskIntoConstraints="NO" id="pbY-Oi-hJL">
                                 <rect key="frame" x="18" y="0.0" width="244" height="18"/>
-                                <buttonCell key="cell" type="check" title="Push" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="PPt-6r-nBO">
+                                <buttonCell key="cell" type="check" title="Push" bezelStyle="regularSquare" imagePosition="right" inset="2" id="PPt-6r-nBO">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <connections>
-                                    <binding destination="h0y-Vx-HZh" name="value" keyPath="values.GitTag.push" id="fSE-8U-c3G"/>
-                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -1447,9 +1528,8 @@
                     </view>
                 </viewController>
                 <customObject id="r5R-D9-DFG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="h0y-Vx-HZh"/>
             </objects>
-            <point key="canvasLocation" x="2167" y="895"/>
+            <point key="canvasLocation" x="2167" y="1058"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Efp-bc-ezX">
@@ -1459,14 +1539,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="c29-aZ-c7S">
+                            <button identifier="XcodeHelperKit.Logging" translatesAutoresizingMaskIntoConstraints="NO" id="c29-aZ-c7S">
                                 <rect key="frame" x="18" y="18" width="246" height="18"/>
-                                <buttonCell key="cell" type="check" title="Silence Alerts" bezelStyle="regularSquare" imagePosition="right" state="on" inset="2" id="wgn-sd-8mg">
+                                <buttonCell key="cell" type="check" title="Show Alerts" bezelStyle="regularSquare" imagePosition="right" inset="2" id="wgn-sd-8mg">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="jmj-ys-zpp" name="value" keyPath="values.General.alerts" id="1ZU-Wr-dIy"/>
+                                    <binding destination="dz4-fn-LJV" name="value" keyPath="values.XcodeHelperKit.Logging" id="mKg-x3-AE2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1478,9 +1558,9 @@
                     </view>
                 </viewController>
                 <customObject id="Nb1-CP-jne" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController id="jmj-ys-zpp"/>
+                <userDefaultsController id="dz4-fn-LJV"/>
             </objects>
-            <point key="canvasLocation" x="2167" y="983"/>
+            <point key="canvasLocation" x="2167" y="1146"/>
         </scene>
     </scenes>
 </document>

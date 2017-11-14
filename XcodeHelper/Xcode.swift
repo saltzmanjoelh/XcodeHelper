@@ -16,7 +16,7 @@ protocol XCItem: CustomStringConvertible {
 }
 
 struct Xcode {
-    
+    static let DocumentChanged: NSNotification.Name = NSNotification.Name(rawValue: "DocumentChanged")
     let currentDocumentScript: NSAppleScript
     let currentUser: String = XCWorkspace.getCurrentUser()!
     

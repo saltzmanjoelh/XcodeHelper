@@ -13,18 +13,18 @@ class TargetSettingsViewController: NSViewController {
     
     var project: XCProject?
     
-    let data: [Any] = [Action.updatePackagesMacOS, Action.updatePackagesMacOS.rawValue,
-                       Action.updatePackagesDocker, Action.updatePackagesDocker.rawValue,
-                       Action.buildInDocker, Action.buildInDocker.rawValue,
-                       Action.createArchive, Action.createArchive.rawValue,
-                       Action.createXCArchive, Action.createXCArchive.rawValue,
-                       Action.uploadArchive, Action.uploadArchive.rawValue,
-                       Action.gitTag, Action.gitTag.rawValue,
-                       Action.general, Action.general.rawValue]
+    let data: [String] = [Command.updateMacOSPackages.title, Command.updateMacOSPackages.rawValue,
+                       Command.updateDockerPackages.title, Command.updateDockerPackages.rawValue,
+                       Command.dockerBuild.title, Command.dockerBuild.rawValue,
+                       Command.createArchive.title, Command.createArchive.rawValue,
+                       Command.createXcarchive.title, Command.createXcarchive.rawValue,
+                       Command.uploadArchive.title, Command.uploadArchive.rawValue,
+                       Command.gitTag.title, Command.gitTag.rawValue,
+                       "General", "General"]
     var viewControllers = [String:CommandSettingsViewController]()
     let defaultHeights: [CGFloat] = [34.0, //Update Packages - macOS
-                                     22.0, //Update Packages - Docker
-                                     71.0, //Build in Docker
+                                     56.0, //Update Packages - Docker
+                                     150.0, //Build in Docker
                                      14.0, //Create Archive
                                      14.0, //Create XCArchive
                                      98.0, //Upload Archive
@@ -81,19 +81,20 @@ extension TargetSettingsViewController: NSTableViewDataSource, NSTableViewDelega
     }
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let dataItem = data[safe: row] else { return nil }
-        if let identifier = dataItem as? Action {
+        if row % 2 == 0 {
             //group row
+            let identifier = dataItem
             guard let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"), owner: self) as? NSTableCellView else { return nil }
-            view.textField?.stringValue = identifier.rawValue
+            view.textField?.stringValue = identifier
             return view
         }
         
         //settings row
-        guard let identifierString = dataItem as? String else { return nil }
+        let identifierString = dataItem
         if let viewController = viewControllers[identifierString] {
             return viewController.view
         }
-        guard let viewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: dataItem as! String)) as? NSViewController else { return nil }
+        guard let viewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: identifierString)) as? NSViewController else { return nil }
         return viewController.view
     }
 //    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
@@ -103,12 +104,11 @@ extension TargetSettingsViewController: NSTableViewDataSource, NSTableViewDelega
         if row%2 == 0 {
             return 24.0
         }
-        guard let item = data[safe: row] as? String,
+        guard let item = data[safe: row],
               let viewController = viewControllers[item] else { return defaultHeights[row/2] }
         return viewController.view.bounds.size.height
     }
     public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        guard let dataItem = data[safe: row] else { return false }
-        return !(dataItem is Action)
+        return row % 2 != 0
     }
 }

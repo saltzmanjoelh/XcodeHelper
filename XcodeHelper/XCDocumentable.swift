@@ -42,4 +42,10 @@ extension XCDocumentable {
         }
         return objects[targetIndex+1] as? String
     }
+    public func getSourcePath() -> String? {
+        guard let xcodeprojPath = currentTargetPath()
+            else { return nil }
+        let url = URL.init(fileURLWithPath: xcodeprojPath)//return source directory instead of project path
+        return url.deletingLastPathComponent().path
+    }
 }

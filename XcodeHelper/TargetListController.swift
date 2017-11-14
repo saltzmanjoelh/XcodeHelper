@@ -28,10 +28,25 @@ class TargetListController: NSObject {
     @IBOutlet var tableView: NSTableView?
     
     //this class gets created on app launch so we create this here instead of after app launch
-    let xcodeViewModel: XcodeViewModel
+    public let xcodeViewModel: XcodeViewModel
     override init() {
         let xcode = Xcode()
-        self.xcodeViewModel =  XcodeViewModel(xcode: xcode, document: xcode.getCurrentDocumentable(using: xcode.currentDocumentScript))
+        self.xcodeViewModel = XcodeViewModel(xcode: xcode, document: xcode.getCurrentDocumentable(using: xcode.currentDocumentScript))
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(documentChanged), name: Xcode.DocumentChanged, object: nil)
+    }
+    @objc func documentChanged(_ notification: Notification) {
+        print(String(describing: notification.object))
+        //casting as XCDocumentable isn't working for some reason
+        if let project = notification.object as? XCProject {
+            self.xcodeViewModel.document = project
+        }else if let workspace = notification.object as? XCWorkspace {
+            self.xcodeViewModel.document = workspace
+        }else{
+            self.xcodeViewModel.document = nil
+        }
+        outlineView?.reloadItem(nil)
+        tableView?.reloadData()
     }
 }
 class GroupRow: NSTableRowView {

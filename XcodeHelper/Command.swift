@@ -8,27 +8,28 @@
 
 import Foundation
 
-enum Command: String {
-    
-    case updateMacOsPackages = "Update Packages - macOS"
-    case updateDockerPackages = "Update Packages - Docker"
-    case buildInDocker = "Build in Docker"
-    case symlinkDependencies = "Symlink Dependencies"
-    case createArchive = "Create Archive"
-    case createXcarchive = "Create XCArchive"
-    case uploadArchive = "Upload Archive"
-    case gitTag = "Git Tag"
-    
-    static var allValues: [Command] {
-        get {
-            return [.updateMacOsPackages,
-            .updateDockerPackages,
-            .buildInDocker,
-            .symlinkDependencies,
-            .createArchive,
-            .createXcarchive,
-            .uploadArchive,
-            .gitTag]
-        }
-    }
-}
+//enum Command: String {
+//    
+//    case updateMacOsPackages = "Update Packages - macOS"
+//    case updateDockerPackages = "Update Packages - Docker"
+//    case dockerBuild = "Build in Docker"
+//    case symlinkDependencies = "Symlink Dependencies"
+//    case createArchive = "Create Archive"
+//    case createXcarchive = "Create XCArchive"
+//    case uploadArchive = "Upload Archive"
+//    case gitTag = "Git Tag"
+//    
+//    static var allValues: [Command] {
+//        get {
+//            return [.updateMacOsPackages,
+//            .updateDockerPackages,
+//            .dockerBuild,
+//            .symlinkDependencies,
+//            .createArchive,
+//            .createXcarchive,
+//            .uploadArchive,
+//            .gitTag]
+//        }
+//    }
+//}
+

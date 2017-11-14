@@ -8,6 +8,8 @@
 
 import AppKit
 import XcodeHelperKit
+import DockerProcess
+import XcodeHelperCliKit
 
 //Populates the status menu and handles the commands
 
@@ -18,8 +20,8 @@ class StatusMenuController: NSObject {
     var windowController: NSWindowController?
     let xcodeHelper = XcodeHelper()
     
-    let xcode: Xcode
-    var document: XCDocumentable?
+    public let xcode: Xcode
+    public var document: XCDocumentable?
     var projectModificationDate: NSDate? //if the document is an XCProject, this is the modification date from the scheme management plist
     var target: XCTarget? {
         didSet {
@@ -34,18 +36,27 @@ class StatusMenuController: NSObject {
         if let windowController = NSApplication.shared.windows.first?.delegate as? NSWindowController {
             self.windowController = windowController
         }
+        super.init()
+        if let currentDocument = document {
+            refresh(statusItem.menu, currentDocument: currentDocument)
+        }
     }
     
     //handle xcodehelper:// urls
     @objc
     func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
-        refresh(statusItem.menu)
+        if let currentDocument = document ?? xcode.getCurrentDocumentable(using: xcode.currentDocumentScript) {
+            refresh(statusItem.menu, currentDocument: currentDocument)
+        }
         if let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue {
             print("got urlString \(urlString)")
         }
     }
     func menuNeedsUpdate(_ menu: NSMenu){
-        refresh(statusItem.menu)
+        guard let currentDocument = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript),
+            shouldRefresh(currentDocument)
+            else { return }
+        refresh(menu, currentDocument: currentDocument)
     }
     func shouldRefresh(_ currentDocument: XCDocumentable?) -> Bool {
         if [document, currentDocument].flatMap({ $0 != nil }).count == 1 || document!.path != currentDocument!.path{
@@ -75,18 +86,11 @@ class StatusMenuController: NSObject {
         let currentDates = projects.flatMap({ $0.schemeManagementModificationDate() })
         return projects.flatMap({ $0.modificationDate }) == currentDates
     }
-    func refresh(_ menu: NSMenu?) {
-        let currentDocument = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)
-        if !shouldRefresh(currentDocument) {
-            return
-        }
-        
+    func refresh(_ menu: NSMenu?, currentDocument: XCDocumentable) {
         guard let menuItem = menu?.items[safe: 1],
             let submenu = menuItem.submenu,
             let menuItems = targetMenuItems(for: currentDocument)
             else { return }
-        
-        
         
         let newTargets = menuItems.flatMap({ $0.representedObject as? XCTarget})
         let oldTargets = submenu.items.flatMap({ $0.representedObject as? XCTarget })
@@ -98,6 +102,12 @@ class StatusMenuController: NSObject {
             }
         }
         self.document = currentDocument
+        NotificationCenter.default.post(name: Xcode.DocumentChanged, object: currentDocument)
+    }
+    func refreshConfig() {
+        if let sourcePath = self.document?.getSourcePath() {
+            ConfigController.reloadConfig(at: sourcePath)
+        }
     }
     
     func sendNotification(_ title: String, message: String) {
@@ -117,13 +127,14 @@ extension StatusMenuController: NSMenuDelegate {
         
         //Auto Target
         menu.addItem(withTitle: "Automatic Target", action: #selector(StatusMenuController.selectTarget), keyEquivalent: "")
-        menu.items.last!.state = NSControl.StateValue.onState
+        menu.items.last!.state = NSControl.StateValue.on
         menu.items.last!.target = self
         
         //Manual Targets
         menu.addItem(withTitle: "Manual Target", action: nil, keyEquivalent: "")
         menu.items.last?.submenu = NSMenu()
-        if let menuItems = targetMenuItems(for: xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)), let subMenu = menu.items.last?.submenu {
+        if let menuItems = targetMenuItems(for: document), //document was just set during init
+            let subMenu = menu.items.last?.submenu {
             subMenu.removeAllItems()
             for menuItem in menuItems {
                 subMenu.addItem(menuItem)
@@ -132,9 +143,12 @@ extension StatusMenuController: NSMenuDelegate {
         menu.addItem(NSMenuItem.separator())
         
         //Commands
-        for command in Command.allValues {
-            menu.addItem(withTitle: command.rawValue, action: action(for: command), keyEquivalent: "")
+        for command in Command.allCommands {
+            menu.addItem(withTitle: command.title,
+                         action: #selector(executeCommand(_:)),
+                         keyEquivalent: "")
             menu.items.last?.target = self
+            menu.items.last?.representedObject = command
         }
         
         // Prefs and Quit
@@ -169,36 +183,34 @@ extension StatusMenuController: NSMenuDelegate {
     func updateSelectedTarget() {
         guard let menu = statusItem.menu else { return }
         guard let autoItem = menu.items[safe: 0], let manualItem = menu.items[safe: 1] else { return }
-        autoItem.state = target == nil ? NSControl.StateValue.onState : NSControl.StateValue.offState
-        manualItem.state = target != nil ? NSControl.StateValue.onState : NSControl.StateValue.offState
+        autoItem.state = target == nil ? NSControl.StateValue.on : NSControl.StateValue.off
+        manualItem.state = target != nil ? NSControl.StateValue.on : NSControl.StateValue.off
         if let submenu = manualItem.submenu {
             for item in submenu.items {
                 if let itemTarget = item.representedObject as? XCTarget {
-                    item.state = target == itemTarget ? NSControl.StateValue.onState : NSControl.StateValue.offState
+                    item.state = target == itemTarget ? NSControl.StateValue.on : NSControl.StateValue.off
                 }
             }
         }
     }
-    
-    
-    func action(for command: Command) -> Selector {
-        switch command {
-        case .updateMacOsPackages:
-            return #selector(StatusMenuController.updateMacOsPackages)
-        case .updateDockerPackages:
-            return #selector(StatusMenuController.updateDockerPackages)
-        case .buildInDocker:
-            return #selector(StatusMenuController.buildInDocker)
-        case .symlinkDependencies:
-            return #selector(StatusMenuController.symlinkDependencies)
-        case .createArchive:
-            return #selector(StatusMenuController.createArchive)
-        case .createXcarchive:
-            return #selector(StatusMenuController.createXCArchive)
-        case .uploadArchive:
-            return #selector(StatusMenuController.uploadArchive)
-        case .gitTag:
-            return #selector(StatusMenuController.gitTag)
+    @objc
+    func executeCommand(_ sender: NSMenuItem) {
+        guard let sourcePath = getSourcePath(),
+            let command = sender.representedObject as? Command
+            else { return }
+        let configPath = URL(fileURLWithPath: sourcePath).appendingPathComponent(ConfigController.configFileName).path
+        DispatchQueue.global().async {
+            do {
+                FileManager.default.changeCurrentDirectoryPath(sourcePath)
+                let xchelper = XCHelper()
+                try xchelper.run(arguments: [sourcePath, //assuming executing binary from sourcePath
+                                             command.rawValue],
+                                 environment: [:],
+                                 yamlConfigurationPath: configPath)
+                self.xcodeHelper.logger.log("Done", for: command)
+            }catch let e{
+                self.xcodeHelper.logger.log(String(describing: e), for: nil)
+            }
         }
     }
 
@@ -209,8 +221,8 @@ extension StatusMenuController {
     @IBAction
     func preferences(sender: Any){
         NSApplication.shared.activate(ignoringOtherApps: true)
+        refreshConfig()
         DispatchQueue.main.async {
-            print(String(describing: self.windowController?.window))
             self.windowController?.window?.makeKeyAndOrderFront(nil)
         }
         
@@ -233,46 +245,7 @@ extension StatusMenuController {
         guard let document = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript) else { return nil }
         return document.currentTargetPath()
     }
-    
-    @objc func updateMacOsPackages(_ sender: NSMenuItem){
-        guard let document = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript),
-                let xcodeprojPath = document.currentTargetPath() else { return }
-        let url = URL.init(fileURLWithPath: xcodeprojPath)//return source directory instead of project path
-        DispatchQueue.global().async {
-            do {
-                let sourcePath = url.deletingLastPathComponent().path
-                let result = try self.xcodeHelper.updateMacOsPackages(at: sourcePath)
-                if result.exitCode != 0 { return }
-                if UserDefaults.standard.bool(forKey: Preference.UpdatePackages.macOS.symlinkDependencies.rawValue) {
-                    _ = try self.xcodeHelper.symlinkDependencies(at: sourcePath)
-                }
-            }catch let e{
-                print("Error: \(e)")
-            }
-        }
-    }
-    @objc func updateDockerPackages(){
-        print("updateDockerPackages")
-    }
-    @objc func buildInDocker(){
-        print("buildInDocker")
-    }
-    @objc func symlinkDependencies(){
-        
-    }
-    @objc func createArchive(){
-        
-    }
-    @objc func createXCArchive(){
-        
-    }
-    @objc func uploadArchive(){
-        
-    }
-    @objc func gitTag(){
-        
-    }
-    func createXcarchive(){
-        
+    func getSourcePath() -> String? {
+        return xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)?.getSourcePath()
     }
 }

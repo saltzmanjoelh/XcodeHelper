@@ -27,17 +27,19 @@
 		384E51DD1DC6B3DA00FAC6C1 /* GetCurrentDocument.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 384E51DB1DC6B3DA00FAC6C1 /* GetCurrentDocument.scpt */; };
 		3857C25D1E6C68E100731BE7 /* XcodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857C25C1E6C68E100731BE7 /* XcodeTests.swift */; };
 		3857C25F1E6C76DE00731BE7 /* XCDocumentableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3857C25E1E6C76DE00731BE7 /* XCDocumentableTests.swift */; };
-		388739C21EE50AEA003B6106 /* Preference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388739C11EE50AEA003B6106 /* Preference.swift */; };
 		388739C41EE50BA7003B6106 /* PreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388739C31EE50BA7003B6106 /* PreferenceTests.swift */; };
+		3887BA7E1FB94E33007A9135 /* CliRunnable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA771FB94E27007A9135 /* CliRunnable.framework */; };
+		3887BA7F1FB94E33007A9135 /* DockerProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA7B1FB94E27007A9135 /* DockerProcess.framework */; };
+		3887BA801FB94E33007A9135 /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA7D1FB94E27007A9135 /* ProcessRunner.framework */; };
+		3887BA811FB94E33007A9135 /* S3Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA751FB94E27007A9135 /* S3Kit.framework */; };
+		3887BA821FB94E33007A9135 /* XcodeHelperCliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA711FB94E27007A9135 /* XcodeHelperCliKit.framework */; };
+		3887BA831FB94E33007A9135 /* XcodeHelperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA731FB94E27007A9135 /* XcodeHelperKit.framework */; };
+		3887BA841FB94E33007A9135 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA791FB94E27007A9135 /* Yaml.framework */; };
 		389D2D3F1E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
 		389D2D401E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
 		38A420E71E76F0C10030BB19 /* CommandSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */; };
+		38A7D48D1F0D30B900213122 /* ConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A7D48C1F0D30B900213122 /* ConfigController.swift */; };
 		38DC32711EDD02660095F5DA /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DC32701EDD02660095F5DA /* ProcessRunner.framework */; };
-		38DC32731EDD02830095F5DA /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DC32721EDD02830095F5DA /* ProcessRunner.framework */; };
-		38DFD6BE1E2AB28C00C3D931 /* XcodeHelperKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6BD1E2AB28C00C3D931 /* XcodeHelperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38DFD6C01E2AB29000C3D931 /* S3Kit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6BF1E2AB29000C3D931 /* S3Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38DFD6C51E2AB29500C3D931 /* DockerProcess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6C21E2AB29500C3D931 /* DockerProcess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38DFD6C61E2AB29500C3D931 /* CliRunnable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38DFD6C91E2AB8F300C3D931 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */; };
 		38E66AF61E65DD1A00B6C75C /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E66AF51E65DD1A00B6C75C /* FileManagerExtension.swift */; };
 		38E66B001E66475100B6C75C /* XcodeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E66AFF1E66475100B6C75C /* XcodeViewModelTests.swift */; };
@@ -64,68 +66,61 @@
 			remoteGlobalIDString = 384E51C71DC6B38500FAC6C1;
 			remoteInfo = SourceExtension;
 		};
-		389CA0D11F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+		3887BA6E1FB94E27007A9135 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			containerPortal = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = OBJ_47;
-			remoteInfo = Yaml;
+			remoteGlobalIDString = "XcodeHelperCliKit::XcodeHelperCliKitTests::Product";
+			remoteInfo = XcodeHelperCliKitTests;
 		};
-		389CA0D31F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+		3887BA701FB94E27007A9135 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			containerPortal = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = OBJ_48;
-			remoteInfo = CliRunnable;
-		};
-		389CA0D51F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_49;
-			remoteInfo = ProcessRunner;
-		};
-		389CA0D71F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_50;
-			remoteInfo = DockerProcess;
-		};
-		389CA0D91F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_51;
-			remoteInfo = S3Kit;
-		};
-		389CA0DB1F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_52;
-			remoteInfo = XcodeHelperKit;
-		};
-		389CA0DD1F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = OBJ_53;
+			remoteGlobalIDString = "XcodeHelperCliKit::XcodeHelperCliKit::Product";
 			remoteInfo = XcodeHelperCliKit;
 		};
-		389CA0DF1F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+		3887BA721FB94E27007A9135 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			containerPortal = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = OBJ_54;
-			remoteInfo = xchelper;
+			remoteGlobalIDString = "XcodeHelperKit::XcodeHelperKit::Product";
+			remoteInfo = XcodeHelperKit;
 		};
-		389CA0E11F0A1ADD007E2350 /* PBXContainerItemProxy */ = {
+		3887BA741FB94E27007A9135 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+			containerPortal = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = OBJ_55;
-			remoteInfo = XcodeHelperCliKitTests;
+			remoteGlobalIDString = "S3Kit::S3Kit::Product";
+			remoteInfo = S3Kit;
+		};
+		3887BA761FB94E27007A9135 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "CliRunnable::CliRunnable::Product";
+			remoteInfo = CliRunnable;
+		};
+		3887BA781FB94E27007A9135 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "Yaml::Yaml::Product";
+			remoteInfo = Yaml;
+		};
+		3887BA7A1FB94E27007A9135 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "DockerProcess::DockerProcess::Product";
+			remoteInfo = DockerProcess;
+		};
+		3887BA7C1FB94E27007A9135 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "ProcessRunner::ProcessRunner::Product";
+			remoteInfo = ProcessRunner;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -147,10 +142,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				38DFD6BE1E2AB28C00C3D931 /* XcodeHelperKit.framework in CopyFiles */,
-				38DFD6C01E2AB29000C3D931 /* S3Kit.framework in CopyFiles */,
-				38DFD6C51E2AB29500C3D931 /* DockerProcess.framework in CopyFiles */,
-				38DFD6C61E2AB29500C3D931 /* CliRunnable.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,17 +175,15 @@
 		3857C25C1E6C68E100731BE7 /* XcodeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeTests.swift; sourceTree = "<group>"; };
 		3857C25E1E6C76DE00731BE7 /* XCDocumentableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCDocumentableTests.swift; sourceTree = "<group>"; };
 		387BF3881DC6F07200318807 /* XcodeHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeHelper.entitlements; sourceTree = "<group>"; };
-		388739C11EE50AEA003B6106 /* Preference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preference.swift; sourceTree = "<group>"; };
 		388739C31EE50BA7003B6106 /* PreferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceTests.swift; sourceTree = "<group>"; };
-		389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XcodeHelperCli.xcodeproj; path = ../XcodeHelperCli/XcodeHelperCli.xcodeproj; sourceTree = "<group>"; };
+		3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XcodeHelperCliKit.xcodeproj; path = ../XcodeHelperCli/XcodeHelperCliKit.xcodeproj; sourceTree = "<group>"; };
+		3887BA851FB94ECA007A9135 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		3887BA861FB94ED7007A9135 /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
 		389D2D3E1E33E0480034E802 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingsViewController.swift; sourceTree = "<group>"; };
+		38A7D48C1F0D30B900213122 /* ConfigController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigController.swift; sourceTree = "<group>"; };
 		38DC32701EDD02660095F5DA /* ProcessRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProcessRunner.framework; path = "../../../Library/Developer/Xcode/DerivedData/XcodeHelper-bnycykzuhbgssghgkzpuxjdzlecf/Build/Products/Debug/ProcessRunner.framework"; sourceTree = "<group>"; };
 		38DC32721EDD02830095F5DA /* ProcessRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProcessRunner.framework; path = ../XcodeHelperKit/build/Release/ProcessRunner.framework; sourceTree = "<group>"; };
-		38DFD6BD1E2AB28C00C3D931 /* XcodeHelperKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XcodeHelperKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38DFD6BF1E2AB29000C3D931 /* S3Kit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = S3Kit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38DFD6C21E2AB29500C3D931 /* DockerProcess.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DockerProcess.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CliRunnable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		38E66AF51E65DD1A00B6C75C /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		38E66AFF1E66475100B6C75C /* XcodeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeViewModelTests.swift; sourceTree = "<group>"; };
@@ -211,7 +200,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38DC32731EDD02830095F5DA /* ProcessRunner.framework in Frameworks */,
+				3887BA7E1FB94E33007A9135 /* CliRunnable.framework in Frameworks */,
+				3887BA7F1FB94E33007A9135 /* DockerProcess.framework in Frameworks */,
+				3887BA801FB94E33007A9135 /* ProcessRunner.framework in Frameworks */,
+				3887BA811FB94E33007A9135 /* S3Kit.framework in Frameworks */,
+				3887BA821FB94E33007A9135 /* XcodeHelperCliKit.framework in Frameworks */,
+				3887BA831FB94E33007A9135 /* XcodeHelperKit.framework in Frameworks */,
+				3887BA841FB94E33007A9135 /* Yaml.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,11 +232,8 @@
 		384E519B1DC6B36700FAC6C1 = {
 			isa = PBXGroup;
 			children = (
-				389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */,
-				38DFD6C21E2AB29500C3D931 /* DockerProcess.framework */,
-				38DFD6C31E2AB29500C3D931 /* CliRunnable.framework */,
-				38DFD6BF1E2AB29000C3D931 /* S3Kit.framework */,
-				38DFD6BD1E2AB28C00C3D931 /* XcodeHelperKit.framework */,
+				3887BA851FB94ECA007A9135 /* module.modulemap */,
+				3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */,
 				384E51A61DC6B36700FAC6C1 /* XcodeHelper */,
 				384E51B81DC6B36700FAC6C1 /* XcodeHelperTests */,
 				384E51CC1DC6B38500FAC6C1 /* SourceExtension */,
@@ -267,7 +259,7 @@
 				384E51A71DC6B36700FAC6C1 /* AppDelegate.swift */,
 				389D2D3E1E33E0480034E802 /* Command.swift */,
 				38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */,
-				388739C11EE50AEA003B6106 /* Preference.swift */,
+				38A7D48C1F0D30B900213122 /* ConfigController.swift */,
 				380B81621E269262003E0951 /* Defaultable.swift */,
 				38E8F7981E4813AC00097EEC /* Extensions */,
 				38E8F7491E468F0C00097EEC /* Targets */,
@@ -300,6 +292,7 @@
 		384E51C91DC6B38500FAC6C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3887BA861FB94ED7007A9135 /* libcommonCrypto.tbd */,
 				38DC32721EDD02830095F5DA /* ProcessRunner.framework */,
 				38DC32701EDD02660095F5DA /* ProcessRunner.framework */,
 				384E51CA1DC6B38500FAC6C1 /* Cocoa.framework */,
@@ -348,18 +341,17 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
-		389CA0C61F0A1ADD007E2350 /* Products */ = {
+		3887BA5C1FB94E27007A9135 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				389CA0D21F0A1ADD007E2350 /* Yaml.framework */,
-				389CA0D41F0A1ADD007E2350 /* CliRunnable.framework */,
-				389CA0D61F0A1ADD007E2350 /* ProcessRunner.framework */,
-				389CA0D81F0A1ADD007E2350 /* DockerProcess.framework */,
-				389CA0DA1F0A1ADD007E2350 /* S3Kit.framework */,
-				389CA0DC1F0A1ADD007E2350 /* XcodeHelperKit.framework */,
-				389CA0DE1F0A1ADD007E2350 /* XcodeHelperCliKit.framework */,
-				389CA0E01F0A1ADD007E2350 /* xchelper */,
-				389CA0E21F0A1ADD007E2350 /* XcodeHelperCliKitTests.xctest */,
+				3887BA6F1FB94E27007A9135 /* XcodeHelperCliKitTests.xctest */,
+				3887BA711FB94E27007A9135 /* XcodeHelperCliKit.framework */,
+				3887BA731FB94E27007A9135 /* XcodeHelperKit.framework */,
+				3887BA751FB94E27007A9135 /* S3Kit.framework */,
+				3887BA771FB94E27007A9135 /* CliRunnable.framework */,
+				3887BA791FB94E27007A9135 /* Yaml.framework */,
+				3887BA7B1FB94E27007A9135 /* DockerProcess.framework */,
+				3887BA7D1FB94E27007A9135 /* ProcessRunner.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -498,8 +490,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 389CA0C61F0A1ADD007E2350 /* Products */;
-					ProjectRef = 389CA0C51F0A1ADD007E2350 /* XcodeHelperCli.xcodeproj */;
+					ProductGroup = 3887BA5C1FB94E27007A9135 /* Products */;
+					ProjectRef = 3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -512,67 +504,60 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		389CA0D21F0A1ADD007E2350 /* Yaml.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Yaml.framework;
-			remoteRef = 389CA0D11F0A1ADD007E2350 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		389CA0D41F0A1ADD007E2350 /* CliRunnable.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CliRunnable.framework;
-			remoteRef = 389CA0D31F0A1ADD007E2350 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		389CA0D61F0A1ADD007E2350 /* ProcessRunner.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ProcessRunner.framework;
-			remoteRef = 389CA0D51F0A1ADD007E2350 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		389CA0D81F0A1ADD007E2350 /* DockerProcess.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = DockerProcess.framework;
-			remoteRef = 389CA0D71F0A1ADD007E2350 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		389CA0DA1F0A1ADD007E2350 /* S3Kit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = S3Kit.framework;
-			remoteRef = 389CA0D91F0A1ADD007E2350 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		389CA0DC1F0A1ADD007E2350 /* XcodeHelperKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XcodeHelperKit.framework;
-			remoteRef = 389CA0DB1F0A1ADD007E2350 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		389CA0DE1F0A1ADD007E2350 /* XcodeHelperCliKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XcodeHelperCliKit.framework;
-			remoteRef = 389CA0DD1F0A1ADD007E2350 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		389CA0E01F0A1ADD007E2350 /* xchelper */ = {
-			isa = PBXReferenceProxy;
-			fileType = text;
-			path = xchelper;
-			remoteRef = 389CA0DF1F0A1ADD007E2350 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		389CA0E21F0A1ADD007E2350 /* XcodeHelperCliKitTests.xctest */ = {
+		3887BA6F1FB94E27007A9135 /* XcodeHelperCliKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = file;
 			path = XcodeHelperCliKitTests.xctest;
-			remoteRef = 389CA0E11F0A1ADD007E2350 /* PBXContainerItemProxy */;
+			remoteRef = 3887BA6E1FB94E27007A9135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3887BA711FB94E27007A9135 /* XcodeHelperCliKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XcodeHelperCliKit.framework;
+			remoteRef = 3887BA701FB94E27007A9135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3887BA731FB94E27007A9135 /* XcodeHelperKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XcodeHelperKit.framework;
+			remoteRef = 3887BA721FB94E27007A9135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3887BA751FB94E27007A9135 /* S3Kit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = S3Kit.framework;
+			remoteRef = 3887BA741FB94E27007A9135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3887BA771FB94E27007A9135 /* CliRunnable.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CliRunnable.framework;
+			remoteRef = 3887BA761FB94E27007A9135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3887BA791FB94E27007A9135 /* Yaml.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Yaml.framework;
+			remoteRef = 3887BA781FB94E27007A9135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3887BA7B1FB94E27007A9135 /* DockerProcess.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DockerProcess.framework;
+			remoteRef = 3887BA7A1FB94E27007A9135 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3887BA7D1FB94E27007A9135 /* ProcessRunner.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ProcessRunner.framework;
+			remoteRef = 3887BA7C1FB94E27007A9135 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -613,6 +598,7 @@
 				38E66AF61E65DD1A00B6C75C /* FileManagerExtension.swift in Sources */,
 				381E29F91E560A9300557BB1 /* XcodeViewModel.swift in Sources */,
 				38E8F79A1E4813BD00097EEC /* CollectionExtension.swift in Sources */,
+				38A7D48D1F0D30B900213122 /* ConfigController.swift in Sources */,
 				38DFD6C91E2AB8F300C3D931 /* StatusMenuController.swift in Sources */,
 				3836A7601E38A3BE0098CE9A /* XCProject.swift in Sources */,
 				3836A7641E38A3FF0098CE9A /* XCDocumentable.swift in Sources */,
@@ -624,7 +610,6 @@
 				389D2D3F1E33E0480034E802 /* Command.swift in Sources */,
 				38E8F7971E48093B00097EEC /* XCTarget.swift in Sources */,
 				38A420E71E76F0C10030BB19 /* CommandSettingsViewController.swift in Sources */,
-				388739C21EE50AEA003B6106 /* Preference.swift in Sources */,
 				38EEE9201E352D7900779CB9 /* Xcode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -798,6 +783,10 @@
 				DEVELOPMENT_TEAM = A43A74F4MB;
 				INFOPLIST_FILE = XcodeHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				MODULEMAP_FILE = module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -819,6 +808,10 @@
 				DEVELOPMENT_TEAM = A43A74F4MB;
 				INFOPLIST_FILE = XcodeHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				MODULEMAP_FILE = module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

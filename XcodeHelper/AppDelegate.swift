@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let xcode = Xcode()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        UserDefaults.initializeDefaults()
+
         NSUserNotificationCenter.default.delegate = self
         menuController = StatusMenuController(statusItem: NSStatusBar.system.statusItem(withLength: 30.0),
                                               xcode: xcode)
@@ -36,6 +36,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         //Statusbar Menu
         statusItem.menu = menuController!.newStatusMenu()
+        
+        //Refresh the config file so that the Pref menu controls update
+        menuController!.refreshConfig()
     }
     
     
@@ -44,7 +47,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
     public func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
         //Only notification action available currenly is to silence user notifications
-        UserDefaults.standard.set(false, forKey: Preference.logging.stringValue)
+        switch notification.activationType {
+        case .contentsClicked:
+            //show full log message
+            
+            break
+        case .actionButtonClicked:
+            //silence
+            //TODO: update prefs window control
+            menuController!.refreshConfig()
+            UserDefaults.standard.set(false, forKey: Logger.UserDefaultsKey)
+            UserDefaults.standard.synchronize()
+            break
+        default:
+            break
+        }
+        
     }
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application

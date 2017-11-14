@@ -11,13 +11,25 @@ import Foundation
 class XcodeViewModel {
     
     let xcode: Xcode
-    let projects: [XCProject]
-    let targets: [XCProject:[XCTarget]]
-    let flatList: [XCItem]
+    var projects = [XCProject]()
+    var targets = [XCProject:[XCTarget]]()
+    var flatList = [XCItem]()
     
     init(xcode: Xcode, document: XCDocumentable?) {
         self.xcode = xcode
-        if let currentDocument = document {
+        self.document = document
+        documentChangedHandler()
+    }
+    
+    var document: XCDocumentable? {
+        didSet {
+            documentChangedHandler()
+        }
+    }
+    
+    
+    func documentChangedHandler() {
+        if let currentDocument = self.document {
             self.projects = xcode.getProjects(from: currentDocument)
             targets = projects.reduce([XCProject:[XCTarget]](), { (result, project) -> [XCProject:[XCTarget]] in
                 var copy = result
