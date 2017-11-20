@@ -19,35 +19,20 @@ import XcodeHelperCliKit
  */
 
 public class ConfigController: NSObject {
+    static let reloadNotification = Notification.Name.init("reloadConfig")
     static let configFileName = ".xcodehelper"
-    static var instances = [ConfigController]()
     static var sharedConfig: [String: [String: [String]]] = [:] //[Command: [OptionName: [OPTION_VALUE]]]
     static var sourcePath: String?
     
-    
-    @IBOutlet
-    public var control: NSControl? {
-        didSet {
-            if control == nil,
-                let index = ConfigController.instances.index(of: self) {
-                ConfigController.instances.remove(at: index)
-            }
-        }
-    }
-    
-    public override init() {
-        super.init()
-        ConfigController.instances.append(self)
-    }
     public static func reloadConfig(at sourcePath: String) {
         ConfigController.sourcePath = sourcePath
         if let config = loadYaml(at: sourcePath) {
             sharedConfig = config
         }
-        for instance in ConfigController.instances {
-            //TODO: set the tool tip to be the same as the help info
-            instance.updateControl()
-        }
+        NotificationCenter.default.post(Notification.init(name: ConfigController.reloadNotification, object: nil))
+//        TargetSettingsViewController refresh will iterate all views and refresh their values
+//        TargetSettingsViewController can have it's own ConfigController in a xib with outlets for the controls to save their values
+//        Custom controls like git tag will have custom function in TargetSettingsViewController
     }
     public static func loadYaml(at sourcePath: String) -> [String: [String: [String]]]? {
         let helper = XCHelper()
@@ -61,88 +46,31 @@ public class ConfigController: NSObject {
         }
         return nil
     }
-    public func getControlValue() -> String? {
-        if let identifier = control?.identifier?.rawValue {
-            let parts = identifier.components(separatedBy: ".")
-            if let commandName = parts.first,
-                let optionName = parts.last,
-                let entry = ConfigController.sharedConfig[commandName],
-                let values = entry[optionName] {
-                return values.first
-            }
-        }else{
-            print("ConfigController control must have an identifier of the keyPath that you want it to represent.")
-        }
-        return nil
-    }
-    public func updateControl() {
-        guard let value = getControlValue() else { return }
-        //checkbox, textfield, popupbutton
-        if control is NSButton {
-            updateButton(value)
-        }else if control is NSTextField {
-            updateTextField(value)
-        }else if control is NSPopUpButton {
-            updatePopUpButton(value)
-        }
-    }
-    public func updateButton(_ value: String) {
-        if let button = control as? NSButton {
-            button.state = NSControl.StateValue.init((value as NSString).integerValue)
-        }
-    }
-    public func updateTextField(_ value: String) {
-        if let textField = control as? NSTextField {
-            textField.stringValue = value
-        }
-    }
-    public func updatePopUpButton(_ value: String) {
-        if let popUp = control as? NSPopUpButton {
-            if let menuItem = popUp.menu?.item(withTitle: value) {
-                popUp.select(menuItem)
-            }else{
-                popUp.selectItem(at: 0)
-            }
-        }
-    }
-    
-    @IBAction
-    public func saveButtonValue(_ sender: NSButton) {
-        saveValue("\(sender.state.rawValue)", forIdentifier: sender.identifier!.rawValue)
-    }
-    @IBAction
-    public func saveTextFieldValue(_ sender: NSTextField) {
-        saveValue(sender.stringValue, forIdentifier: sender.identifier!.rawValue)
-    }
-    @IBAction
-    public func savePopUpValue(_ sender: NSPopUpButton) {
-        saveValue(sender.selectedItem?.title, forIdentifier: sender.identifier!.rawValue)
-    }
-    public func saveValue(_ value: String?, forIdentifier identifier: String) {
-        let parts = identifier.components(separatedBy: ".")
-        guard let command = parts.first,
-            let optionName = parts.last
-            else { return }
-        var entry = ConfigController.sharedConfig[command] ?? [String : [String]]()
-        if let updatedValue = value {
-            entry[optionName] = [updatedValue]
-        }else{
-            entry[optionName] = []
-        }
-        ConfigController.sharedConfig[command] = entry
-        ConfigController.save()
-    }
-    public static func save() {
+    public static func saveConfig(_ config: [String: [String: [String]]]) {
         guard let currentSourcePath = sourcePath else { return }
         var output = ""
-        for (command, entry) in ConfigController.sharedConfig {
-            output += "\(command):\n"
-            output += entry.sorted(by:{$0.key < $1.key}).flatMap({ (arg: (key: String, value: [String])) in
+        let xchelper = XCHelper()
+        guard let commandGroup = xchelper.cliOptionGroups.first else { return }
+        for option in commandGroup.options {
+            let command = option.keys[0]
+            guard let entry = config[command] else { continue }
+            var commandHasValues = false
+            let entryStrings = entry.sorted(by:{$0.key < $1.key}).flatMap({ (arg: (key: String, value: [String])) in
                 let optionName = "  \(arg.key): "
-                let optionValue = arg.value.count == 1 ? arg.value[0] : "\n"+arg.value.map({ "    - \($0)" }).joined(separator: "\n")
-                return optionValue.count > 0 ? optionName+optionValue : nil
-            }).joined(separator: "\n")
-            output += "\n"
+                let optionValue = arg.value.count == 1 ? arg.value[0] : arg.value.map({ "\n    - \($0)" }).joined(separator: "")
+                if !commandHasValues {
+                    commandHasValues = optionValue.count > 0
+                }
+                return optionName+optionValue
+            })
+            let verbose = UserDefaults.standard.bool(forKey: TargetSettingsViewController.VerboseConfigKey)
+            let entryOutput = verbose ? entryStrings.joined(separator: "\n") : entryStrings.filter({ !$0.hasPrefix("#")}).joined(separator: "\n")
+            if commandHasValues {
+                output += "\(command):\n\(entryOutput)\n"
+            }else if verbose {
+                //There are no valid values for the command, comment it out
+                output += "#\(command):\n\(entryOutput)\n"
+            }
         }
         try? output.write(to: URL.init(fileURLWithPath: currentSourcePath).appendingPathComponent(ConfigController.configFileName),
                           atomically: false,

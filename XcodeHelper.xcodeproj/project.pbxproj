@@ -35,9 +35,9 @@
 		3887BA821FB94E33007A9135 /* XcodeHelperCliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA711FB94E27007A9135 /* XcodeHelperCliKit.framework */; };
 		3887BA831FB94E33007A9135 /* XcodeHelperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA731FB94E27007A9135 /* XcodeHelperKit.framework */; };
 		3887BA841FB94E33007A9135 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3887BA791FB94E27007A9135 /* Yaml.framework */; };
+		3887BA891FBDEB92007A9135 /* NSView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3887BA881FBDEB92007A9135 /* NSView+Extensions.swift */; };
 		389D2D3F1E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
 		389D2D401E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
-		38A420E71E76F0C10030BB19 /* CommandSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */; };
 		38A7D48D1F0D30B900213122 /* ConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A7D48C1F0D30B900213122 /* ConfigController.swift */; };
 		38DC32711EDD02660095F5DA /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DC32701EDD02660095F5DA /* ProcessRunner.framework */; };
 		38DFD6C91E2AB8F300C3D931 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */; };
@@ -179,8 +179,8 @@
 		3887BA5B1FB94E27007A9135 /* XcodeHelperCliKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XcodeHelperCliKit.xcodeproj; path = ../XcodeHelperCli/XcodeHelperCliKit.xcodeproj; sourceTree = "<group>"; };
 		3887BA851FB94ECA007A9135 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		3887BA861FB94ED7007A9135 /* libcommonCrypto.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcommonCrypto.tbd; path = usr/lib/system/libcommonCrypto.tbd; sourceTree = SDKROOT; };
+		3887BA881FBDEB92007A9135 /* NSView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Extensions.swift"; sourceTree = "<group>"; };
 		389D2D3E1E33E0480034E802 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandSettingsViewController.swift; sourceTree = "<group>"; };
 		38A7D48C1F0D30B900213122 /* ConfigController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigController.swift; sourceTree = "<group>"; };
 		38DC32701EDD02660095F5DA /* ProcessRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProcessRunner.framework; path = "../../../Library/Developer/Xcode/DerivedData/XcodeHelper-bnycykzuhbgssghgkzpuxjdzlecf/Build/Products/Debug/ProcessRunner.framework"; sourceTree = "<group>"; };
 		38DC32721EDD02830095F5DA /* ProcessRunner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProcessRunner.framework; path = ../XcodeHelperKit/build/Release/ProcessRunner.framework; sourceTree = "<group>"; };
@@ -336,7 +336,6 @@
 			isa = PBXGroup;
 			children = (
 				381EF0E61E73092B008A3717 /* TargetSettingsViewController.swift */,
-				38A420E61E76F0C10030BB19 /* CommandSettingsViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -371,6 +370,7 @@
 			children = (
 				38E8F7991E4813BD00097EEC /* CollectionExtension.swift */,
 				38E66AF51E65DD1A00B6C75C /* FileManagerExtension.swift */,
+				3887BA881FBDEB92007A9135 /* NSView+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -604,12 +604,12 @@
 				3836A7641E38A3FF0098CE9A /* XCDocumentable.swift in Sources */,
 				384E51AA1DC6B36700FAC6C1 /* TargetsViewController.swift in Sources */,
 				38E8F74B1E468FBF00097EEC /* TargetListController.swift in Sources */,
+				3887BA891FBDEB92007A9135 /* NSView+Extensions.swift in Sources */,
 				381EF0E71E73092B008A3717 /* TargetSettingsViewController.swift in Sources */,
 				384E51A81DC6B36700FAC6C1 /* AppDelegate.swift in Sources */,
 				3836A7621E38A3C70098CE9A /* XCWorkspace.swift in Sources */,
 				389D2D3F1E33E0480034E802 /* Command.swift in Sources */,
 				38E8F7971E48093B00097EEC /* XCTarget.swift in Sources */,
-				38A420E71E76F0C10030BB19 /* CommandSettingsViewController.swift in Sources */,
 				38EEE9201E352D7900779CB9 /* Xcode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

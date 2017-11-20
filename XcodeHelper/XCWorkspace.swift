@@ -45,8 +45,8 @@ struct XCWorkspace: XCDocumentable, CustomStringConvertible {
                 let resultRange = result!.range
                 let contentsRange = contents.index(contents.startIndex, offsetBy: resultRange.location+1) ..<
                     contents.index(contents.startIndex, offsetBy: resultRange.location+1+resultRange.length-2)
-                let projectName = contents.substring(with: contentsRange)
-                projectPaths.append(rootURL.appendingPathComponent(projectName).path)
+                let projectName = contents[contentsRange.lowerBound..<contentsRange.upperBound]
+                projectPaths.append(rootURL.appendingPathComponent(String(projectName)).path)
             })
         }catch let e {
             print("Error with getProjects: \(e)")

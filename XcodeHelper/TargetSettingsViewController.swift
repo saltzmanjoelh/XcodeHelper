@@ -8,107 +8,138 @@
 
 import AppKit
 import XcodeHelperKit
+import XcodeHelperCliKit
 
 class TargetSettingsViewController: NSViewController {
     
-    var project: XCProject?
+    public static let VerboseConfigKey = "VerboseConfigFile"
+    var configController = ConfigController()
     
-    let data: [String] = [Command.updateMacOSPackages.title, Command.updateMacOSPackages.rawValue,
-                       Command.updateDockerPackages.title, Command.updateDockerPackages.rawValue,
-                       Command.dockerBuild.title, Command.dockerBuild.rawValue,
-                       Command.createArchive.title, Command.createArchive.rawValue,
-                       Command.createXcarchive.title, Command.createXcarchive.rawValue,
-                       Command.uploadArchive.title, Command.uploadArchive.rawValue,
-                       Command.gitTag.title, Command.gitTag.rawValue,
-                       "General", "General"]
-    var viewControllers = [String:CommandSettingsViewController]()
-    let defaultHeights: [CGFloat] = [34.0, //Update Packages - macOS
-                                     56.0, //Update Packages - Docker
-                                     150.0, //Build in Docker
-                                     14.0, //Create Archive
-                                     14.0, //Create XCArchive
-                                     98.0, //Upload Archive
-                                     44.0, //Git tag
-                                     44.0] //General
     
-    @IBOutlet var tableView: NSTableView?
     override func viewDidLoad() {
-        tableView?.reloadData()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor.white.cgColor
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: ConfigController.reloadNotification, object: nil)
+        refresh()
     }
-}
-class TrackingTableView: NSTableView {
-    var trackingArea: NSTrackingArea?
-    
-    override func awakeFromNib() {
-//        updateTrackingAreas()
-    }
-    override func updateTrackingAreas() {
-//        super.updateTrackingAreas()
-//        if let ta = trackingArea {
-//            removeTrackingArea(ta)
-//        }
-//        trackingArea = NSTrackingArea.init(rect: bounds, options: [.mouseMoved, .activeInKeyWindow], owner: self, userInfo: nil)
-//        addTrackingArea(trackingArea!)
-    }
-    override func mouseMoved(with event: NSEvent) {
-        super.mouseMoved(with: event)
-        let location =  convert(event.locationInWindow, from: nil)
-//        location.y = frame.size.height - location.y;
-        let mouseRow = row(at: location)
-        if let theDelegate = delegate,
-            let shouldSelect = theDelegate.tableView(_:shouldSelectRow:),
-            shouldSelect(self, mouseRow) {
-            selectRowIndexes(IndexSet.init(integer: mouseRow), byExtendingSelection: false)
-            window?.becomeFirstResponder()
+    @objc func refresh() {
+        //static var sharedConfig: [String: [String: [String]]] = [:] //[Command: [OptionName: [OPTION_VALUE]]]
+        let xchelper = XCHelper()
+        for command in xchelper.cliOptionGroups[0].options {
+            guard let commandName = command.keys.first /* update-macos-packages */ else { continue }
+            let reqArguments = command.requiredArguments ?? []
+            let optionalArguments = command.optionalArguments ?? []
+            for option in reqArguments+optionalArguments {
+                let optionName = option.keys[1]
+                let optionValues = ConfigController.sharedConfig[commandName]?[optionName]
+                if let control = view.subview(named: "\(commandName).\(optionName)") as? NSControl {
+                    updateControl(control, using: optionValues?.first)
+                }
+            }
         }
     }
-}
-class TableRowView: NSTableRowView {
-    override func drawSelection(in dirtyRect: NSRect) {
-
+    public func updateControl(_ control: NSControl, using value: String?) {
+        //checkbox, textfield, popupbutton
+        if control is NSButton {
+            updateButton(control, with: value)
+        }else if control is NSTextField {
+            updateTextField(control, with: value)
+        }else if control is NSPopUpButton {
+            updatePopUpButton(control, with:value)
+        }
     }
-}
-extension TargetSettingsViewController: NSTableViewDataSource, NSTableViewDelegate {
-    public func numberOfRows(in tableView: NSTableView) -> Int {
-        return data.count
+    public func updateButton(_ control: NSControl, with value: String?) {
+        if let button = control as? NSButton {
+            if let stateValue = value {
+                button.state = NSControl.StateValue((stateValue as NSString).integerValue)
+            }else{
+                button.state = NSControl.StateValue.off
+            }
+        }
     }
-    public func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-        let tableRow = TableRowView()
-        return tableRow
+    public func updateTextField(_ control: NSControl, with value: String?) {
+        if let textField = control as? NSTextField {
+            textField.objectValue = value
+        }
     }
-    public func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-        return data[safe: row];
+    public func updatePopUpButton(_  control: NSControl, with value: String?) {
+        if let popUp = control as? NSPopUpButton {
+            if let titleValue = value,
+                let menuItem = popUp.menu?.item(withTitle: titleValue) {
+                popUp.select(menuItem)
+            }else{
+                popUp.selectItem(at: 0)
+            }
+        }
     }
-    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let dataItem = data[safe: row] else { return nil }
-        if row % 2 == 0 {
-            //group row
-            let identifier = dataItem
-            guard let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderCell"), owner: self) as? NSTableCellView else { return nil }
-            view.textField?.stringValue = identifier
-            return view
+    
+    @IBAction
+    public func saveButtonValue(_ sender: NSButton) {
+        saveValue(sender.state.rawValue == 1 ? "true" : "false", forIdentifier: sender.identifier!.rawValue)
+    }
+    @IBAction
+    public func saveTextFieldValue(_ sender: NSTextField) {
+        saveValue(sender.stringValue, forIdentifier: sender.identifier!.rawValue)
+    }
+    @IBAction
+    public func savePopUpValue(_ sender: NSPopUpButton) {
+        saveValue(sender.selectedItem?.title, forIdentifier: sender.identifier!.rawValue)
+    }
+    public func saveValue(_ value: String?, forIdentifier identifier: String) {
+        let parts = identifier.components(separatedBy: ".")
+        guard let command = parts.first,
+            let optionName = parts.last
+            else { return }
+        var entry = ConfigController.sharedConfig[command] ?? [String : [String]]()
+        if let updatedValue = value {
+            entry[optionName] = [updatedValue]
+        }else{
+            entry[optionName] = []
+        }
+        ConfigController.sharedConfig[command] = entry
+        let config = UserDefaults.standard.bool(forKey: TargetSettingsViewController.VerboseConfigKey) ?
+            verboseConfig() :
+            ConfigController.sharedConfig
+        ConfigController.saveConfig(config)
+    }
+    func verboseConfig() -> [String: [String: [String]]] {
+        var config = ConfigController.sharedConfig
+        let xchelper = XCHelper()
+        for optionGroup in xchelper.cliOptionGroups {
+            for command in optionGroup.options {//updateMacOsPackagesOption
+                //"-d", "--chdir", "UPDATE_MACOS_PACKAGES_CHDIR"
+                //short, long, env
+                var entry = config[command.keys[0]] ?? [:]
+                if let requiredArguments = command.requiredArguments {
+                    for requiredArgument in requiredArguments {
+                        let key = requiredArgument.keys[1]
+                        if entry[key] == nil {
+                            if requiredArgument.defaultValue == nil {
+                                //add the key but comment it out
+                                entry["#\(key)"] = []
+                            }else{
+                                entry[key] = [requiredArgument.defaultValue!]
+                            }
+                        }
+                    }
+                }
+                if let optionalArguments = command.optionalArguments {
+                    for optionalArgument in optionalArguments {
+                        let key = optionalArgument.keys[1]
+                        if entry[key] == nil {
+                            if optionalArgument.defaultValue == nil {
+                                //add the key but comment it out
+                                entry["#\(key)"] = []
+                            }else{
+                                entry[key] = [optionalArgument.defaultValue!]
+                            }
+                        }
+                    }
+                }
+                config[command.keys[0]] = entry
+            }
         }
         
-        //settings row
-        let identifierString = dataItem
-        if let viewController = viewControllers[identifierString] {
-            return viewController.view
-        }
-        guard let viewController = storyboard?.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: identifierString)) as? NSViewController else { return nil }
-        return viewController.view
-    }
-//    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-//        return false
-//    }
-    public func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        if row%2 == 0 {
-            return 24.0
-        }
-        guard let item = data[safe: row],
-              let viewController = viewControllers[item] else { return defaultHeights[row/2] }
-        return viewController.view.bounds.size.height
-    }
-    public func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-        return row % 2 != 0
+        return config
     }
 }

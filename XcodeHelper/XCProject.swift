@@ -123,7 +123,7 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
             let resultRange = result.range
             let nameRange = xcScheme.index(xcScheme.startIndex, offsetBy: resultRange.location+17) ..< // BuildableName = "
                 xcScheme.index(xcScheme.startIndex, offsetBy: resultRange.location+resultRange.length-1)
-            buildableName = xcScheme.substring(with: nameRange)
+            buildableName = String(xcScheme[nameRange.lowerBound..<nameRange.upperBound])
             break
         }
         
