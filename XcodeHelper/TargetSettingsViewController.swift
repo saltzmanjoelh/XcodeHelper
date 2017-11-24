@@ -39,19 +39,20 @@ class TargetSettingsViewController: NSViewController {
         }
     }
     public func updateControl(_ control: NSControl, using value: String?) {
-        //checkbox, textfield, popupbutton
-        if control is NSButton {
+        //popupbutton, checkbox, textfield
+        if control is NSPopUpButton {
+            updatePopUpButton(control, with:value)
+        }else if control is NSButton {
             updateButton(control, with: value)
         }else if control is NSTextField {
             updateTextField(control, with: value)
-        }else if control is NSPopUpButton {
-            updatePopUpButton(control, with:value)
         }
     }
     public func updateButton(_ control: NSControl, with value: String?) {
         if let button = control as? NSButton {
-            if let stateValue = value {
-                button.state = NSControl.StateValue((stateValue as NSString).integerValue)
+            if let stateValue = value,
+                stateValue == "true" || stateValue == "" {
+                button.state = NSControl.StateValue.on
             }else{
                 button.state = NSControl.StateValue.off
             }
@@ -73,6 +74,10 @@ class TargetSettingsViewController: NSViewController {
         }
     }
     
+    @IBAction func saveVerboseConfigOption(_ sender: NSButton) {
+        UserDefaults.standard.set(sender.state == .on, forKey: TargetSettingsViewController.VerboseConfigKey)
+        saveConfig()
+    }
     @IBAction
     public func saveButtonValue(_ sender: NSButton) {
         saveValue(sender.state.rawValue == 1 ? "true" : "false", forIdentifier: sender.identifier!.rawValue)
@@ -97,6 +102,9 @@ class TargetSettingsViewController: NSViewController {
             entry[optionName] = []
         }
         ConfigController.sharedConfig[command] = entry
+        saveConfig()
+    }
+    func saveConfig() {
         let config = UserDefaults.standard.bool(forKey: TargetSettingsViewController.VerboseConfigKey) ?
             verboseConfig() :
             ConfigController.sharedConfig
