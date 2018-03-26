@@ -59,7 +59,7 @@ class StatusMenuController: NSObject {
         refresh(menu, currentDocument: currentDocument)
     }
     func shouldRefresh(_ currentDocument: XCDocumentable?) -> Bool {
-        if [document, currentDocument].flatMap({ $0 != nil }).count == 1 || document!.path != currentDocument!.path{
+        if [document, currentDocument].compactMap({ $0 != nil }).count == 1 || document!.path != currentDocument!.path{
             //either there was a document and there isn't one now, or there wasn't one and there is now
             //or they are different documents
             return true
@@ -83,8 +83,8 @@ class StatusMenuController: NSObject {
         return projectsHaveBeenModified([project])
     }
     func projectsHaveBeenModified(_ projects: [XCProject]) -> Bool{
-        let currentDates = projects.flatMap({ $0.schemeManagementModificationDate() })
-        return projects.flatMap({ $0.modificationDate }) == currentDates
+        let currentDates = projects.compactMap({ $0.schemeManagementModificationDate() })
+        return projects.compactMap({ $0.modificationDate }) == currentDates
     }
     func refresh(_ menu: NSMenu?, currentDocument: XCDocumentable) {
         guard let menuItem = menu?.items[safe: 1],
@@ -92,8 +92,8 @@ class StatusMenuController: NSObject {
             let menuItems = targetMenuItems(for: currentDocument)
             else { return }
         
-        let newTargets = menuItems.flatMap({ $0.representedObject as? XCTarget})
-        let oldTargets = submenu.items.flatMap({ $0.representedObject as? XCTarget })
+        let newTargets = menuItems.compactMap({ $0.representedObject as? XCTarget})
+        let oldTargets = submenu.items.compactMap({ $0.representedObject as? XCTarget })
         
         if newTargets != oldTargets { //we only want to update the menu if we have to
             submenu.removeAllItems()

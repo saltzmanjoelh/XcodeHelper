@@ -55,14 +55,14 @@ public class ConfigController: NSObject {
             let command = option.keys[0]
             guard let entry = config[command] else { continue }
             var commandHasValues = false
-            let entryStrings = entry.sorted(by:{$0.key < $1.key}).flatMap({ (arg: (key: String, value: [String])) in
+            let entryStrings = entry.sorted(by:{$0.key < $1.key}).compactMap { (arg: (key: String, value: [String])) -> String? in
                 let optionName = "  \(arg.key): "
                 let optionValue = arg.value.count == 1 ? arg.value[0] : arg.value.map({ "\n    - \($0)" }).joined(separator: "")
                 if !commandHasValues {
                     commandHasValues = optionValue.count > 0
                 }
                 return optionName+optionValue
-            })
+            }
             let verbose = UserDefaults.standard.bool(forKey: TargetSettingsViewController.VerboseConfigKey)
             let entryOutput = verbose ? entryStrings.joined(separator: "\n") : entryStrings.filter({ !$0.hasPrefix("#")}).joined(separator: "\n")
             if commandHasValues {

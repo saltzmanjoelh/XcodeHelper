@@ -22,7 +22,7 @@ extension FileManager {
     
     func recursiveContents(of directory: URL) -> [URL]? {
         guard let directoryContents = try? FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil , options: []) else { return nil }
-        let subdirectoryContents = directoryContents.flatMap({ (url: URL) -> [URL]? in
+        let subdirectoryContents = directoryContents.compactMap({ (url: URL) -> [URL]? in
             var URLs = [url]
             if url.hasDirectoryPath {
                 if let subURLs = recursiveContents(of: url) {

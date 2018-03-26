@@ -82,7 +82,7 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
     
     func getTargetNames(at projectPath: String) -> [String]? {
         guard let contents = FileManager.default.recursiveContents(of: URL(fileURLWithPath: projectPath)) else { return nil }
-        let targetNames: [String] = contents.flatMap{ return $0.pathExtension == "xcscheme" ? $0.lastPathComponent : nil }
+        let targetNames: [String] = contents.compactMap{ return $0.pathExtension == "xcscheme" ? $0.lastPathComponent : nil }
         return targetNames.count > 0 ? targetNames.sorted{ $0 < $1 } : nil
     }
     
@@ -131,7 +131,7 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
     }
     func getXcSchemeManagementURLs(at projectPath: String) -> [URL]? {
         guard let contents = FileManager.default.recursiveContents(of: URL(fileURLWithPath: projectPath)) else { return nil }
-        let urls: [URL] = contents.flatMap{ return $0.lastPathComponent == "xcschememanagement.plist" ? $0 : nil }
+        let urls: [URL] = contents.compactMap{ return $0.lastPathComponent == "xcschememanagement.plist" ? $0 : nil }
         return urls.count > 0 ? urls : nil
     }
     //returns an index of TargetName.xcscheme:OrderHint
