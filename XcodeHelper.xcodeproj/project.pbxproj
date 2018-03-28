@@ -38,6 +38,13 @@
 		3887BA891FBDEB92007A9135 /* NSView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3887BA881FBDEB92007A9135 /* NSView+Extensions.swift */; };
 		389D2D3F1E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
 		389D2D401E33E0480034E802 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D2D3E1E33E0480034E802 /* Command.swift */; };
+		38A639A1206A281700639EE2 /* S3Kit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3841386B2068DA9100FBF518 /* S3Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38A639A2206A281700639EE2 /* Yaml.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384138732068DA9100FBF518 /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38A639A3206A281700639EE2 /* CliRunnable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384138652068DA9100FBF518 /* CliRunnable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38A639A4206A281700639EE2 /* ProcessRunner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384138692068DA9100FBF518 /* ProcessRunner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38A639A5206A281700639EE2 /* XcodeHelperKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384138712068DA9100FBF518 /* XcodeHelperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38A639A6206A281700639EE2 /* XcodeHelperCliKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3841386D2068DA9100FBF518 /* XcodeHelperCliKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		38A639A7206A281700639EE2 /* DockerProcess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 384138672068DA9100FBF518 /* DockerProcess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38A7D48D1F0D30B900213122 /* ConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A7D48C1F0D30B900213122 /* ConfigController.swift */; };
 		38DC32711EDD02660095F5DA /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38DC32701EDD02660095F5DA /* ProcessRunner.framework */; };
 		38DFD6C91E2AB8F300C3D931 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */; };
@@ -142,6 +149,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				38A639A1206A281700639EE2 /* S3Kit.framework in CopyFiles */,
+				38A639A2206A281700639EE2 /* Yaml.framework in CopyFiles */,
+				38A639A3206A281700639EE2 /* CliRunnable.framework in CopyFiles */,
+				38A639A4206A281700639EE2 /* ProcessRunner.framework in CopyFiles */,
+				38A639A5206A281700639EE2 /* XcodeHelperKit.framework in CopyFiles */,
+				38A639A6206A281700639EE2 /* XcodeHelperCliKit.framework in CopyFiles */,
+				38A639A7206A281700639EE2 /* DockerProcess.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +206,10 @@
 		38E8F7941E471AF400097EEC /* TargetListControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetListControllerTests.swift; sourceTree = "<group>"; };
 		38E8F7961E48093B00097EEC /* XCTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTarget.swift; sourceTree = "<group>"; };
 		38E8F7991E4813BD00097EEC /* CollectionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
+		38ED9BBE206A0D170088C627 /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
+		38ED9BC0206A0D170088C627 /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
+		38ED9BC2206A0D170088C627 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38ED9BC3206A0D170088C627 /* XCSourceEditor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XCSourceEditor.entitlements; sourceTree = "<group>"; };
 		38EEE91F1E352D7900779CB9 /* Xcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xcode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,6 +270,7 @@
 				384E51A61DC6B36700FAC6C1 /* XcodeHelper */,
 				384E51B81DC6B36700FAC6C1 /* XcodeHelperTests */,
 				384E51CC1DC6B38500FAC6C1 /* SourceExtension */,
+				38ED9BBD206A0D170088C627 /* XCSourceEditor */,
 				384E51C91DC6B38500FAC6C1 /* Frameworks */,
 				384E51A51DC6B36700FAC6C1 /* Products */,
 			);
@@ -375,6 +394,17 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		38ED9BBD206A0D170088C627 /* XCSourceEditor */ = {
+			isa = PBXGroup;
+			children = (
+				38ED9BBE206A0D170088C627 /* SourceEditorExtension.swift */,
+				38ED9BC0206A0D170088C627 /* SourceEditorCommand.swift */,
+				38ED9BC2206A0D170088C627 /* Info.plist */,
+				38ED9BC3206A0D170088C627 /* XCSourceEditor.entitlements */,
+			);
+			path = XCSourceEditor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -439,7 +469,7 @@
 		384E519C1DC6B36700FAC6C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Joel Saltzman";
 				TargetAttributes = {
@@ -791,6 +821,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -816,6 +847,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -870,7 +902,7 @@
 				DEVELOPMENT_TEAM = A43A74F4MB;
 				INFOPLIST_FILE = SourceExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper.SourceExtension;
 				PRODUCT_NAME = "Xcode Helper";
 				SKIP_INSTALL = YES;
@@ -888,7 +920,7 @@
 				DEVELOPMENT_TEAM = A43A74F4MB;
 				INFOPLIST_FILE = SourceExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper.SourceExtension;
 				PRODUCT_NAME = "Xcode Helper";
 				SKIP_INSTALL = YES;

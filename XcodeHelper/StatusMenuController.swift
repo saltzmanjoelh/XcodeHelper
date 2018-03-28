@@ -19,6 +19,7 @@ class StatusMenuController: NSObject {
     public let statusItem: NSStatusItem
     var windowController: NSWindowController?
     let xcodeHelper = XcodeHelper()
+//    let logger = Logger()
     
     public let xcode: Xcode
     public var document: XCDocumentable?
@@ -38,7 +39,7 @@ class StatusMenuController: NSObject {
         }
         super.init()
         if let currentDocument = document {
-            refresh(statusItem.menu, currentDocument: currentDocument)
+            refreshMenu(statusItem.menu, currentDocument: currentDocument)
         }
     }
     
@@ -46,20 +47,22 @@ class StatusMenuController: NSObject {
     @objc
     func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
         if let currentDocument = document ?? xcode.getCurrentDocumentable(using: xcode.currentDocumentScript) {
-            refresh(statusItem.menu, currentDocument: currentDocument)
+            refreshMenu(statusItem.menu, currentDocument: currentDocument)
         }
         if let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue {
             print("got urlString \(urlString)")
         }
     }
     func menuNeedsUpdate(_ menu: NSMenu){
-        guard let currentDocument = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript),
-            shouldRefresh(currentDocument)
-            else { return }
-        refresh(menu, currentDocument: currentDocument)
+        let currentDocument = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)
+        if shouldRefresh(currentDocument) {
+            refreshMenu(menu, currentDocument: currentDocument)
+        }
+        
     }
+    //This func name should describe what it's refreshing, manual targets
     func shouldRefresh(_ currentDocument: XCDocumentable?) -> Bool {
-        if [document, currentDocument].compactMap({ $0 != nil }).count == 1 || document!.path != currentDocument!.path{
+        if String(describing: document) != String(describing: currentDocument){
             //either there was a document and there isn't one now, or there wasn't one and there is now
             //or they are different documents
             return true
@@ -79,27 +82,32 @@ class StatusMenuController: NSObject {
             }
             return false
         }
-        let project = currentDocument as! XCProject
-        return projectsHaveBeenModified([project])
+        if let project = currentDocument as? XCProject {
+            return projectsHaveBeenModified([project])
+        }
+        return false
     }
     func projectsHaveBeenModified(_ projects: [XCProject]) -> Bool{
         let currentDates = projects.compactMap({ $0.schemeManagementModificationDate() })
         return projects.compactMap({ $0.modificationDate }) == currentDates
     }
-    func refresh(_ menu: NSMenu?, currentDocument: XCDocumentable) {
-        guard let menuItem = menu?.items[safe: 1],
+    func refreshMenu(_ menu: NSMenu?, currentDocument: XCDocumentable?) {
+        if let menuItem = menu?.items[safe: 1],
             let submenu = menuItem.submenu,
-            let menuItems = targetMenuItems(for: currentDocument)
-            else { return }
-        
-        let newTargets = menuItems.compactMap({ $0.representedObject as? XCTarget})
-        let oldTargets = submenu.items.compactMap({ $0.representedObject as? XCTarget })
-        
-        if newTargets != oldTargets { //we only want to update the menu if we have to
-            submenu.removeAllItems()
-            for menuItem in menuItems {
-                submenu.addItem(menuItem)
-            }
+            let theDocument = currentDocument,
+            let menuItems = targetMenuItems(for: theDocument) {
+            //Using shouldRefresh to check this
+//            let newTargets = menuItems.compactMap({ $0.representedObject as? XCTarget})
+//            let oldTargets = submenu.items.compactMap({ $0.representedObject as? XCTarget })
+//            if newTargets != oldTargets { //we only want to update the menu if we have to
+                submenu.removeAllItems()
+                for menuItem in menuItems {
+                    submenu.addItem(menuItem)
+                }
+//            }
+        } else {
+            print("Remove all items 111")
+            menu?.removeAllItems()
         }
         self.document = currentDocument
         NotificationCenter.default.post(name: Xcode.DocumentChanged, object: currentDocument)
@@ -135,7 +143,6 @@ extension StatusMenuController: NSMenuDelegate {
         menu.items.last?.submenu = NSMenu()
         if let menuItems = targetMenuItems(for: document), //document was just set during init
             let subMenu = menu.items.last?.submenu {
-            subMenu.removeAllItems()
             for menuItem in menuItems {
                 subMenu.addItem(menuItem)
             }
