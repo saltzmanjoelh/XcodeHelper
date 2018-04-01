@@ -8,43 +8,27 @@
 
 import Foundation
 import XcodeKit
+import XcodeHelperKit
+import XcodeHelperCliKit
 import AppKit
 
+
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
-    
+//    let commandRunner = CommandRunner()
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
         defer {
-            print("done!!!")
             completionHandler(nil)
         }
-        
-        print("starting")
-        NSWorkspace.shared.open(URL.init(string: "xcodehelper://test123")!)
-        print("done")
-        
-        //the extension seems to have a problem with apple script getting the info from xcode so we have to simply open an xcode helper URL
-//        NSWorkspace.shared().open(URL.init(string: "xcodehelper://test123")!)
-        
-/*        guard let url = NSWorkspace.shared().urlForApplication(withBundleIdentifier: "com.joelsaltzman.XcodeHelper") else {
-            print("Couldn't find URL")
-            return
+        guard let commandIdentifier = invocation.commandIdentifier.components(separatedBy: ".").last/*,
+            let command = Command.init(rawValue: commandIdentifier)*/
+            else{
+                return
         }
-        
-        let options: NSWorkspaceLaunchOptions = NSWorkspaceLaunchOptions()
-        
-        var configuration: [String: Any] = [String: Any]()
-        configuration["foo"] = "bar"
-        configuration[NSWorkspaceLaunchConfigurationArguments] = ["foobar"]
-        configuration[NSWorkspaceLaunchConfigurationEnvironment] = ["innerFoo" : "innerBar"]
-        
-        do {
-            try NSWorkspace.shared().launchApplication(at: url, options: options, configuration: configuration)
-        } catch {
-            print("Failed")
-        }
-        return 
-*/ 
-        
+        //Xcode will only run sandboxed extensions. Can't do something like this because we won't have permission
+        //to read the files at the path
+//        commandRunner.run(command, atSourcePath: "/Users/joelsaltzman/Sites/hangar_rig/ethosManager")*/
+        //We use the main app which is not sandboxed to get file access
+        NSWorkspace.shared.open(URL.init(string: "xcodehelper://\(commandIdentifier)")!)
         
     }
     

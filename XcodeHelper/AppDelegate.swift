@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     var menuController: StatusMenuController?
     let xcode = Xcode()
+//    public var appIsActive: Bool = true
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
@@ -25,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         let statusItem = menuController!.statusItem
         
         //Handle xcodehelper:// urls
-        NSAppleEventManager.shared().setEventHandler(menuController!, andSelector: #selector(StatusMenuController.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
+        NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(AppDelegate.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
         
         //Statusbar Icon
         if let image = NSImage.init(named: NSImage.Name(rawValue: "AppIcon")) {
@@ -40,8 +41,28 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         //Refresh the config file so that the Pref menu controls update
         menuController!.refreshConfig()
     }
-    
-    
+//    func applicationWillResignActive(_ notification: Notification) {
+//        appIsActive = false
+//    }
+    //handle xcodehelper:// urls
+    @objc
+    func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
+        //        if let currentDocument = document ?? xcode.getCurrentDocumentable(using: xcode.currentDocumentScript) {
+        //            refreshMenu(statusItem.menu, currentDocument: currentDocument)
+        //        }
+//        if !appIsActive {
+//            for window in NSApp.windows {
+//                window.orderOut(nil)
+//            }
+//        }
+        //xcodehelper://com.joelsaltzman.XcodeHelper.SourceExtension.docker-build
+        if let identifier = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue,
+            let commandString = identifier.components(separatedBy: "//").last,
+            let command = Command.init(rawValue: commandString) {
+            menuController?.executeCommand(command)
+        }
+
+    }
     public func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
         return true
     }
@@ -50,7 +71,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         switch notification.activationType {
         case .contentsClicked:
             //show full log message
-            
+//            [[NSWorkspace sharedWorkspace] openFile:@"/Myfiles/README"
+//                withApplication:@"TextEdit"];
+            if let filePath = notification.identifier {
+                NSWorkspace.shared.openFile("\(filePath).log", withApplication: "Console")
+            }
             break
         case .actionButtonClicked:
             //silence

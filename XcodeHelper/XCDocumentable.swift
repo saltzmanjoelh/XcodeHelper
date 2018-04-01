@@ -9,7 +9,7 @@
 import Foundation
 import ProcessRunner
 
-protocol XCDocumentable {
+public protocol XCDocumentable {
     var path: String { get set }
     var currentUser: String? { get set }
     
@@ -26,13 +26,13 @@ extension XCDocumentable {
         return result.output?.trimmingCharacters(in: .newlines)
     }
     
-    func getXcUserStateContents(at xcUserStateUrl: URL) -> NSDictionary? {
+    public func getXcUserStateContents(at xcUserStateUrl: URL) -> NSDictionary? {
         guard FileManager.default.fileExists(atPath: xcUserStateUrl.path) else {
             return nil
         }
         return NSDictionary.init(contentsOfFile: xcUserStateUrl.path)
     }
-    func getCurrentTargetName(from XCUserStateContents: NSDictionary) -> String? {
+    public func getCurrentTargetName(from XCUserStateContents: NSDictionary) -> String? {
         guard let objects = XCUserStateContents.object(forKey: "$objects") as? NSArray else {
             return nil
         }

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Joel Saltzman. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 import CliRunnable
 import Yaml
 import XcodeHelperCliKit
@@ -20,7 +20,6 @@ import XcodeHelperCliKit
 
 public class ConfigController: NSObject {
     static let reloadNotification = Notification.Name.init("reloadConfig")
-    static let configFileName = ".xcodehelper"
     static var sharedConfig: [String: [String: [String]]] = [:] //[Command: [OptionName: [OPTION_VALUE]]]
     static var sourcePath: String?
     
@@ -36,7 +35,7 @@ public class ConfigController: NSObject {
     }
     public static func loadYaml(at sourcePath: String) -> [String: [String: [String]]]? {
         let helper = XCHelper()
-        let path = URL.init(fileURLWithPath: sourcePath).appendingPathComponent(ConfigController.configFileName).path
+        let path = URL.init(fileURLWithPath: sourcePath).appendingPathComponent(CommandRunner.configFileName).path
         do {
             if let config = try helper.parse(yamlConfigurationPath: path) {
                 return config
@@ -72,8 +71,7 @@ public class ConfigController: NSObject {
                 output += "#\(command):\n\(entryOutput)\n"
             }
         }
-        try? output.write(to: URL.init(fileURLWithPath: currentSourcePath).appendingPathComponent(ConfigController.configFileName),
-                          atomically: false,
-                          encoding: .utf8)
+        let url = URL.init(fileURLWithPath: currentSourcePath).appendingPathComponent(CommandRunner.configFileName)
+        try? output.write(to: url, atomically: false, encoding: .utf8)
     }
 }

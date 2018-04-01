@@ -1,0 +1,8 @@
+Status menu should show "No Projects" as disabled in the menu when Xcode has no project
+Manual Targets should show "No Targets" when disabled and no targets
+Docker Build should be at the top
+    Docker Build
+    Automatic Target
+    Manual Target ->
+    -----------------
+

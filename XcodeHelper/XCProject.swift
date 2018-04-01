@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import xcproj
 
-struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, XCItem {
+public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, XCItem {
     
     static let defaultImagePath = "/Applications/Xcode.app/Contents/Resources/xcode-project_Icon.icns"
     let managementPlistName = "xcschememanagement.plist"
     public var path: String
     public var currentUser: String? = nil
     public var modificationDate: NSDate?
+    public var xcproj: XcodeProj?
     
     
     public var hashValue: Int {
@@ -34,20 +36,21 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
         return URL(fileURLWithPath: path).deletingPathExtension().lastPathComponent
     }
     
-    var imagePath: String {
+    public var imagePath: String {
         return XCProject.defaultImagePath
     }
     
-    init(at path: String, currentUser: String?){
+    public init(at path: String, currentUser: String?){
         self.init(at: path)
         self.currentUser = currentUser
+        self.xcproj = try? XcodeProj.init(pathString: path)
     }
-    init(at path: String){
+    public init(at path: String){
         self.path = path
         self.modificationDate = schemeManagementModificationDate()
     }
     
-    func getXcUserStateUrl(for user: String, at path: String) -> URL? {
+    public func getXcUserStateUrl(for user: String, at path: String) -> URL? {
         return URL.init(fileURLWithPath: path).appendingPathComponent("project.xcworkspace/xcuserdata/\(user).xcuserdatad/UserInterfaceState.xcuserstate")
     }
     func getUserXcSchemesURL(_ user: String, at path: String) -> URL? {
@@ -68,10 +71,10 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
         }
         return urls.count > 0 ? urls : nil
     }
-    func getXcSchemeManagement(from userSchemeManagementURL: URL) -> NSDictionary? {
+    public func getXcSchemeManagement(from userSchemeManagementURL: URL) -> NSDictionary? {
         return NSDictionary.init(contentsOf: userSchemeManagementURL)
     }
-    func schemeManagementModificationDate() -> NSDate? {
+    public func schemeManagementModificationDate() -> NSDate? {
         guard let user = currentUser,
               let userSchemeURL = getUserXcSchemesURL(user, at: self.path)
               else { return nil }
@@ -81,9 +84,11 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
     
     
     func getTargetNames(at projectPath: String) -> [String]? {
-        guard let contents = FileManager.default.recursiveContents(of: URL(fileURLWithPath: projectPath)) else { return nil }
-        let targetNames: [String] = contents.compactMap{ return $0.pathExtension == "xcscheme" ? $0.lastPathComponent : nil }
-        return targetNames.count > 0 ? targetNames.sorted{ $0 < $1 } : nil
+//        guard let contents = FileManager.default.recursiveContents(of: URL(fileURLWithPath: projectPath)) else { return nil }
+//        let targetNames: [String] = contents.compactMap{ return $0.pathExtension == "xcscheme" ? $0.lastPathComponent : nil }
+//        return targetNames.count > 0 ? targetNames.sorted{ $0 < $1 } : nil
+        let targets = xcproj?.pbxproj.objects.nativeTargets.map({ $0.value.name }) ?? []
+        return targets
     }
     
     //returns an index of TargetName.xcscheme:XCTarget.TargetType
@@ -96,6 +101,19 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
         }
         return targetTypes
     }
+    //xcproj version
+    func getTargetTypes() -> [String: XCTarget.TargetType]? {
+        var targetTypes: [String:XCTarget.TargetType] = [:]
+        if let nativeTargets = xcproj?.pbxproj.objects.nativeTargets {
+            for target in nativeTargets {
+                if let fileExtension = target.value.productType?.fileExtension {
+                    targetTypes[target.value.name] = XCTarget.TargetType.init(from: fileExtension)
+                }
+            }
+        }
+        return targetTypes
+    }
+    
     func getTargetType(for scheme: String, from xcSchemesUrls: [URL]) -> XCTarget.TargetType? {
         let trimmedScheme = scheme.replacingOccurrences(of: "_^#shared#^_", with: "")
         for url in xcSchemesUrls {
@@ -156,18 +174,21 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
     
     func getOrderedTargets(at projectPath: String, from xcSchemesUrls: [URL], with schemeManagementURLs: [URL]) -> [XCTarget]? {
         guard let targetNames = getTargetNames(at: projectPath),
-              let targetTypes = getTargetTypes(for: targetNames, from: xcSchemesUrls)
+//              let targetTypes = getTargetTypes(for: targetNames, from: xcSchemesUrls)
+                let targetTypes = getTargetTypes()
               else { return nil }
         let orderHints = getOrderHints(from: schemeManagementURLs)
         
-        return targetNames.map{XCTarget(name: $0.replacingOccurrences(of: ".xcscheme", with: ""),
-                                        orderHint: orderHints[$0] ?? Int.max,
-                                        targetType: targetTypes[$0] ?? .unknown,
-                                        project: self)}
-                          .sorted(by: { $0.orderHint < $1.orderHint })
+        return targetNames.map{
+//            let type = $0.hasSuffix(.xcscheme) ?
+            XCTarget(name: $0.replacingOccurrences(of: ".xcscheme", with: ""),
+                    orderHint: orderHints[$0] ?? Int.max,
+                    targetType: targetTypes[$0] ?? .unknown,
+                    project: self)}
+          .sorted(by: { $0.orderHint < $1.orderHint })
     }
     
-    func orderedTargets() -> [XCTarget] {
+    public func orderedTargets() -> [XCTarget] {
         guard let user = currentUser,
               let schemeURLs = getXcSchemeURLs(user, at: path),
               let schemeManagementURLs = getXcSchemeManagementURLs(at: path),
@@ -177,7 +198,7 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
         return targets
     }
     
-    func currentTargetName() -> String? {
+    public func currentTargetName() -> String? {
         guard let user = currentUser,
               let url = getXcUserStateUrl(for: user, at: path),
               let contents = getXcUserStateContents(at: url) else {
@@ -185,7 +206,7 @@ struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, 
         }
         return getCurrentTargetName(from: contents)
     }
-    func currentTargetPath() -> String? {
+    public func currentTargetPath() -> String? {
         return self.path
     }
 }

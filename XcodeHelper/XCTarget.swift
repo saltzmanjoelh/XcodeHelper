@@ -7,19 +7,20 @@
 //
 
 import Foundation
+import xcproj
 
-struct XCTarget: CustomStringConvertible, XCItem, Equatable {
+public struct XCTarget: CustomStringConvertible, XCItem, Equatable {
     
-    let name: String
-    var orderHint: Int
-    var type: XCTarget.TargetType
-    let project: XCProject
+    public let name: String
+    public var orderHint: Int
+    public var type: XCTarget.TargetType
+    public let project: XCProject
     
     public var description: String {
         return name
     }
     
-    init(name: String, orderHint: Int, targetType: TargetType, project: XCProject) {
+    public init(name: String, orderHint: Int, targetType: TargetType, project: XCProject) {
         self.name = name
         self.orderHint = orderHint
         self.type = targetType
@@ -29,13 +30,17 @@ struct XCTarget: CustomStringConvertible, XCItem, Equatable {
     public func imageData() -> Data? {
         //TODO: add option to parse plist and get image name - ProjectOne/App/Info.plist CFBundleIconFile
         //TODO: add option to parse pbxproj and get AppIcon - ProjectOne/ProjectOne.xcodeproj/project.pbxproj ASSETCATALOG_COMPILER_APPICON_NAME
+        if type == .app {
+
+        }
         return try? Data.init(contentsOf: URL(fileURLWithPath: defaultImagePath(for: type)))
     }
     
-    enum TargetType: Equatable {
+    public enum TargetType: Equatable {
         case app
         case binary
         case framework
+        case test
         case appExtension
         case bundle
         case xpc
@@ -50,7 +55,7 @@ struct XCTarget: CustomStringConvertible, XCItem, Equatable {
         case quartzPlugin
         case unknown
         
-        init(from extensionName: String){
+        public init(from extensionName: String){
             switch extensionName {
             case "app":
                 self = .app
@@ -58,6 +63,8 @@ struct XCTarget: CustomStringConvertible, XCItem, Equatable {
                 self = .binary
             case "framework":
                 self = .framework
+            case "xctest":
+                self = .test
             case "appex":
                 self = .appExtension
             case "bundle":
@@ -90,19 +97,21 @@ struct XCTarget: CustomStringConvertible, XCItem, Equatable {
     }
     
     
-    var imagePath: String {
+    public var imagePath: String {
         get {
             return defaultImagePath(for: self.type)
         }
     }
-    func defaultImagePath(for targetType: TargetType) -> String {
+    public func defaultImagePath(for targetType: TargetType) -> String {
         switch targetType {
         case .app:
-            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Application/Cocoa Application.xctemplate/TemplateIcon.icns"
+            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Application/Cocoa App.xctemplate/TemplateIcon@2x.png"
         case .binary:
-            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Application/Command Line Tool.xctemplate/TemplateIcon.icns"
+            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Application/Command Line Tool.xctemplate/TemplateIcon@2x.png"
         case .framework:
             return "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/Xcode/Templates/Project Templates/iOS/Framework & Library/Cocoa Touch Framework.xctemplate/TemplateIcon.icns"
+        case .test:
+            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Test/macOS Unit Testing Bundle.xctemplate/TemplateIcon@2x.png"
         case .appExtension:
             return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Application Extension/Xcode Source Editor Extension.xctemplate/TemplateIcon@2x.png"
         case .bundle:
@@ -112,12 +121,12 @@ struct XCTarget: CustomStringConvertible, XCItem, Equatable {
         case .xpc:
             return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Framework & Library/XPC Service.xctemplate/TemplateIcon.icns"
         case .appleScriptAction:
-            return defaultImagePath(for: .app)
+            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Other/AppleScript App.xctemplate/TemplateIcon@2x.png"
         case .metalLib:
-            return defaultImagePath(for: .staticLib)
+            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Framework & Library/Metal Library.xctemplate/TemplateIcon@2x.png"
         case .kernelExtension, .plugin, .prefPane, .screenSaver, .spotlightImporter, .quartzPlugin:
-            return defaultImagePath(for: .bundle)
-        default:
+            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Other/Generic Kernel Extension.xctemplate/TemplateIcon.png"
+        case .unknown:
             return "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Resources/BrokenLink.icns"
         }
     }

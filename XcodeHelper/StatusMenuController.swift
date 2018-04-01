@@ -10,6 +10,7 @@ import AppKit
 import XcodeHelperKit
 import DockerProcess
 import XcodeHelperCliKit
+import ProcessRunner
 
 //Populates the status menu and handles the commands
 
@@ -17,8 +18,10 @@ import XcodeHelperCliKit
 class StatusMenuController: NSObject {
     
     public let statusItem: NSStatusItem
+    public let xcodeHelper = XcodeHelper()
     var windowController: NSWindowController?
-    let xcodeHelper = XcodeHelper()
+    let commandRunner = CommandRunner()
+    
 //    let logger = Logger()
     
     public let xcode: Xcode
@@ -43,16 +46,6 @@ class StatusMenuController: NSObject {
         }
     }
     
-    //handle xcodehelper:// urls
-    @objc
-    func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
-        if let currentDocument = document ?? xcode.getCurrentDocumentable(using: xcode.currentDocumentScript) {
-            refreshMenu(statusItem.menu, currentDocument: currentDocument)
-        }
-        if let urlString = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue {
-            print("got urlString \(urlString)")
-        }
-    }
     func menuNeedsUpdate(_ menu: NSMenu){
         let currentDocument = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)
         if shouldRefresh(currentDocument) {
@@ -152,7 +145,7 @@ extension StatusMenuController: NSMenuDelegate {
         //Commands
         for command in Command.allCommands {
             menu.addItem(withTitle: command.title,
-                         action: #selector(executeCommand(_:)),
+                         action: #selector(menuItemClicked(_:)),
                          keyEquivalent: "")
             menu.items.last?.target = self
             menu.items.last?.representedObject = command
@@ -182,6 +175,8 @@ extension StatusMenuController: NSMenuDelegate {
                 if let imageData = target.imageData() {
                     menuItems.last?.image = NSImage.init(data: imageData)
                     menuItems.last?.image?.size = NSMakeSize(16.0, 16.0)
+                }else{
+                    print("NO IMAGE?")
                 }
             }
         }
@@ -201,26 +196,15 @@ extension StatusMenuController: NSMenuDelegate {
         }
     }
     @objc
-    func executeCommand(_ sender: NSMenuItem) {
-        guard let sourcePath = getSourcePath(),
-            let command = sender.representedObject as? Command
-            else { return }
-        let configPath = URL(fileURLWithPath: sourcePath).appendingPathComponent(ConfigController.configFileName).path
-        DispatchQueue.global().async {
-            do {
-                FileManager.default.changeCurrentDirectoryPath(sourcePath)
-                let xchelper = XCHelper()
-                try xchelper.run(arguments: [sourcePath, //assuming executing binary from sourcePath
-                                             command.rawValue],
-                                 environment: [:],
-                                 yamlConfigurationPath: configPath)
-                self.xcodeHelper.logger.log("Done", for: command)
-            }catch let e{
-                self.xcodeHelper.logger.log(String(describing: e), for: nil)
-            }
+    func menuItemClicked(_ sender: NSMenuItem) {
+        if let command = sender.representedObject as? Command {
+            executeCommand(command)
         }
     }
-
+    public func executeCommand(_ command: Command) {
+        guard let sourcePath = getSourcePath() else { return }
+        commandRunner.run(command, atSourcePath: sourcePath)
+    }
 }
 
 // MARK: handle commands

@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct XCWorkspace: XCDocumentable, CustomStringConvertible {
-    var path: String
-    var currentUser: String?
-    var projects: [XCProject]?
+public struct XCWorkspace: XCDocumentable, CustomStringConvertible {
+    public var path: String
+    public var currentUser: String?
+    public var projects: [XCProject]?
     
     public var description: String {
         return URL(fileURLWithPath: path).deletingPathExtension().lastPathComponent
@@ -20,16 +20,16 @@ struct XCWorkspace: XCDocumentable, CustomStringConvertible {
         return lhs.path == rhs.path
     }
     
-    init(at path: String, currentUser: String?){
+    public init(at path: String, currentUser: String?){
         self.init(at: path)
         self.currentUser = currentUser
         self.projects = getProjects(from: self.path)
     }
-    init(at path: String){
+    public init(at path: String){
         self.path = path
         
     }
-    func getXcUserStateUrl(for user: String, at path: String) -> URL? {
+    public func getXcUserStateUrl(for user: String, at path: String) -> URL? {
         return URL.init(fileURLWithPath: path).appendingPathComponent("xcuserdata/\(user).xcuserdatad/UserInterfaceState.xcuserstate")
     }
     func getProjects(from workspacePath: String) -> [XCProject]? {
@@ -54,13 +54,13 @@ struct XCWorkspace: XCDocumentable, CustomStringConvertible {
         }
         return projectPaths.map{ XCProject(at: $0, currentUser: user) }
     }
-    func orderedTargets() -> [XCTarget] {
+    public func orderedTargets() -> [XCTarget] {
         guard let projects = getProjects(from: path) else {
             return []
         }
         return projects.map({ $0.orderedTargets() }).flatMap({ $0 }).sorted(by: { $0.orderHint < $1.orderHint })
     }
-    func currentTargetName() -> String? {
+    public func currentTargetName() -> String? {
         //get current project.currentTargetName()
         //for now, we are just going to find the first target that matches, will try to find a better way to resolve duplicate target names later
         guard let user = currentUser,
@@ -70,7 +70,7 @@ struct XCWorkspace: XCDocumentable, CustomStringConvertible {
         }
         return getCurrentTargetName(from: contents)
     }
-    func currentTargetPath() -> String? {
+    public func currentTargetPath() -> String? {
         return getProjects(from: self.path)?.first(where: { $0.currentTargetName() == currentTargetName() })?.path
     }
 }

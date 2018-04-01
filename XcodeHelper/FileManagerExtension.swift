@@ -10,7 +10,7 @@ import Foundation
 
 extension FileManager {
     
-    func modificationDateOfFile(path:String) -> NSDate? {
+    public func modificationDateOfFile(path:String) -> NSDate? {
         guard let attributes = try? self.attributesOfItem(atPath: path) else { return nil }
         return attributes[FileAttributeKey.modificationDate] as? NSDate
     }
@@ -20,7 +20,7 @@ extension FileManager {
 //        return attributes[FileAttributeKey.creationDate] as? NSDate
 //    }
     
-    func recursiveContents(of directory: URL) -> [URL]? {
+    public func recursiveContents(of directory: URL) -> [URL]? {
         guard let directoryContents = try? FileManager.default.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil , options: []) else { return nil }
         let subdirectoryContents = directoryContents.compactMap({ (url: URL) -> [URL]? in
             var URLs = [url]

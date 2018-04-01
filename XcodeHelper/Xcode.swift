@@ -11,16 +11,16 @@
 import Foundation
 import ProcessRunner
 
-protocol XCItem: CustomStringConvertible {
+public protocol XCItem: CustomStringConvertible {
     var imagePath: String { get }
 }
 
-struct Xcode {
-    static let DocumentChanged: NSNotification.Name = NSNotification.Name(rawValue: "DocumentChanged")
-    let currentDocumentScript: NSAppleScript
-    let currentUser: String = XCWorkspace.getCurrentUser()!
+public struct Xcode {
+    public static let DocumentChanged: NSNotification.Name = NSNotification.Name(rawValue: "DocumentChanged")
+    public let currentDocumentScript: NSAppleScript
+    public let currentUser: String = XCWorkspace.getCurrentUser()!
     
-    init() {
+    public init() {
         currentDocumentScript = NSAppleScript(source: """
         on appIsRunning(appName)
             tell application "System Events" to (name of processes) contains appName
@@ -38,7 +38,7 @@ struct Xcode {
         """)!
     }
 
-    func getCurrentDocumentPath(using script: NSAppleScript) -> String? {
+    public func getCurrentDocumentPath(using script: NSAppleScript) -> String? {
         var error: NSDictionary?
         let output: NSAppleEventDescriptor = script.executeAndReturnError(&error)
         if (error != nil) {
@@ -47,7 +47,7 @@ struct Xcode {
         }
         return output.stringValue
     }
-    func getCurrentDocumentable(using script: NSAppleScript) -> XCDocumentable? {
+    public func getCurrentDocumentable(using script: NSAppleScript) -> XCDocumentable? {
         guard let path = getCurrentDocumentPath(using: script) else {
             return nil
         }
@@ -59,7 +59,7 @@ struct Xcode {
     private func projectIsWorkspace(projectPath: String) -> Bool {
         return projectPath.hasSuffix("xcworkspace")
     }
-    func getProjects(from document: XCDocumentable) -> [XCProject] {
+    public func getProjects(from document: XCDocumentable) -> [XCProject] {
         if let workspace = document as? XCWorkspace, let projects = workspace.projects {
             return projects
         }else if let project = document as? XCProject {
