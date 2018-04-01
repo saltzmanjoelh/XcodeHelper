@@ -8,8 +8,6 @@
 
 import Foundation
 import XcodeKit
-import XcodeHelperKit
-import XcodeHelperCliKit
 import AppKit
 
 
