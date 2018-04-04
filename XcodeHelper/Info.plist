@@ -29,7 +29,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>LSUIElement</key>
-	<false/>
+	<true/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -37,7 +37,7 @@
 			<string>XcodeHelper URL</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>xcodehelper</string>
+				<string>.xcodehelper</string>
 			</array>
 		</dict>
 	</array>

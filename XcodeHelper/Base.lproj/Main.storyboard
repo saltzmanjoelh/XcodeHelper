@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14105" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14105"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -795,7 +794,7 @@
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="166" minWidth="40" maxWidth="1000" id="n7I-cx-hvH">
+                                                <tableColumn identifier="" width="166" minWidth="40" maxWidth="1000" id="n7I-cx-hvH">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1443,6 +1442,11 @@
                             <constraint firstItem="j6N-K6-3tJ" firstAttribute="trailing" secondItem="qdt-3r-qM8" secondAttribute="trailing" id="yjB-34-qYy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="majorTagField" destination="2W0-ZJ-XRn" id="Yvv-U4-yfU"/>
+                        <outlet property="minorTagField" destination="tyd-99-tKa" id="fyj-gt-TSe"/>
+                        <outlet property="patchTagField" destination="3Uj-OP-JcI" id="e2T-cD-o8C"/>
+                    </connections>
                 </viewController>
                 <customObject id="tww-3F-stM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="NsK-eg-nxv"/>

@@ -319,11 +319,7 @@
 				380B81621E269262003E0951 /* Defaultable.swift */,
 				387D8D6120703769006ABD14 /* CommandRunner.swift */,
 				387D8D732070378A006ABD14 /* Extensions */,
-				387D8D6420703769006ABD14 /* XCDocumentable.swift */,
-				387D8D6820703769006ABD14 /* Xcode.swift */,
-				387D8D6520703769006ABD14 /* XCProject.swift */,
-				387D8D6620703769006ABD14 /* XCTarget.swift */,
-				387D8D6920703769006ABD14 /* XCWorkspace.swift */,
+				38C73F642072842B002F0BD8 /* Xcode */,
 				38E8F7491E468F0C00097EEC /* Targets */,
 				3853F83E1E64BD4300A39C1A /* Settings */,
 				384E51AB1DC6B36700FAC6C1 /* Assets.xcassets */,
@@ -397,6 +393,18 @@
 				387D8D6220703769006ABD14 /* NSView+Extensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		38C73F642072842B002F0BD8 /* Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				387D8D6420703769006ABD14 /* XCDocumentable.swift */,
+				387D8D6820703769006ABD14 /* Xcode.swift */,
+				387D8D6520703769006ABD14 /* XCProject.swift */,
+				387D8D6620703769006ABD14 /* XCTarget.swift */,
+				387D8D6920703769006ABD14 /* XCWorkspace.swift */,
+			);
+			name = Xcode;
 			sourceTree = "<group>";
 		};
 		38E8F7491E468F0C00097EEC /* Targets */ = {

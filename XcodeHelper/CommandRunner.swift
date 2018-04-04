@@ -32,17 +32,20 @@ public struct CommandRunner {
                                                environment: [:],
                                                yamlConfigurationPath: configPath)
                 if let uuid = self.xcodeHelper.logger.log("Done", for: command, logsDirectory: logsDirectory) {
-                    try self.storeProcessResults(results, logsDirectory: logsDirectory, uuid: uuid)
+                    let log = self.logStringFromProcessResults(results)
+                    try self.storeLog(log, inDirectory: logsDirectory, uuid: uuid)
                 }
             }catch let e{
-                self.xcodeHelper.logger.error(String(describing: e), for: command)
+                let errorLog = String(describing: e)
+                if let errorUuid = self.xcodeHelper.logger.error(errorLog, for: command, logsDirectory: logsDirectory) {
+                    try? self.storeLog(errorLog, inDirectory: logsDirectory, uuid: errorUuid)
+                }
             }
         }
     }
-    func storeProcessResults(_ processResults: [ProcessResult], logsDirectory: URL, uuid: UUID) throws {
+    func storeLog(_ log: String, inDirectory logsDirectory: URL, uuid: UUID) throws {
         try prepareLogsDirectory(logsDirectory.path)
         try removeOldLogs(logsDirectory.path)
-        let log = logStringFromProcessResults(processResults)
         FileManager.default.createFile(atPath: logsDirectory.appendingPathComponent("\(uuid.uuidString).log").path,
                                        contents: log.data(using: .utf8),
                                        attributes: nil)

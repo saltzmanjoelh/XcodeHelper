@@ -15,6 +15,12 @@ class TargetSettingsViewController: NSViewController {
     public static let VerboseConfigKey = "VerboseConfigFile"
     var configController = ConfigController()
     
+    @IBOutlet
+    var majorTagField: NSTextField?
+    @IBOutlet
+    var minorTagField: NSTextField?
+    @IBOutlet
+    var patchTagField: NSTextField?
     
     override func viewDidLoad() {
         view.wantsLayer = true
@@ -37,6 +43,27 @@ class TargetSettingsViewController: NSViewController {
                 }
             }
         }
+        
+        updateGitTagFields(xchelper)
+    }
+    func updateGitTagFields(_ xchelper: XCHelper) {
+        var majorTag = ""
+        var minorTag = ""
+        var patchTag = ""
+        guard var helper = xchelper.xcodeHelpable as? XcodeHelper else { return }
+        helper.logger.logLevel = .none
+        if let currentSourcePath = ConfigController.sourcePath,
+            let gitTag = try? helper.getGitTag(at: currentSourcePath, shouldLog: false) {
+            let components = gitTag.components(separatedBy: ".")
+            if components.count == 3 {
+                majorTag = components[0]
+                minorTag = components[1]
+                patchTag = components[2]
+            }
+        }
+        majorTagField?.objectValue = majorTag
+        minorTagField?.objectValue = minorTag
+        patchTagField?.objectValue = patchTag
     }
     public func updateControl(_ control: NSControl, using value: String?) {
         //popupbutton, checkbox, textfield

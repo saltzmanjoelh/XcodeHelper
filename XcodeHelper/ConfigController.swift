@@ -21,7 +21,7 @@ import XcodeHelperCliKit
 public class ConfigController: NSObject {
     static let reloadNotification = Notification.Name.init("reloadConfig")
     static var sharedConfig: [String: [String: [String]]] = [:] //[Command: [OptionName: [OPTION_VALUE]]]
-    static var sourcePath: String?
+    public static var sourcePath: String?
     
     public static func reloadConfig(at sourcePath: String) {
         ConfigController.sourcePath = sourcePath
