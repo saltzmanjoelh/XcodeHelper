@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Helper.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
-		</dict>
 		<key>SourceExtension.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -43,16 +38,6 @@
 			<true/>
 		</dict>
 		<key>387F2CFE2077F9DF00D93881</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>38DBF2C120751E2D008F3064</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>38ED9BBA206A0D170088C627</key>
 		<dict>
 			<key>primary</key>
 			<true/>

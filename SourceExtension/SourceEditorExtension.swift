@@ -16,6 +16,17 @@ class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     func extensionDidFinishLaunching() {
         // If your extension needs to do any work at launch, implement this optional method.
         print("extensionDidFinishLaunching")
+        DispatchQueue.main.async {
+            
+            let script = NSAppleScript(source: "display notification \"SourceEditorCommand\" with title \"SourceEditorCommand\"")!
+            print(script)
+            var error: NSDictionary?
+            let output: NSAppleEventDescriptor = script.executeAndReturnError(&error)
+            print(output)
+            if (error != nil) {
+                print("error: \(String(describing: error))")
+            }
+        }
     }
     
     

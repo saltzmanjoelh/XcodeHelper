@@ -1,14 +1,17 @@
--- Bugs --
-Status menu should show "No Projects" as disabled in the menu when Xcode has no project
-Manual Targets should show "No Targets" when disabled and no targets
-Docker Build should be at the top
-    Docker Build
-    Automatic Target
-    Manual Target ->
-    -----------------
+-- TODO --
+Got Update Packages - Docker working with XPC. Make sure that everything else does as well
+Replace Build in Docker with "Add Docker Build Phase"
+Remove Symlink Dependencies?
+Provide a browser for create archive or specify env vars
 
-
--- Features --
+-- Backlog --
 There should be a Console tab in the main window that shows output
     it should be html based so maybe just a webview
     errors are red, don't show empty error output like we currently do
+Replace disabled name of current target with app image
+
+-- Bugs --
+
+
+
+

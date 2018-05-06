@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -21,20 +21,6 @@
                ReferencedContainer = "container:XcodeHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "384E51A31DC6B36700FAC6C1"
-               BuildableName = "XcodeHelper.app"
-               BlueprintName = "XcodeHelper"
-               ReferencedContainer = "container:XcodeHelper.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -47,9 +33,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "384E51C71DC6B38500FAC6C1"
-            BuildableName = "Xcode Helper.appex"
-            BlueprintName = "SourceExtension"
+            BlueprintIdentifier = "384E51A31DC6B36700FAC6C1"
+            BuildableName = "XcodeHelper.app"
+            BlueprintName = "XcodeHelper"
             ReferencedContainer = "container:XcodeHelper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -67,20 +53,6 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "2">
-      <RemoteRunnable
-         runnableDebuggingMode = "0"
-         BundleIdentifier = "com.apple.dt.Xcode"
-         RemotePath = "/Applications/Xcode.app">
-      </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "384E51A31DC6B36700FAC6C1"
-            BuildableName = "XcodeHelper.app"
-            BlueprintName = "XcodeHelper"
-            ReferencedContainer = "container:XcodeHelper.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -91,16 +63,6 @@
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "2">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "384E51A31DC6B36700FAC6C1"
-            BuildableName = "XcodeHelper.app"
-            BlueprintName = "XcodeHelper"
-            ReferencedContainer = "container:XcodeHelper.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

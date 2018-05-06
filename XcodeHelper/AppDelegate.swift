@@ -36,14 +36,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         }
         
         //Statusbar Menu
-        statusItem.menu = menuController!.newStatusMenu()
+        statusItem.menu = menuController!.refreshMenu(nil, currentDocument: nil)
         
         //Refresh the config file so that the Pref menu controls update
         menuController!.refreshConfig()
+        
+//        if var helper = menuController?.xcodeHelper {
+//            helper.logger.postMessage("AppDelegate", withTitle: "AppDelegate")
+//        }
     }
 //    func applicationWillResignActive(_ notification: Notification) {
 //        appIsActive = false
 //    }
+    
+    //We use the extension to activate the main app because Xcode requires sandboxed extensions.
+    //We bypass sandboxing with the main app so that we can have better access to the filesystem
     //handle xcodehelper:// urls
     @objc
     func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
@@ -55,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 //                window.orderOut(nil)
 //            }
 //        }
+        
         //xcodehelper://com.joelsaltzman.XcodeHelper.SourceExtension.docker-build
         if let identifier = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue,
             let commandString = identifier.components(separatedBy: "//").last,

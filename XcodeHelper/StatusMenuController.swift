@@ -29,7 +29,7 @@ class StatusMenuController: NSObject {
     var projectModificationDate: NSDate? //if the document is an XCProject, this is the modification date from the scheme management plist
     var target: XCTarget? {
         didSet {
-            updateSelectedTarget()
+//            updateSelectedTarget()
         }
     }
     
@@ -41,20 +41,20 @@ class StatusMenuController: NSObject {
             self.windowController = windowController
         }
         super.init()
-        if let currentDocument = document {
-            refreshMenu(statusItem.menu, currentDocument: currentDocument)
-        }
+//        if let currentDocument = document {
+            refreshMenu(statusItem.menu, currentDocument: document)
+//        }
     }
     
     func menuNeedsUpdate(_ menu: NSMenu){
         let currentDocument = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)
-        if shouldRefresh(currentDocument) {
+        if targetDidChange(currentDocument) {
             refreshMenu(menu, currentDocument: currentDocument)
         }
         
     }
     //This func name should describe what it's refreshing, manual targets
-    func shouldRefresh(_ currentDocument: XCDocumentable?) -> Bool {
+    func targetDidChange(_ currentDocument: XCDocumentable?) -> Bool {
         if String(describing: document) != String(describing: currentDocument){
             //either there was a document and there isn't one now, or there wasn't one and there is now
             //or they are different documents
@@ -84,8 +84,10 @@ class StatusMenuController: NSObject {
         let currentDates = projects.compactMap({ $0.schemeManagementModificationDate() })
         return projects.compactMap({ $0.modificationDate }) == currentDates
     }
-    func refreshMenu(_ menu: NSMenu?, currentDocument: XCDocumentable?) {
-        if let menuItem = menu?.items[safe: 1],
+    @discardableResult
+    func refreshMenu(_ menu: NSMenu?, currentDocument: XCDocumentable?) -> NSMenu {
+        self.document = currentDocument
+        /*if let menuItem = menu?.items[safe: 1],
             let submenu = menuItem.submenu,
             let theDocument = currentDocument,
             let menuItems = targetMenuItems(for: theDocument) {
@@ -101,9 +103,33 @@ class StatusMenuController: NSObject {
         } else {
             print("Remove all items 111")
             menu?.removeAllItems()
+        }*/
+        let returnMenu = menu ?? NSMenu()
+        returnMenu.delegate = self
+        returnMenu.removeAllItems()
+        if self.document == nil {
+            //If there is no document, remove all items and show "No Projects Are Open"
+            returnMenu.addItem(withTitle: "No Projects Are Open", action: nil, keyEquivalent: "")
+        }else{
+            //Commands
+            for command in Command.allCommands {
+                returnMenu.addItem(withTitle: command.title,
+                                   action: #selector(menuItemClicked(_:)),
+                                   keyEquivalent: "")
+                returnMenu.items.last?.target = self
+                returnMenu.items.last?.representedObject = command
+            }
         }
-        self.document = currentDocument
+        
+        // Prefs and Quit
+        returnMenu.addItem(NSMenuItem.separator())
+        returnMenu.addItem(withTitle: "Preferences", action: #selector(StatusMenuController.preferences), keyEquivalent: ",")
+        returnMenu.items.last?.target = self
+        returnMenu.addItem(NSMenuItem.separator())
+        returnMenu.addItem(withTitle: "Quit", action: #selector(StatusMenuController.quit), keyEquivalent: "q")
+        returnMenu.items.last?.target = self
         NotificationCenter.default.post(name: Xcode.DocumentChanged, object: currentDocument)
+        return returnMenu
     }
     func refreshConfig() {
         if let sourcePath = self.document?.getSourcePath() {
@@ -121,12 +147,12 @@ class StatusMenuController: NSObject {
 }
 // MARK: prepare the menu
 extension StatusMenuController: NSMenuDelegate {
-    
+    /*
     func newStatusMenu() -> NSMenu {
         let menu = NSMenu()
         menu.delegate = self
         
-        //Auto Target
+        /*//Auto Target
         menu.addItem(withTitle: "Automatic Target", action: #selector(StatusMenuController.selectTarget), keyEquivalent: "")
         menu.items.last!.state = NSControl.StateValue.on
         menu.items.last!.target = self
@@ -140,7 +166,7 @@ extension StatusMenuController: NSMenuDelegate {
                 subMenu.addItem(menuItem)
             }
         }
-        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem.separator())*/
         
         //Commands
         for command in Command.allCommands {
@@ -159,9 +185,9 @@ extension StatusMenuController: NSMenuDelegate {
         menu.addItem(withTitle: "Quit", action: #selector(StatusMenuController.quit), keyEquivalent: "q")
         menu.items.last?.target = self
         return menu
-    }
+    }*/
 
-    func targetMenuItems(for document: XCDocumentable?) -> [NSMenuItem]? {
+    /*func targetMenuItems(for document: XCDocumentable?) -> [NSMenuItem]? {
         guard let theDocument = document else { return nil }
         
         var menuItems = [NSMenuItem]()
@@ -194,7 +220,7 @@ extension StatusMenuController: NSMenuDelegate {
                 }
             }
         }
-    }
+    }*/
     @objc
     func menuItemClicked(_ sender: NSMenuItem) {
         if let command = sender.representedObject as? Command {
@@ -202,8 +228,16 @@ extension StatusMenuController: NSMenuDelegate {
         }
     }
     public func executeCommand(_ command: Command) {
-        guard let sourcePath = getSourcePath() else { return }
-        commandRunner.run(command, atSourcePath: sourcePath)
+//        commandRunner.run(commandIdentifier: command.rawValue)
+        let xpcConnection = NSXPCConnection.init(serviceName: "com.joelsaltzman.xchelperxpc")
+        xpcConnection.remoteObjectInterface = NSXPCInterface.init(with: XchelperServiceable.self)
+        xpcConnection.exportedObject = self
+        xpcConnection.resume()
+        if let service = xpcConnection.remoteObjectProxy as? XchelperServiceable {
+            service.run(commandIdentifier:  command.rawValue) { (result) in
+                print(result)
+            }
+        }
     }
 }
 
@@ -211,6 +245,7 @@ extension StatusMenuController: NSMenuDelegate {
 extension StatusMenuController {
     @IBAction
     func preferences(sender: Any){
+        print("Logging: \(UserDefaults.standard.bool(forKey: "XcodeHelperKit.Logging"))")
         NSApplication.shared.activate(ignoringOtherApps: true)
         refreshConfig()
         DispatchQueue.main.async {

@@ -12,36 +12,52 @@ import XcodeHelperCliKit
 import CliRunnable
 import ProcessRunner
 
-public struct CommandRunner {
+public class CommandRunner: XchelperServiceable {
     public static let configFileName = ".xcodehelper"
     public static let logsSubDirectory = ".xcodehelper_logs"
     public let xcodeHelper = XcodeHelper()
+    public let xcode = Xcode()
     
     public init(){}
     
-    public func run(_ command: Command, atSourcePath sourcePath: String) {
-        guard let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(CommandRunner.logsSubDirectory)
+    public func run(commandIdentifier: String, withReply: (Any) -> ()) {
+        guard let command = Command.init(rawValue: commandIdentifier),
+            let sourcePath = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)?.getSourcePath(),
+            let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(CommandRunner.logsSubDirectory)
             else { return }
         let configPath = URL(fileURLWithPath: sourcePath).appendingPathComponent(CommandRunner.configFileName).path
-        DispatchQueue.global().async {
+//        DispatchQueue.global().async {
             do {
                 FileManager.default.changeCurrentDirectoryPath(sourcePath)
                 let xchelper = XCHelper()
-                let results = try xchelper.run(arguments: [sourcePath, //assuming executing binary from sourcePath
+                let processResults = try xchelper.run(arguments: [sourcePath, //assuming executing binary from sourcePath
                     command.rawValue],
                                                environment: [:],
                                                yamlConfigurationPath: configPath)
+                
                 if let uuid = self.xcodeHelper.logger.log("Done", for: command, logsDirectory: logsDirectory) {
-                    let log = self.logStringFromProcessResults(results)
+                    let log = self.logStringFromProcessResults(processResults)
                     try self.storeLog(log, inDirectory: logsDirectory, uuid: uuid)
                 }
+                var results = [String: String]()
+                if let output = processResults.first?.output {
+                    results["output"] = output
+                }
+                if let error = processResults.first?.error {
+                    results["error"] = error
+                }
+                if let exitCode = processResults.first?.exitCode {
+                    results["exitCode"] = "\(exitCode)"
+                }
+                withReply(results)
             }catch let e{
                 let errorLog = String(describing: e)
                 if let errorUuid = self.xcodeHelper.logger.error(errorLog, for: command, logsDirectory: logsDirectory) {
                     try? self.storeLog(errorLog, inDirectory: logsDirectory, uuid: errorUuid)
                 }
+                withReply(errorLog)
             }
-        }
+//        }
     }
     func storeLog(_ log: String, inDirectory logsDirectory: URL, uuid: UUID) throws {
         try prepareLogsDirectory(logsDirectory.path)
