@@ -1,1 +1,4 @@
 XcodeHelper.xcodeproj/project.xcworkspace/xcuserdata/*
+Dependencies/.build
+Dependencies/Packages
+Dependencies/*.xcodeproj

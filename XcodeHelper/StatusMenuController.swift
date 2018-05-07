@@ -118,6 +118,7 @@ class StatusMenuController: NSObject {
                                    keyEquivalent: "")
                 returnMenu.items.last?.target = self
                 returnMenu.items.last?.representedObject = command
+                returnMenu.items.last?.toolTip = command.toolTip
             }
         }
         
