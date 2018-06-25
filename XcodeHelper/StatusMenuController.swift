@@ -118,11 +118,14 @@ class StatusMenuController: NSObject {
                                    keyEquivalent: "")
                 returnMenu.items.last?.target = self
                 returnMenu.items.last?.representedObject = command
+//                returnMenu.items.last?.toolTip = command.description
             }
         }
         
         // Prefs and Quit
         returnMenu.addItem(NSMenuItem.separator())
+        returnMenu.addItem(withTitle: "Show Logs", action: #selector(StatusMenuController.showLogs), keyEquivalent: "")
+        returnMenu.items.last?.target = self
         returnMenu.addItem(withTitle: "Preferences", action: #selector(StatusMenuController.preferences), keyEquivalent: ",")
         returnMenu.items.last?.target = self
         returnMenu.addItem(NSMenuItem.separator())
@@ -228,13 +231,13 @@ extension StatusMenuController: NSMenuDelegate {
         }
     }
     public func executeCommand(_ command: Command) {
-//        commandRunner.run(commandIdentifier: command.rawValue)
+//        self.xcodeHelper.logger.log("Test", for: command)
         let xpcConnection = NSXPCConnection.init(serviceName: "com.joelsaltzman.xchelperxpc")
         xpcConnection.remoteObjectInterface = NSXPCInterface.init(with: XchelperServiceable.self)
         xpcConnection.exportedObject = self
         xpcConnection.resume()
         if let service = xpcConnection.remoteObjectProxy as? XchelperServiceable {
-            service.run(commandIdentifier:  command.rawValue) { (result) in
+            service.run(commandIdentifier:  command.cliName) { (result) in
                 print(result)
             }
         }
@@ -243,6 +246,10 @@ extension StatusMenuController: NSMenuDelegate {
 
 // MARK: handle commands
 extension StatusMenuController {
+    @IBAction
+    func showLogs(_ sender: Any){
+//        commandRunner.xcodeHelper.logger.showLogs()
+    }
     @IBAction
     func preferences(sender: Any){
         print("Logging: \(UserDefaults.standard.bool(forKey: "XcodeHelperKit.Logging"))")

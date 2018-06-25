@@ -15,7 +15,7 @@ public protocol XCItem: CustomStringConvertible {
     var imagePath: String { get }
 }
 
-public struct Xcode {
+public class Xcode {
     public static let DocumentChanged: NSNotification.Name = NSNotification.Name(rawValue: "DocumentChanged")
     public let currentDocumentScript: NSAppleScript
     public let currentUser: String = XCWorkspace.getCurrentUser()!

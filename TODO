@@ -1,4 +1,9 @@
 -- TODO --
+The extra banner file contains the last log. XcodeHelper stores only that log. Maybe we should append to the log file from the CommandRunner instead
+Banner messages duplicate the final message with title "Xcode Helper" instead of command name. Possibly remove it.
+Clicking a banner results in file not found error when messages are coming through. Even after all have completed it still doesn't show the file
+    Cli tools create logs but don't provide a directory. Maybe move the default log path into the logge r
+
 Got Update Packages - Docker working with XPC. Make sure that everything else does as well
 Replace Build in Docker with "Add Docker Build Phase"
 Remove Symlink Dependencies?

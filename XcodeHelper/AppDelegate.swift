@@ -65,8 +65,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         //xcodehelper://com.joelsaltzman.XcodeHelper.SourceExtension.docker-build
         if let identifier = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue,
-            let commandString = identifier.components(separatedBy: "//").last,
-            let command = Command.init(rawValue: commandString) {
+            let commandString = identifier.components(separatedBy: "//").last {
+            let command = Command.init(title: "", description: "", cliName: commandString, envName: "")
             menuController?.executeCommand(command)
         }
 

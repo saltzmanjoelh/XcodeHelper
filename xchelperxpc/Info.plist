@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2018 Joel Saltzman. All rights reserved.</string>
+	<key>NSUserNotificationAlertStyle</key>
+	<string>alert</string>
 	<key>XPCService</key>
 	<dict>
 		<key>ServiceType</key>

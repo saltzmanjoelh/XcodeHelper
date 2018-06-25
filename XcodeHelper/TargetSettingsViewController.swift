@@ -14,6 +14,8 @@ class TargetSettingsViewController: NSViewController {
     
     public static let VerboseConfigKey = "VerboseConfigFile"
     var configController = ConfigController()
+    var menuController: StatusMenuController?
+    var commandRunner = CommandRunner()
     
     @IBOutlet
     var majorTagField: NSTextField?
@@ -50,7 +52,7 @@ class TargetSettingsViewController: NSViewController {
         var majorTag = ""
         var minorTag = ""
         var patchTag = ""
-        guard var helper = xchelper.xcodeHelpable as? XcodeHelper else { return }
+        guard let helper = xchelper.xcodeHelpable as? XcodeHelper else { return }
         helper.logger.logLevel = .none
         if let currentSourcePath = ConfigController.sourcePath,
             let gitTag = try? helper.getGitTag(at: currentSourcePath, shouldLog: false) {
@@ -176,5 +178,9 @@ class TargetSettingsViewController: NSViewController {
         }
         
         return config
+    }
+    @IBAction
+    func showLogs( _ sender: Any) {
+//        commandRunner.xcodeHelper.logger.showLogs()
     }
 }
