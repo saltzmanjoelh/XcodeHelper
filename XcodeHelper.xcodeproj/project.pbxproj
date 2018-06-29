@@ -19,7 +19,6 @@
 		3836A7661E3B302B0098CE9A /* XCWorkspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7651E3B302B0098CE9A /* XCWorkspaceTests.swift */; };
 		384E51A81DC6B36700FAC6C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51A71DC6B36700FAC6C1 /* AppDelegate.swift */; };
 		384E51AC1DC6B36700FAC6C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384E51AB1DC6B36700FAC6C1 /* Assets.xcassets */; };
-		384E51AF1DC6B36700FAC6C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 384E51AD1DC6B36700FAC6C1 /* Main.storyboard */; };
 		384E51BA1DC6B36700FAC6C1 /* XcodeHelperTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51B91DC6B36700FAC6C1 /* XcodeHelperTestCase.swift */; };
 		384E51CB1DC6B38500FAC6C1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384E51CA1DC6B38500FAC6C1 /* Cocoa.framework */; };
 		384E51D01DC6B38500FAC6C1 /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51CF1DC6B38500FAC6C1 /* SourceEditorExtension.swift */; };
@@ -59,6 +58,7 @@
 		38958AF52079D5A100A3830E /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; };
 		3898C9362078C05600A51743 /* xchelperxpc.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 387F2CFF2077F9DF00D93881 /* xchelperxpc.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		38A7D48D1F0D30B900213122 /* ConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A7D48C1F0D30B900213122 /* ConfigController.swift */; };
+		38C9122F20E68D7B00B92379 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C9122D20E68D7B00B92379 /* Main.storyboard */; };
 		38D6B3942079D8ED000DCB82 /* ProcessRunner.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7CE206B7AAA00F6192F /* ProcessRunner.framework */; };
 		38D6B3952079D8ED000DCB82 /* S3Kit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7D0206B7AAA00F6192F /* S3Kit.framework */; };
 		38D6B3962079D8ED000DCB82 /* XcodeHelperCliKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */; };
@@ -266,7 +266,6 @@
 		384E51A41DC6B36700FAC6C1 /* XcodeHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		384E51A71DC6B36700FAC6C1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		384E51AB1DC6B36700FAC6C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		384E51AE1DC6B36700FAC6C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		384E51B01DC6B36700FAC6C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		384E51B51DC6B36700FAC6C1 /* XcodeHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		384E51B91DC6B36700FAC6C1 /* XcodeHelperTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeHelperTestCase.swift; sourceTree = "<group>"; };
@@ -297,8 +296,8 @@
 		387F2D102077FBB800D93881 /* XchelperServiceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XchelperServiceable.swift; sourceTree = "<group>"; };
 		387F2D162077FDE600D93881 /* xchelperxpc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xchelperxpc.entitlements; sourceTree = "<group>"; };
 		388739C31EE50BA7003B6106 /* PreferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceTests.swift; sourceTree = "<group>"; };
-		3887BA851FB94ECA007A9135 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		38A7D48C1F0D30B900213122 /* ConfigController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigController.swift; sourceTree = "<group>"; };
+		38C9122E20E68D7B00B92379 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		38E66AFF1E66475100B6C75C /* XcodeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeViewModelTests.swift; sourceTree = "<group>"; };
 		38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCProjectTests.swift; sourceTree = "<group>"; };
@@ -370,7 +369,6 @@
 			isa = PBXGroup;
 			children = (
 				38EAF7A6206B7AAA00F6192F /* Dependencies.xcodeproj */,
-				3887BA851FB94ECA007A9135 /* module.modulemap */,
 				38083FFB206C6023004A62C0 /* TODO */,
 				384E51A61DC6B36700FAC6C1 /* XcodeHelper */,
 				384E51B81DC6B36700FAC6C1 /* XcodeHelperTests */,
@@ -404,7 +402,7 @@
 				38C73F642072842B002F0BD8 /* Xcode */,
 				3853F83E1E64BD4300A39C1A /* Settings */,
 				384E51AB1DC6B36700FAC6C1 /* Assets.xcassets */,
-				384E51AD1DC6B36700FAC6C1 /* Main.storyboard */,
+				38C9122D20E68D7B00B92379 /* Main.storyboard */,
 				384E51B01DC6B36700FAC6C1 /* Info.plist */,
 			);
 			path = XcodeHelper;
@@ -759,8 +757,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C9122F20E68D7B00B92379 /* Main.storyboard in Resources */,
 				384E51AC1DC6B36700FAC6C1 /* Assets.xcassets in Resources */,
-				384E51AF1DC6B36700FAC6C1 /* Main.storyboard in Resources */,
 				384E51DC1DC6B3DA00FAC6C1 /* GetCurrentDocument.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -901,10 +899,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		384E51AD1DC6B36700FAC6C1 /* Main.storyboard */ = {
+		38C9122D20E68D7B00B92379 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				384E51AE1DC6B36700FAC6C1 /* Base */,
+				38C9122E20E68D7B00B92379 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1042,7 +1040,6 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULEMAP_FILE = module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";
@@ -1071,7 +1068,6 @@
 					"$(SDKROOT)/usr/lib/system",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MODULEMAP_FILE = module.modulemap;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";

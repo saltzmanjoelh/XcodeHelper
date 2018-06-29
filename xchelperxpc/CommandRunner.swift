@@ -21,7 +21,7 @@ public class CommandRunner: XchelperServiceable {
     public func run(commandIdentifier: String, withReply: (Any) -> ()) {
         let command = Command.init(title: "", description: "", cliName: commandIdentifier, envName: "")
         guard let sourcePath = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)?.getSourcePath(),
-            let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(Logger.logsSubDirectory)
+            let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(XcodeHelper.logsSubDirectory)
             else { return }
         let configPath = URL(fileURLWithPath: sourcePath).appendingPathComponent(CommandRunner.configFileName).path
 //        DispatchQueue.global().async {
@@ -51,7 +51,7 @@ public class CommandRunner: XchelperServiceable {
             }catch let e{
                 let errorLog = String(describing: e)
                 if let errorUuid = self.xcodeHelper.logger.error(errorLog, for: command) {
-                    try? self.xcodeHelper.logger.storeLog(errorLog, inDirectory: logsDirectory, uuid: errorUuid)
+                    _ = try? self.xcodeHelper.logger.storeLog(errorLog, inDirectory: logsDirectory, uuid: errorUuid)
                 }
                 withReply(errorLog)
             }

@@ -29,11 +29,12 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate, NSUserNotificationCente
             //                withApplication:@"TextEdit"];
             if let filePath = notification.identifier,
                 let sourcePath = commandRunner.xcode.getCurrentDocumentable(using: commandRunner.xcode.currentDocumentScript)?.getSourcePath(),
-                let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(Logger.logsSubDirectory) {
+                let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(XcodeHelper.logsSubDirectory) {
 //                NSWorkspace.shared.openFile("\(filePath).log", withApplication: "Console")
-                let logger = Logger(directory: logsDirectory)
-                logger.showLogs(atPath: filePath /*logsDirectory.appendingPathComponent("\(filePath).log").path*/)
-                
+//                let logger = Logger(directory: logsDirectory)
+//                logger.showLogs(atPath: filePath /*logsDirectory.appendingPathComponent("\(filePath).log").path*/)
+//                showLogs(logsDirectory)
+                print("SHOW LOGS: \(logsDirectory)")
             }
             break
         case .actionButtonClicked:

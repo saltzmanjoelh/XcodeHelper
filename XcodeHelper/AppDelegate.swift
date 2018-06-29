@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(AppDelegate.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
         
         //Statusbar Icon
-        if let image = NSImage.init(named: NSImage.Name(rawValue: "AppIcon")) {
+        if let image = NSImage.init(named: NSImage.Name(rawValue: "Icon")) {
             let percentage: CGFloat = 0.13
             image.size = NSMakeSize(image.size.width * percentage, image.size.height * percentage)
             statusItem.image = image

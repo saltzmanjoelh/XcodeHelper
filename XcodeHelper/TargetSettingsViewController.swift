@@ -53,7 +53,7 @@ class TargetSettingsViewController: NSViewController {
         var minorTag = ""
         var patchTag = ""
         guard let helper = xchelper.xcodeHelpable as? XcodeHelper else { return }
-        helper.logger.logLevel = .none
+//        helper.logger.logLevel = .none
         if let currentSourcePath = ConfigController.sourcePath,
             let gitTag = try? helper.getGitTag(at: currentSourcePath, shouldLog: false) {
             let components = gitTag.components(separatedBy: ".")
