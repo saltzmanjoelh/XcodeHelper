@@ -26,7 +26,7 @@ class TargetSettingsViewController: NSViewController {
     
     override func viewDidLoad() {
         view.wantsLayer = true
-        view.layer?.backgroundColor = NSColor.white.cgColor
+//        view.layer?.backgroundColor = NSColor.white.cgColor
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: ConfigController.reloadNotification, object: nil)
         refresh()
     }
