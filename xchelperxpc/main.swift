@@ -8,6 +8,8 @@
 
 import Foundation
 import XcodeHelperKit
+import AppKit
+import ProcessRunner
 
 class ServiceDelegate : NSObject, NSXPCListenerDelegate, NSUserNotificationCenterDelegate {
     let commandRunner = CommandRunner()
@@ -24,17 +26,11 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate, NSUserNotificationCente
         //Only notification action available currenly is to silence user notifications
         switch notification.activationType {
         case .contentsClicked:
-            //show full log message
-            //            [[NSWorkspace sharedWorkspace] openFile:@"/Myfiles/README"
-            //                withApplication:@"TextEdit"];
-            if let filePath = notification.identifier,
-                let sourcePath = commandRunner.xcode.getCurrentDocumentable(using: commandRunner.xcode.currentDocumentScript)?.getSourcePath(),
-                let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(XcodeHelper.logsSubDirectory) {
-//                NSWorkspace.shared.openFile("\(filePath).log", withApplication: "Console")
-//                let logger = Logger(directory: logsDirectory)
-//                logger.showLogs(atPath: filePath /*logsDirectory.appendingPathComponent("\(filePath).log").path*/)
-//                showLogs(logsDirectory)
-                print("SHOW LOGS: \(logsDirectory)")
+            if let uuidString = notification.identifier,
+                let uuid = UUID.init(uuidString: uuidString),
+                let timerEntry = Logger.timers[uuid] {
+                showLogs(category: timerEntry.identifier.category, pid: timerEntry.identifier.pid)
+                NSUserNotificationCenter.default.removeDeliveredNotification(timerEntry.notification)
             }
             break
         case .actionButtonClicked:
@@ -48,6 +44,32 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate, NSUserNotificationCente
             break
         }
     }
+    public func showLogs(category: String, pid: Int32) {
+        //applescript to run:
+        //log show --style compact --predicate '(subsystem == "com.joelsaltzman.XcodeHelper.plist") && (category == "Update Packages - macOS") && processIdentifier == 18498'
+        //archive the logs into a file, then get Console to open the archive
+        let result = ProcessRunner.synchronousRun("/usr/bin/log",
+                                                     arguments: ["show",
+                                                                 "--style",
+                                                                 "compact",
+                                                                 "--predicate",
+                                                                 "(subsystem == \"\(Logger.subsystemIdentifier)\") && (category == \"\(category)\") && processIdentifier == \(pid)"],
+                                                     printOutput: true,
+                                                     outputPrefix: nil,
+                                                     environment: nil)
+//        print("RESULT: \(result)")
+        let path = "/tmp/XcodeHelper.log"
+        if let output = result.output?.replacingOccurrences(of: "Df ", with: "").replacingOccurrences(of: "[\(Logger.subsystemIdentifier):\(category)]", with: "[\(category)]") {
+            DispatchQueue.main.async {
+                FileManager.default.createFile(atPath: path,
+                                               contents: output.data(using: .utf8),
+                                               attributes: nil)
+                NSWorkspace.shared.openFile(path)
+            }
+        }
+        
+    }
+
 }
 
 // Create the listener and resume it:

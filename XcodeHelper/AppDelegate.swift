@@ -8,6 +8,7 @@
 
 import Cocoa
 import XcodeHelperKit
+import os.log
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
@@ -18,8 +19,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let xcode = Xcode()
 //    public var appIsActive: Bool = true
 
+    
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-
         NSUserNotificationCenter.default.delegate = self
         menuController = StatusMenuController(statusItem: NSStatusBar.system.statusItem(withLength: 30.0),
                                               xcode: xcode)
@@ -71,32 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         }
 
     }
-    public func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
-        return true
-    }
-    public func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-        //Only notification action available currenly is to silence user notifications
-        switch notification.activationType {
-        case .contentsClicked:
-            //show full log message
-//            [[NSWorkspace sharedWorkspace] openFile:@"/Myfiles/README"
-//                withApplication:@"TextEdit"];
-            if let filePath = notification.identifier {
-                NSWorkspace.shared.openFile("\(filePath).log", withApplication: "Console")
-            }
-            break
-        case .actionButtonClicked:
-            //silence
-            //TODO: update prefs window control
-            menuController!.refreshConfig()
-            UserDefaults.standard.set(false, forKey: Logger.UserDefaultsKey)
-            UserDefaults.standard.synchronize()
-            break
-        default:
-            break
-        }
-        
-    }
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }

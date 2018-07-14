@@ -237,8 +237,8 @@ extension StatusMenuController: NSMenuDelegate {
         xpcConnection.exportedObject = self
         xpcConnection.resume()
         if let service = xpcConnection.remoteObjectProxy as? XchelperServiceable {
-            service.run(commandIdentifier:  command.cliName) { (result) in
-                print(result)
+            service.run(commandIdentifier:  command.cliName){ (result) in
+//                print(result)
             }
         }
     }

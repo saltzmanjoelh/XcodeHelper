@@ -33,10 +33,10 @@ public class CommandRunner: XchelperServiceable {
                                                       environment: [:],
                                                       yamlConfigurationPath: configPath)
                 
-                if let uuid = self.xcodeHelper.logger.log("Done", for: command) {
-                    let log = self.xcodeHelper.logger.logStringFromProcessResults(processResults)
-                    try self.xcodeHelper.logger.storeLog(log, inDirectory: logsDirectory, uuid: uuid)
-                }
+//                if let uuid = XcodeHelper.logger?.log("Done"),
+//                    let log = XcodeHelper.logger?.logStringFromProcessResults(processResults) {
+//                    try XcodeHelper.logger?.storeLog(log, inDirectory: logsDirectory, uuid: uuid)
+//                }
                 var results = [String: String]()
                 if let output = processResults.first?.output {
                     results["output"] = output
@@ -50,9 +50,7 @@ public class CommandRunner: XchelperServiceable {
                 withReply(results)
             }catch let e{
                 let errorLog = String(describing: e)
-                if let errorUuid = self.xcodeHelper.logger.error(errorLog, for: command) {
-                    _ = try? self.xcodeHelper.logger.storeLog(errorLog, inDirectory: logsDirectory, uuid: errorUuid)
-                }
+                XcodeHelper.logger?.errorWithNotification("%@", errorLog) 
                 withReply(errorLog)
             }
 //        }

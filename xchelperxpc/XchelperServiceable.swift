@@ -9,6 +9,6 @@
 import Foundation
 
 @objc(XchelperServiceable) protocol XchelperServiceable {
-    func run(commandIdentifier: String, withReply: (Any) -> ())
+    func run(commandIdentifier: String, withReply: @escaping (Any) -> ())
 }
 
