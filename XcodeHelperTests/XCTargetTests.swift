@@ -11,7 +11,7 @@ import XCTest
 
 extension XCTarget.TargetType {
     static func allValues() -> [XCTarget.TargetType] {
-        return [.app, .binary, .framework, .appExtension, .bundle, .xpc, .appleScriptAction, .kernelExtension, .staticLib, .metalLib, .prefPane, .plugin, .screenSaver, .spotlightImporter, .quartzPlugin, .unknown]
+        return [.app, .binary, .framework, .appExtension, .bundle, .xpc, .appleScriptAction, .staticLib, .prefPane, .plugin, .screenSaver,  .quartzPlugin, .kernelExtension, .unknown]
     }
 }
 
@@ -24,10 +24,10 @@ class XCTargetTests: XcodeHelperTestCase {
     func testImage() {
         let project = XCProject(at: "")
 
-        let result = XCTarget.TargetType.allValues().flatMap{ XCTarget(name: "", orderHint: 0, targetType: $0, project: project).imageData() }
+        let result = XCTarget.TargetType.allValues().map{ XCTarget(name: "", orderHint: 0, targetType: $0, project: project).imageData() }
         
         XCTAssertEqual(result.count, XCTarget.TargetType.allValues().count)
-        XCTAssertEqual(Set(result).count, 8, "There should have been 8 different images")
+        XCTAssertEqual(Set(result).count, 8, "There should have been 8 unique images")
     }
     func testUnknownTargetType() {
         let fileExtension = UUID().uuidString
@@ -42,7 +42,7 @@ class XCTargetTests: XcodeHelperTestCase {
         
         let result = target.imagePath
         
-        XCTAssertEqual(result, "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Application/Cocoa Application.xctemplate/TemplateIcon.icns")
+        XCTAssertEqual(result, "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Application/Cocoa App.xctemplate/TemplateIcon@2x.png")
     }
     func testEquality() {
         let project = XCProject(at: "")

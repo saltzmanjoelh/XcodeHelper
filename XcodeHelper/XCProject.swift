@@ -43,7 +43,12 @@ public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equa
     public init(at path: String, currentUser: String?){
         self.init(at: path)
         self.currentUser = currentUser
-        self.xcproj = try? XcodeProj.init(pathString: path)
+        print("XcodeProj: \(path)")
+        do {
+            self.xcproj = try XcodeProj.init(pathString: path)
+        } catch let error {
+            print(error)
+        }
     }
     public init(at path: String){
         self.path = path
@@ -83,7 +88,7 @@ public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equa
     }
     
     
-    func getTargetNames(at projectPath: String) -> [String]? {
+    func getTargetNames() -> [String]? {
 //        guard let contents = FileManager.default.recursiveContents(of: URL(fileURLWithPath: projectPath)) else { return nil }
 //        let targetNames: [String] = contents.compactMap{ return $0.pathExtension == "xcscheme" ? $0.lastPathComponent : nil }
 //        return targetNames.count > 0 ? targetNames.sorted{ $0 < $1 } : nil
@@ -117,7 +122,11 @@ public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equa
     func getTargetType(for scheme: String, from xcSchemesUrls: [URL]) -> XCTarget.TargetType? {
         let trimmedScheme = scheme.replacingOccurrences(of: "_^#shared#^_", with: "")
         for url in xcSchemesUrls {
-            let filePath = url.appendingPathComponent(trimmedScheme).path
+            var schemeUrl = url.appendingPathComponent(trimmedScheme)
+            if schemeUrl.pathExtension != "xcscheme" {
+                schemeUrl.appendPathExtension("xcscheme")
+            }
+            let filePath = schemeUrl.path
             if !FileManager.default.fileExists(atPath: filePath) {
                 continue
             }
@@ -172,19 +181,19 @@ public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equa
         return orderHints
     }
     
-    func getOrderedTargets(at projectPath: String, from xcSchemesUrls: [URL], with schemeManagementURLs: [URL]) -> [XCTarget]? {
-        guard let targetNames = getTargetNames(at: projectPath),
+    func getOrderedTargets(fromXcSchemesUrls xcSchemesUrls: [URL], with schemeManagementURLs: [URL]) -> [XCTarget]? {
+        guard let targetNames = getTargetNames(),
 //              let targetTypes = getTargetTypes(for: targetNames, from: xcSchemesUrls)
                 let targetTypes = getTargetTypes()
               else { return nil }
         let orderHints = getOrderHints(from: schemeManagementURLs)
         
         return targetNames.map{
-//            let type = $0.hasSuffix(.xcscheme) ?
-            XCTarget(name: $0.replacingOccurrences(of: ".xcscheme", with: ""),
-                    orderHint: orderHints[$0] ?? Int.max,
-                    targetType: targetTypes[$0] ?? .unknown,
-                    project: self)}
+            let key = $0.hasSuffix(".xcscheme") ? $0 : $0.appending(".xcscheme")
+            return XCTarget(name: $0.replacingOccurrences(of: ".xcscheme", with: ""),
+                            orderHint: orderHints[key] ?? Int.max,
+                            targetType: targetTypes[key] ?? .unknown,
+                            project: self)}
           .sorted(by: { $0.orderHint < $1.orderHint })
     }
     
@@ -192,7 +201,7 @@ public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equa
         guard let user = currentUser,
               let schemeURLs = getXcSchemeURLs(user, at: path),
               let schemeManagementURLs = getXcSchemeManagementURLs(at: path),
-              let targets = getOrderedTargets(at: path, from: schemeURLs, with: schemeManagementURLs) else {
+              let targets = getOrderedTargets(fromXcSchemesUrls: schemeURLs, with: schemeManagementURLs) else {
             return []
         }
         return targets

@@ -48,7 +48,6 @@
 		387F2D222078A03100D93881 /* XCWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6920703769006ABD14 /* XCWorkspace.swift */; };
 		387F2D232078A04100D93881 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6720703769006ABD14 /* FileManagerExtension.swift */; };
 		387F2D282078B13B00D93881 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F2D0E2077FBB800D93881 /* main.swift */; };
-		388739C41EE50BA7003B6106 /* PreferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388739C31EE50BA7003B6106 /* PreferenceTests.swift */; };
 		38958AEF2079D5A100A3830E /* CliRunnable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7C4206B7AAA00F6192F /* CliRunnable.framework */; };
 		38958AF02079D5A100A3830E /* DockerProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7CA206B7AAA00F6192F /* DockerProcess.framework */; };
 		38958AF12079D5A100A3830E /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7CE206B7AAA00F6192F /* ProcessRunner.framework */; };
@@ -67,7 +66,6 @@
 		38D6B3992079D8ED000DCB82 /* Yaml.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; };
 		38D6B39A2079D8ED000DCB82 /* XcodeHelperKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7D4206B7AAA00F6192F /* XcodeHelperKit.framework */; };
 		38DFD6C91E2AB8F300C3D931 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */; };
-		38E66B001E66475100B6C75C /* XcodeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E66AFF1E66475100B6C75C /* XcodeViewModelTests.swift */; };
 		38E7A2AA1E3FA463007EA9A6 /* XCProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */; };
 		38E8F7951E471AF400097EEC /* TargetListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E8F7941E471AF400097EEC /* TargetListControllerTests.swift */; };
 		38EAF7F4206B7B5200F6192F /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7C2206B7AAA00F6192F /* AEXML.framework */; };
@@ -295,11 +293,9 @@
 		387F2D0E2077FBB800D93881 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		387F2D102077FBB800D93881 /* XchelperServiceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XchelperServiceable.swift; sourceTree = "<group>"; };
 		387F2D162077FDE600D93881 /* xchelperxpc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xchelperxpc.entitlements; sourceTree = "<group>"; };
-		388739C31EE50BA7003B6106 /* PreferenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceTests.swift; sourceTree = "<group>"; };
 		38A7D48C1F0D30B900213122 /* ConfigController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigController.swift; sourceTree = "<group>"; };
 		38C9122E20E68D7B00B92379 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
-		38E66AFF1E66475100B6C75C /* XcodeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodeViewModelTests.swift; sourceTree = "<group>"; };
 		38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCProjectTests.swift; sourceTree = "<group>"; };
 		38E8F7941E471AF400097EEC /* TargetListControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetListControllerTests.swift; sourceTree = "<group>"; };
 		38EAF7A6206B7AAA00F6192F /* Dependencies.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dependencies.xcodeproj; path = Dependencies/Dependencies.xcodeproj; sourceTree = "<group>"; };
@@ -416,10 +412,8 @@
 				38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */,
 				381E29F61E544DDB00557BB1 /* XCTargetTests.swift */,
 				38E8F7941E471AF400097EEC /* TargetListControllerTests.swift */,
-				38E66AFF1E66475100B6C75C /* XcodeViewModelTests.swift */,
 				3857C25C1E6C68E100731BE7 /* XcodeTests.swift */,
 				3857C25E1E6C76DE00731BE7 /* XCDocumentableTests.swift */,
-				388739C31EE50BA7003B6106 /* PreferenceTests.swift */,
 				384E51BB1DC6B36700FAC6C1 /* Info.plist */,
 			);
 			path = XcodeHelperTests;
@@ -838,11 +832,9 @@
 				38E8F7951E471AF400097EEC /* TargetListControllerTests.swift in Sources */,
 				3836A7661E3B302B0098CE9A /* XCWorkspaceTests.swift in Sources */,
 				384E51BA1DC6B36700FAC6C1 /* XcodeHelperTestCase.swift in Sources */,
-				388739C41EE50BA7003B6106 /* PreferenceTests.swift in Sources */,
 				3857C25D1E6C68E100731BE7 /* XcodeTests.swift in Sources */,
 				38E7A2AA1E3FA463007EA9A6 /* XCProjectTests.swift in Sources */,
 				3857C25F1E6C76DE00731BE7 /* XCDocumentableTests.swift in Sources */,
-				38E66B001E66475100B6C75C /* XcodeViewModelTests.swift in Sources */,
 				381E29F71E544DDB00557BB1 /* XCTargetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1090,6 +1082,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1112,6 +1105,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

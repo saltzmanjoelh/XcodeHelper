@@ -47,11 +47,11 @@ public struct XCTarget: CustomStringConvertible, XCItem, Equatable {
         case appleScriptAction
         case kernelExtension
         case staticLib
-        case metalLib
+//        case metalLib
         case prefPane
         case plugin
         case screenSaver
-        case spotlightImporter
+//        case spotlightImporter
         case quartzPlugin
         case unknown
         
@@ -77,16 +77,16 @@ public struct XCTarget: CustomStringConvertible, XCItem, Equatable {
                 self = .kernelExtension
             case "a":
                 self = .staticLib
-            case "metallib":
-                self = .metalLib
+//            case "metallib":
+//                self = .metalLib
             case "prefPane":
                 self = .prefPane
             case "plugin":
                 self = .plugin
             case "saver":
                 self = .screenSaver
-            case "mdimporter":
-                self = .spotlightImporter
+//            case "mdimporter":
+//                self = .spotlightImporter
             case "qlgenerator":
                 self = .quartzPlugin
             default:
@@ -122,9 +122,9 @@ public struct XCTarget: CustomStringConvertible, XCItem, Equatable {
             return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Framework & Library/XPC Service.xctemplate/TemplateIcon.icns"
         case .appleScriptAction:
             return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Other/AppleScript App.xctemplate/TemplateIcon@2x.png"
-        case .metalLib:
-            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Framework & Library/Metal Library.xctemplate/TemplateIcon@2x.png"
-        case .kernelExtension, .plugin, .prefPane, .screenSaver, .spotlightImporter, .quartzPlugin:
+//        case .metalLib:
+//            return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Framework & Library/Metal Library.xctemplate/TemplateIcon@2x.png"
+        case .kernelExtension, .plugin, .prefPane, .screenSaver, .quartzPlugin:
             return "/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates/Project Templates/Mac/Other/Generic Kernel Extension.xctemplate/TemplateIcon.png"
         case .unknown:
             return "/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Resources/BrokenLink.icns"

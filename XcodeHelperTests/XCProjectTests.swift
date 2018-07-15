@@ -26,7 +26,7 @@ class XCProjectTests: XcodeHelperTestCase {
         
         XCTAssertNotNil(result)
         //repo was just cloned so modification date should be recent
-        XCTAssertTrue(now.timeIntervalSince1970 - result!.timeIntervalSince1970 < 30)
+        XCTAssertTrue(now.timeIntervalSince1970 - result!.timeIntervalSince1970 < 30, "Modification date (\(result!.timeIntervalSince1970)) should have been within 30 seconds of now (\(now.timeIntervalSince1970)). Difference: \(now.timeIntervalSince1970 - result!.timeIntervalSince1970)")
     }
     func testXcSharedSchemesUrl(){
         
@@ -78,20 +78,22 @@ class XCProjectTests: XcodeHelperTestCase {
         let xcUserSchemesUrl = projectTwo.getUserXcSchemesURL(projectTwo.currentUser!, at: projectTwo.path)
         let xcSchemeManagement = projectTwo.getXcSchemeManagement(from: xcUserSchemesUrl!.appendingPathComponent(projectTwo.managementPlistName))
         let schemes = xcSchemeManagement?["SchemeUserState"] as? NSDictionary
-        let expected: Set<XCTarget.TargetType> = Set([.app, .binary, .framework, .appExtension, .bundle, .xpc, .appleScriptAction, .kernelExtension, .staticLib, .metalLib, .prefPane, .plugin, .screenSaver, .spotlightImporter, .quartzPlugin])
+        let expected: Set<XCTarget.TargetType> = Set(XCTarget.TargetType.allValues())
         
         
-        let result = schemes!.allKeys.flatMap{ projectTwo.getTargetType(for: $0 as! String, from: [xcUserSchemesUrl!, xcSharedSchemesUrl!]) }
+        let result = schemes!.allKeys.compactMap{ projectTwo.getTargetType(for: $0 as! String, from: [xcUserSchemesUrl!, xcSharedSchemesUrl!]) }
         
-        XCTAssertEqual(result.filter({ $0 == .unknown }).count, 0)
+        let unknownTypes = result.filter({ $0 == .unknown })
+        XCTAssertEqual(unknownTypes.count, 0, "There shouldn't be any unknown types: \(unknownTypes)")
         XCTAssertEqual(result.count, XCProjectTests.projectTwoTargetCount)
-        XCTAssertEqual(Set(result).count, expected.count, "There should have been one of each TargetType. Missing: \(expected.subtracting(Set(result)))")
+        XCTAssertEqual(Set(result).count, expected.count-1, "There should have been one of each TargetType. Missing: \(expected.subtracting(Set(result)))")//don't count the unknown target type
     }
     func testOrderedTargets() {
         
         let result = projectTwo.orderedTargets()
         
         XCTAssertNotNil(result)
+        XCTAssertTrue(result.count > 0)
         XCTAssertEqual(result[0].orderHint, 1)
         XCTAssertEqual(result[0].name, "ProjectTwo")
         XCTAssertEqual(result[1].name, "TargetB")
@@ -99,9 +101,10 @@ class XCProjectTests: XcodeHelperTestCase {
     func testGetOrderedTargets_failure() {
         let project = XCProject(at: XCProjectTests.projectOnePath)
         
-        let result = project.getOrderedTargets(at: "", from: [URL(fileURLWithPath:"")], with: [URL(fileURLWithPath:"")])
+        let result = project.getOrderedTargets(fromXcSchemesUrls: [URL(fileURLWithPath:"")], with: [URL(fileURLWithPath:"")])
         
-        XCTAssertNil(result)
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result!.count, 0)
     }
     
     func testCurrentTargetName() {
@@ -139,18 +142,19 @@ class XCProjectTests: XcodeHelperTestCase {
 //    }
     func testGetTargetNames() {
         
-        let result = projectOne.getTargetNames(at: projectOne.path)
+        let result = projectOne.getTargetNames()
         
         XCTAssertNotNil(result)
-        XCTAssertEqual(result!, ["ProjectOne.xcscheme", "TargetB.xcscheme"])
+        XCTAssertEqual(result!, ["ProjectOne", "TargetB"])
     }
     func testGetTargetTypes() {
-        let targetNames = projectTwo.getTargetNames(at: projectTwo.path)!
+        let targetNames = projectTwo.getTargetNames()!
         
         let result = projectTwo.getTargetTypes(for: targetNames, from: projectTwo.getXcSchemeURLs(XcodeHelperTestCase.currentUser, at: projectTwo.path)! )
         
         XCTAssertNotNil(result)
-        XCTAssertEqual(result!["SpotlightImport.xcscheme"], XcodeHelper.XCTarget.TargetType.spotlightImporter)
+        XCTAssertTrue(result!.count > 0, "No target types were found")
+        XCTAssertEqual(result!["Application"], XcodeHelper.XCTarget.TargetType.app)
     }
     func testGetTargetType_nilReturn() {
 
@@ -166,12 +170,13 @@ class XCProjectTests: XcodeHelperTestCase {
         XCTAssertEqual(result!.count, 1)
     }
     func testGetOrderHints() {
+        let urls = projectOne.getXcSchemeManagementURLs(at: projectOne.path)
         
-        let result = projectTwo.getOrderHints(from: projectTwo.getXcSchemeManagementURLs(at: projectTwo.path)!)
+        let result = projectOne.getOrderHints(from: urls!)
         
-        XCTAssertEqual(result.count, XcodeHelperTestCase.projectTwoTargetCount)
-        XCTAssertEqual(result["ProjectTwo.xcscheme"], 1)
-        XCTAssertEqual(result["TargetB.xcscheme"], 3)
+        XCTAssertEqual(result.count, XcodeHelperTestCase.projectOneTargetCount)
+        XCTAssertEqual(result["ProjectOne.xcscheme"], 0)
+        XCTAssertEqual(result["TargetB.xcscheme"], 2)
     }
     func testDefaultImagePath() {
         
@@ -183,22 +188,6 @@ class XCProjectTests: XcodeHelperTestCase {
         
         let result = projectOne.getXcSchemeURLs("invalid", at: "///invalid")
         
-        XCTAssertNil(result)
-    }
-    func testGetTargetNames_noContents() {
-        
-        let result = projectOne.getTargetNames(at: "///invalid")
-        
-        XCTAssertNil(result)
-    }
-    func testGetTargetNames_noTargets() {
-        //rename xcscheme files for test, restore when done
-        let targetFiles = FileManager.default.recursiveContents(of: URL(fileURLWithPath: projectOne.path))!.filter({ $0.pathExtension == "xcscheme" })
-        targetFiles.forEach{ try! FileManager.default.moveItem(at: $0, to: $0.appendingPathExtension("backup") ) }
-        defer { targetFiles.forEach{ try! FileManager.default.moveItem(at: $0.appendingPathExtension("backup"), to: $0 ) } }
-        
-        let result = projectOne.getTargetNames(at: "///invalid")
-
         XCTAssertNil(result)
     }
     func testParseTargetTypeFromXcSchemeFile_error() {

@@ -2,7 +2,9 @@
 Got Update Packages - Docker working with XPC. Make sure that everything else does as well
 Replace Build in Docker with "Add Docker Build Phase"
 Remove Symlink Dependencies?
+Add targets that I had to remove like kernel ext, iokit driver, metal lib, spotlight index extension
 Provide a browser for create archive or specify env vars
+
 
 -- Backlog --
 There should be a Console tab in the main window that shows output

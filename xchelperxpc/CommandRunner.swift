@@ -20,8 +20,8 @@ public class CommandRunner: XchelperServiceable {
     public init(){}
     public func run(commandIdentifier: String, withReply: (Any) -> ()) {
         let command = Command.init(title: "", description: "", cliName: commandIdentifier, envName: "")
-        guard let sourcePath = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)?.getSourcePath(),
-            let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(XcodeHelper.logsSubDirectory)
+        guard let sourcePath = xcode.getCurrentDocumentable(using: xcode.currentDocumentScript)?.getSourcePath()/*,
+            let logsDirectory = URL.init(string: sourcePath)?.appendingPathComponent(XcodeHelper.logsSubDirectory)*/
             else { return }
         let configPath = URL(fileURLWithPath: sourcePath).appendingPathComponent(CommandRunner.configFileName).path
 //        DispatchQueue.global().async {

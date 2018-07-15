@@ -20,7 +20,7 @@ class StatusMenuController: NSObject {
     public let statusItem: NSStatusItem
     public let xcodeHelper = XcodeHelper()
     var windowController: NSWindowController?
-    let commandRunner = CommandRunner()
+    var commandRunner: CommandRunner?
     
 //    let logger = Logger()
     
@@ -41,8 +41,14 @@ class StatusMenuController: NSObject {
             self.windowController = windowController
         }
         super.init()
+        DispatchQueue.global().async {
+            self.commandRunner = CommandRunner()
+            DispatchQueue.main.async {
+                self.refreshMenu(statusItem.menu, currentDocument: self.document)
+            }
+        }
 //        if let currentDocument = document {
-            refreshMenu(statusItem.menu, currentDocument: document)
+        
 //        }
     }
     

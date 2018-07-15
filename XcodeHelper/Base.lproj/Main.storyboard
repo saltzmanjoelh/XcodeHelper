@@ -1157,17 +1157,6 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ETT-Ji-hCG">
-                                <rect key="frame" x="194" y="11" width="106" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Show Logs" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LR8-sm-eSN">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="showLogs:" target="3JJ-rG-R3R" id="KSZ-ly-gMK"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="GPb-FD-7mB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gtO-6E-Uam" secondAttribute="leading" constant="20" symbolic="YES" id="03g-Ni-DKL"/>
