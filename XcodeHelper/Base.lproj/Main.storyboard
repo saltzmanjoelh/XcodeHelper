@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14269.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -747,11 +747,11 @@
             <objects>
                 <viewController id="3JJ-rG-R3R" customClass="TargetSettingsViewController" customModule="XcodeHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="gtO-6E-Uam">
-                        <rect key="frame" x="0.0" y="0.0" width="488" height="629"/>
+                        <rect key="frame" x="0.0" y="0.0" width="488" height="601"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdt-3r-qM8">
-                                <rect key="frame" x="18" y="592" width="176" height="17"/>
+                                <rect key="frame" x="18" y="564" width="176" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Update Packages - macOS" id="oJk-HW-fK0">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -759,7 +759,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GPb-FD-7mB">
-                                <rect key="frame" x="19" y="540" width="175" height="17"/>
+                                <rect key="frame" x="19" y="512" width="175" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Update Packages - Docker" id="kXx-zh-wsW">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -767,7 +767,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZy-vv-YsC">
-                                <rect key="frame" x="93" y="449" width="101" height="17"/>
+                                <rect key="frame" x="93" y="423" width="101" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Build in Docker" id="FR2-LI-s1o">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -775,7 +775,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VsQ-c1-064">
-                                <rect key="frame" x="91" y="283" width="103" height="21"/>
+                                <rect key="frame" x="91" y="257" width="103" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Create Archive" id="nqM-ux-x8d">
                                     <font key="font" size="14" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -783,7 +783,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qbY-CA-wK5">
-                                <rect key="frame" x="104" y="245" width="90" height="21"/>
+                                <rect key="frame" x="104" y="219" width="90" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Upload to S3" id="PbA-wr-FVO">
                                     <font key="font" size="14" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -791,7 +791,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MK1-cH-FuN">
-                                <rect key="frame" x="143" y="129" width="51" height="21"/>
+                                <rect key="frame" x="143" y="103" width="51" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Git Tag" id="ttP-Vf-fU0">
                                     <font key="font" size="14" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -799,7 +799,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vxk-q7-zrP">
-                                <rect key="frame" x="137" y="66" width="57" height="21"/>
+                                <rect key="frame" x="137" y="40" width="57" height="21"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="General" id="niG-GJ-di4">
                                     <font key="font" size="14" name="HelveticaNeue-Bold"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -807,22 +807,22 @@
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Ad9-oh-WgJ">
-                                <rect key="frame" x="20" y="563" width="448" height="5"/>
+                                <rect key="frame" x="20" y="535" width="448" height="5"/>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ABH-ii-XHE">
-                                <rect key="frame" x="20" y="472" width="448" height="5"/>
+                                <rect key="frame" x="20" y="446" width="448" height="5"/>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="rLN-kq-0R4">
-                                <rect key="frame" x="20" y="272" width="448" height="5"/>
+                                <rect key="frame" x="20" y="246" width="448" height="5"/>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="eIu-tW-CkC">
-                                <rect key="frame" x="20" y="156" width="448" height="5"/>
+                                <rect key="frame" x="20" y="130" width="448" height="5"/>
                             </box>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Kk9-pv-u3N">
-                                <rect key="frame" x="20" y="93" width="448" height="5"/>
+                                <rect key="frame" x="20" y="67" width="448" height="5"/>
                             </box>
                             <button identifier="update-macos-packages.--generate" toolTip="Generate a new Xcode project after updating packages. Useful if you have new files and/or aren't symlinking the dependencies" translatesAutoresizingMaskIntoConstraints="NO" id="UkI-1E-KFL">
-                                <rect key="frame" x="198" y="591" width="197" height="18"/>
+                                <rect key="frame" x="198" y="563" width="197" height="18"/>
                                 <buttonCell key="cell" type="check" title="Generate New Xcode Project" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tX4-xy-KUe">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -831,10 +831,9 @@
                                     <action selector="saveButtonValue:" target="3JJ-rG-R3R" id="VPA-Yi-Fe5"/>
                                 </connections>
                             </button>
-                            <button identifier="update-macos-packages.--symlink" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-RC-kfO">
-                                <rect key="frame" x="198" y="572" width="160" height="18"/>
-                                <string key="toolTip">Create symlinks to your packages after updating them and update your Xcode project to use those symlinks. Useful if your packages aren't getting new files often. </string>
-                                <buttonCell key="cell" type="check" title="Symlink Dependencies" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0Tj-wj-Yga">
+                            <button identifier="update-macos-packages.--recursive" toolTip="Recursively check subdirectories for projects to update. Skips hidden directories like .build" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-RC-kfO">
+                                <rect key="frame" x="198" y="544" width="81" height="18"/>
+                                <buttonCell key="cell" type="check" title="Recursive" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0Tj-wj-Yga">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -843,7 +842,7 @@
                                 </connections>
                             </button>
                             <textField toolTip="Name of image to use with Docker when updating packages" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yy1-sc-dTA">
-                                <rect key="frame" x="106" y="488" width="88" height="17"/>
+                                <rect key="frame" x="106" y="460" width="88" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume Name" id="Egs-Yz-z5v">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -851,7 +850,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="Name of image to use with Docker when updating packages" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0BJ-ex-oWo">
-                                <rect key="frame" x="114" y="515" width="80" height="17"/>
+                                <rect key="frame" x="114" y="487" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Name" id="usp-Fe-h2O">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -859,7 +858,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField identifier="update-docker-packages.--image-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0Us-GL-2cc">
-                                <rect key="frame" x="200" y="512" width="268" height="22"/>
+                                <rect key="frame" x="200" y="484" width="268" height="22"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="swift" drawsBackground="YES" id="0Pi-1o-q89">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -870,7 +869,7 @@
                                 </connections>
                             </textField>
                             <textField identifier="update-docker-packages.--volume" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MvI-xg-hDC">
-                                <rect key="frame" x="200" y="485" width="268" height="22"/>
+                                <rect key="frame" x="200" y="457" width="268" height="22"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="docker_volume" drawsBackground="YES" id="hN2-9Q-ESF">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -881,7 +880,7 @@
                                 </connections>
                             </textField>
                             <popUpButton identifier="docker-build.--build-configuration" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4RD-PZ-s6d">
-                                <rect key="frame" x="198" y="399" width="82" height="26"/>
+                                <rect key="frame" x="198" y="373" width="82" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="debug" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="iXR-7b-WB4" id="ITd-pz-f1o">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -897,7 +896,7 @@
                                 </connections>
                             </popUpButton>
                             <textField identifier="docker-build.--image-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yaa-dE-5nv">
-                                <rect key="frame" x="200" y="375" width="268" height="22"/>
+                                <rect key="frame" x="200" y="349" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="swift" drawsBackground="YES" id="eon-iv-sRg">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -908,7 +907,7 @@
                                 </connections>
                             </textField>
                             <textField identifier="docker-build.--container-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZ2-oT-h6n">
-                                <rect key="frame" x="200" y="348" width="268" height="22"/>
+                                <rect key="frame" x="200" y="322" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="LinuxSwiftContainer" drawsBackground="YES" id="DE1-yj-oY3">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -919,7 +918,7 @@
                                 </connections>
                             </textField>
                             <textField identifier="docker-build.--volume" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3mV-Wn-ZNt">
-                                <rect key="frame" x="200" y="321" width="268" height="22"/>
+                                <rect key="frame" x="200" y="295" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="docker_volume" drawsBackground="YES" id="iU0-ar-fWn">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -930,7 +929,7 @@
                                 </connections>
                             </textField>
                             <button identifier="docker-build.--after-success" toolTip="Only build in Docker if the macOS build was successful" translatesAutoresizingMaskIntoConstraints="NO" id="FL7-eY-HYh">
-                                <rect key="frame" x="198" y="448" width="126" height="18"/>
+                                <rect key="frame" x="198" y="422" width="126" height="18"/>
                                 <buttonCell key="cell" type="check" title="Build on Success" bezelStyle="regularSquare" imagePosition="left" inset="2" id="kSF-xp-yqf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -940,7 +939,7 @@
                                 </connections>
                             </button>
                             <button identifier="docker-build.--rm" toolTip="Delete the Docker container after building" translatesAutoresizingMaskIntoConstraints="NO" id="cDI-ZW-iEl">
-                                <rect key="frame" x="198" y="429" width="93" height="18"/>
+                                <rect key="frame" x="198" y="403" width="93" height="18"/>
                                 <buttonCell key="cell" type="check" title="Auto Delete" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3ui-90-hBz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -950,7 +949,7 @@
                                 </connections>
                             </button>
                             <textField toolTip="Build configuration to use with `swift build --configuration`. Project defaults to the project's current setting." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Js6-7B-Ixa">
-                                <rect key="frame" x="107" y="405" width="87" height="17"/>
+                                <rect key="frame" x="107" y="379" width="87" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Configuration" id="6C8-Nr-mRV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -958,7 +957,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="Name of image to use with Docker when building" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Afw-5S-I6u">
-                                <rect key="frame" x="114" y="378" width="80" height="17"/>
+                                <rect key="frame" x="114" y="352" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Name" id="Yjd-pb-5Ba">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -966,7 +965,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="Name of container to use with Docker when building" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6N-K6-3tJ">
-                                <rect key="frame" x="92" y="351" width="102" height="17"/>
+                                <rect key="frame" x="92" y="325" width="102" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Container Name" id="VEQ-JZ-3aV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -974,7 +973,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="Name of volume to store build artifacts across builds. Storing the .build directory in a volume helps with build times." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EQV-Oj-NWK">
-                                <rect key="frame" x="106" y="324" width="88" height="17"/>
+                                <rect key="frame" x="106" y="298" width="88" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume Name" id="gvv-Xz-wNX">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -982,7 +981,7 @@
                                 </textFieldCell>
                             </textField>
                             <button identifier="create-archive.--flat-list" toolTip="Flat list of files in archive" translatesAutoresizingMaskIntoConstraints="NO" id="Bci-1J-jLv">
-                                <rect key="frame" x="198" y="283" width="70" height="18"/>
+                                <rect key="frame" x="198" y="257" width="70" height="18"/>
                                 <buttonCell key="cell" type="check" title="Flat List" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tuN-m9-BNx">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -992,7 +991,7 @@
                                 </connections>
                             </button>
                             <textField toolTip="S3 region" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EgT-wP-RcZ">
-                                <rect key="frame" x="148" y="195" width="46" height="17"/>
+                                <rect key="frame" x="148" y="169" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Region" id="nmB-Yk-wc9">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1000,7 +999,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="AWS Key for S3" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xxo-m2-r81">
-                                <rect key="frame" x="129" y="170" width="65" height="17"/>
+                                <rect key="frame" x="129" y="144" width="65" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Cred Path" id="2KE-Cj-Yz3">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1008,7 +1007,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField toolTip="S3 bucket name" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-zh-4Zq">
-                                <rect key="frame" x="148" y="220" width="46" height="17"/>
+                                <rect key="frame" x="148" y="194" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bucket" id="fTt-1h-uGk">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1016,7 +1015,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField identifier="upload-archive.--bucket" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MeN-Ry-oJS">
-                                <rect key="frame" x="200" y="217" width="268" height="22"/>
+                                <rect key="frame" x="200" y="191" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="archives/app_name" drawsBackground="YES" id="8hT-iY-gQf">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1027,7 +1026,7 @@
                                 </connections>
                             </textField>
                             <textField identifier="upload-archive.--region" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cGb-MH-WUk">
-                                <rect key="frame" x="200" y="192" width="268" height="22"/>
+                                <rect key="frame" x="200" y="166" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="us-east-1" drawsBackground="YES" id="LKD-fp-AhC">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1038,7 +1037,7 @@
                                 </connections>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lR8-Et-YpG">
-                                <rect key="frame" x="200" y="167" width="268" height="22"/>
+                                <rect key="frame" x="200" y="141" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="~/.aws/credentials" drawsBackground="YES" id="Fiz-bq-lOR">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1049,7 +1048,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TOJ-Bx-ZZs">
-                                <rect key="frame" x="144" y="104" width="50" height="17"/>
+                                <rect key="frame" x="144" y="78" width="50" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version" id="VCW-yf-QFm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1057,7 +1056,7 @@
                                 </textFieldCell>
                             </textField>
                             <button identifier="git-tag.--push" toolTip="Push after updating git tag" translatesAutoresizingMaskIntoConstraints="NO" id="6Ut-Jx-MCu">
-                                <rect key="frame" x="198" y="103" width="53" height="18"/>
+                                <rect key="frame" x="198" y="77" width="53" height="18"/>
                                 <buttonCell key="cell" type="check" title="Push" bezelStyle="regularSquare" imagePosition="left" inset="2" id="WOE-Id-xp0">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1067,7 +1066,7 @@
                                 </connections>
                             </button>
                             <button identifier="XcodeHelperKit.Logging" translatesAutoresizingMaskIntoConstraints="NO" id="hiR-4D-QE3">
-                                <rect key="frame" x="198" y="66" width="95" height="18"/>
+                                <rect key="frame" x="198" y="40" width="95" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show Alerts" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fLb-Yj-pF2">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1077,7 +1076,7 @@
                                 </connections>
                             </button>
                             <button identifier="VerboseConfigFile" translatesAutoresizingMaskIntoConstraints="NO" id="myI-iF-hhf">
-                                <rect key="frame" x="198" y="44" width="141" height="18"/>
+                                <rect key="frame" x="198" y="18" width="141" height="18"/>
                                 <string key="toolTip">Turning this on stores all available options in the .xcodehelper yaml file. When it's off, only the values that are different from default are stored.</string>
                                 <buttonCell key="cell" type="check" title="Verbose Config File" bezelStyle="regularSquare" imagePosition="left" inset="2" id="EaK-bR-ITV">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1089,10 +1088,10 @@
                                 </connections>
                             </button>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Mm6-Go-gq2">
-                                <rect key="frame" x="20" y="310" width="448" height="5"/>
+                                <rect key="frame" x="20" y="284" width="448" height="5"/>
                             </box>
                             <stackView toolTip="Current version is looked up and displayed  here by default" distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tmv-sd-Hy5">
-                                <rect key="frame" x="200" y="127" width="229" height="23"/>
+                                <rect key="frame" x="200" y="101" width="229" height="23"/>
                                 <subviews>
                                     <textField toolTip="Current version is looked up and displayed  here by default" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2W0-ZJ-XRn">
                                         <rect key="frame" x="0.0" y="1" width="50" height="22"/>
@@ -1100,6 +1099,9 @@
                                             <constraint firstAttribute="width" constant="50" id="wze-zw-QcH"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="x5A-hv-x5i">
+                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="9p1-w3-ABx">
+                                                <real key="minimum" value="0.0"/>
+                                            </numberFormatter>
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1108,6 +1110,9 @@
                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wGQ-5F-HBP">
                                         <rect key="frame" x="55" y="-2" width="19" height="27"/>
                                         <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="6qz-Qk-htt"/>
+                                        <connections>
+                                            <binding destination="3JJ-rG-R3R" name="value" keyPath="majorTagField.intValue" id="jDF-VR-62h"/>
+                                        </connections>
                                     </stepper>
                                     <textField toolTip="Current version is looked up and displayed  here by default" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tyd-99-tKa">
                                         <rect key="frame" x="79" y="1" width="50" height="22"/>
@@ -1115,6 +1120,9 @@
                                             <constraint firstAttribute="width" constant="50" id="jwV-2N-j6d"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="Sof-Ud-qy2">
+                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="fYg-9Q-Z76">
+                                                <real key="minimum" value="0.0"/>
+                                            </numberFormatter>
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1123,6 +1131,9 @@
                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kUj-ue-lF5">
                                         <rect key="frame" x="134" y="-2" width="19" height="27"/>
                                         <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="SO3-p4-Qu1"/>
+                                        <connections>
+                                            <binding destination="3JJ-rG-R3R" name="value" keyPath="minorTagField.intValue" id="00S-UE-Vhu"/>
+                                        </connections>
                                     </stepper>
                                     <textField toolTip="Current version is looked up and displayed  here by default" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Uj-OP-JcI">
                                         <rect key="frame" x="158" y="1" width="50" height="22"/>
@@ -1130,6 +1141,9 @@
                                             <constraint firstAttribute="width" constant="50" id="hby-bM-ONp"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="gz9-cJ-kHX">
+                                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="P9R-oj-Y1m">
+                                                <real key="minimum" value="0.0"/>
+                                            </numberFormatter>
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1138,6 +1152,9 @@
                                     <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ujx-ng-HRY">
                                         <rect key="frame" x="213" y="-2" width="19" height="27"/>
                                         <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="A4v-83-dC3"/>
+                                        <connections>
+                                            <binding destination="3JJ-rG-R3R" name="value" keyPath="patchTagField.intValue" id="Xwi-5O-do1"/>
+                                        </connections>
                                     </stepper>
                                 </subviews>
                                 <visibilityPriorities>
@@ -1161,6 +1178,7 @@
                         <constraints>
                             <constraint firstItem="GPb-FD-7mB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gtO-6E-Uam" secondAttribute="leading" constant="20" symbolic="YES" id="03g-Ni-DKL"/>
                             <constraint firstItem="UkI-1E-KFL" firstAttribute="baseline" secondItem="qdt-3r-qM8" secondAttribute="baseline" id="09t-Sc-ACE"/>
+                            <constraint firstItem="ABH-ii-XHE" firstAttribute="top" secondItem="MvI-xg-hDC" secondAttribute="bottom" constant="8" id="0XW-TG-Gpc"/>
                             <constraint firstAttribute="trailing" secondItem="cZ2-oT-h6n" secondAttribute="trailing" constant="20" id="0fx-N3-Aux"/>
                             <constraint firstItem="Js6-7B-Ixa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gtO-6E-Uam" secondAttribute="leading" constant="20" symbolic="YES" id="1Gj-69-Lu6"/>
                             <constraint firstItem="Xxo-m2-r81" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gtO-6E-Uam" secondAttribute="leading" constant="20" symbolic="YES" id="1i0-Tp-wY3"/>
@@ -1170,7 +1188,6 @@
                             <constraint firstItem="qbY-CA-wK5" firstAttribute="top" secondItem="rLN-kq-0R4" secondAttribute="bottom" constant="8" id="2l0-Xk-b4l"/>
                             <constraint firstAttribute="trailing" secondItem="3mV-Wn-ZNt" secondAttribute="trailing" constant="20" id="39A-3B-Yy8"/>
                             <constraint firstItem="qbY-CA-wK5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gtO-6E-Uam" secondAttribute="leading" constant="20" symbolic="YES" id="3eb-BY-cWl"/>
-                            <constraint firstItem="ABH-ii-XHE" firstAttribute="top" secondItem="MvI-xg-hDC" secondAttribute="bottom" constant="10" id="3ht-lt-44Z"/>
                             <constraint firstItem="yaa-dE-5nv" firstAttribute="top" secondItem="4RD-PZ-s6d" secondAttribute="bottom" constant="5" id="50M-J4-irj"/>
                             <constraint firstItem="hiR-4D-QE3" firstAttribute="baseline" secondItem="Vxk-q7-zrP" secondAttribute="baseline" id="5DY-Fi-lnw"/>
                             <constraint firstItem="eIu-tW-CkC" firstAttribute="top" secondItem="lR8-Et-YpG" secondAttribute="bottom" constant="8" id="6Rq-2m-f3N"/>
@@ -1293,7 +1310,7 @@
                 <customObject id="tww-3F-stM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="NsK-eg-nxv"/>
             </objects>
-            <point key="canvasLocation" x="525" y="1093.5"/>
+            <point key="canvasLocation" x="525" y="1079.5"/>
         </scene>
     </scenes>
 </document>

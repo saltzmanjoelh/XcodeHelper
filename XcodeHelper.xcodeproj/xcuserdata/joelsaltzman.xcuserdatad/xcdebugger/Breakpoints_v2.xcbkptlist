@@ -31,7 +31,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Dependencies/.build/checkouts/XcodeHelperKit.git--5712956822918910347/Sources/XcodeHelperKit/XcodeHelper.swift"
-            timestampString = "553335347.7836879"
+            timestampString = "553367289.1057431"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -63,12 +63,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XcodeHelper/XCProject.swift"
-            timestampString = "553364694.721661"
+            timestampString = "553365239.098063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "init(at:currentUser:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dependencies/.build/checkouts/ProcessRunner.git-4666181658284935576/Sources/ProcessRunner/ProcessRunner.swift"
+            timestampString = "553367289.105953"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "synchronousRun(_:arguments:printOutput:outputPrefix:environment:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Dependencies/.build/checkouts/XcodeHelperCliKit-3335074541346271012/Sources/XcodeHelperCliKit/XcodeHelperCliKit.swift"
+            timestampString = "553585999.676585"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "handleUpdatePackages(option:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XcodeHelper/StatusMenuController.swift"
+            timestampString = "553585999.676653"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "menuItemClicked(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

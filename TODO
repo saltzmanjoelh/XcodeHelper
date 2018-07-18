@@ -1,6 +1,11 @@
 -- TODO --
+Create HelloDependencies project where we have an OSX project with a Dependencies subdirectory for testing. Test with CLI Kit
+Remote run debugger
+Add "Add Docker Build Phase" under Build in Docker
+Include option for Update Packages to be recursive. This will allow for a dependencies project to be updated as well
+Update app icon to handle dark mode
+Update status menu to show progress when it's chewing on something
 Got Update Packages - Docker working with XPC. Make sure that everything else does as well
-Replace Build in Docker with "Add Docker Build Phase"
 Remove Symlink Dependencies?
 Add targets that I had to remove like kernel ext, iokit driver, metal lib, spotlight index extension
 Provide a browser for create archive or specify env vars

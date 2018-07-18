@@ -130,8 +130,6 @@ class StatusMenuController: NSObject {
         
         // Prefs and Quit
         returnMenu.addItem(NSMenuItem.separator())
-        returnMenu.addItem(withTitle: "Show Logs", action: #selector(StatusMenuController.showLogs), keyEquivalent: "")
-        returnMenu.items.last?.target = self
         returnMenu.addItem(withTitle: "Preferences", action: #selector(StatusMenuController.preferences), keyEquivalent: ",")
         returnMenu.items.last?.target = self
         returnMenu.addItem(NSMenuItem.separator())
