@@ -32,7 +32,6 @@
 		387D8D6D20703769006ABD14 /* XCDocumentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6420703769006ABD14 /* XCDocumentable.swift */; };
 		387D8D6E20703769006ABD14 /* XCProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6520703769006ABD14 /* XCProject.swift */; };
 		387D8D6F20703769006ABD14 /* XCTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6620703769006ABD14 /* XCTarget.swift */; };
-		387D8D7020703769006ABD14 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6720703769006ABD14 /* FileManagerExtension.swift */; };
 		387D8D7120703769006ABD14 /* Xcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6820703769006ABD14 /* Xcode.swift */; };
 		387D8D7220703769006ABD14 /* XCWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6920703769006ABD14 /* XCWorkspace.swift */; };
 		387F2D0A2077F9DF00D93881 /* xchelperxpc.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = 387F2CFF2077F9DF00D93881 /* xchelperxpc.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -46,7 +45,6 @@
 		387F2D202078A03100D93881 /* XCProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6520703769006ABD14 /* XCProject.swift */; };
 		387F2D212078A03100D93881 /* XCTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6620703769006ABD14 /* XCTarget.swift */; };
 		387F2D222078A03100D93881 /* XCWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6920703769006ABD14 /* XCWorkspace.swift */; };
-		387F2D232078A04100D93881 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6720703769006ABD14 /* FileManagerExtension.swift */; };
 		387F2D282078B13B00D93881 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F2D0E2077FBB800D93881 /* main.swift */; };
 		38958AEF2079D5A100A3830E /* CliRunnable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7C4206B7AAA00F6192F /* CliRunnable.framework */; };
 		38958AF02079D5A100A3830E /* DockerProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7CA206B7AAA00F6192F /* DockerProcess.framework */; };
@@ -284,7 +282,6 @@
 		387D8D6420703769006ABD14 /* XCDocumentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCDocumentable.swift; sourceTree = "<group>"; };
 		387D8D6520703769006ABD14 /* XCProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCProject.swift; sourceTree = "<group>"; };
 		387D8D6620703769006ABD14 /* XCTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTarget.swift; sourceTree = "<group>"; };
-		387D8D6720703769006ABD14 /* FileManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtension.swift; sourceTree = "<group>"; };
 		387D8D6820703769006ABD14 /* Xcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xcode.swift; sourceTree = "<group>"; };
 		387D8D6920703769006ABD14 /* XCWorkspace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCWorkspace.swift; sourceTree = "<group>"; };
 		387F2CF62077F5D100D93881 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -459,7 +456,6 @@
 		387D8D732070378A006ABD14 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				387D8D6720703769006ABD14 /* FileManagerExtension.swift */,
 				387D8D6320703769006ABD14 /* CollectionExtension.swift */,
 				387D8D6220703769006ABD14 /* NSView+Extensions.swift */,
 			);
@@ -818,7 +814,6 @@
 				387D8D6C20703769006ABD14 /* CollectionExtension.swift in Sources */,
 				387D8D7120703769006ABD14 /* Xcode.swift in Sources */,
 				387D8D6E20703769006ABD14 /* XCProject.swift in Sources */,
-				387D8D7020703769006ABD14 /* FileManagerExtension.swift in Sources */,
 				381EF0E71E73092B008A3717 /* TargetSettingsViewController.swift in Sources */,
 				384E51A81DC6B36700FAC6C1 /* AppDelegate.swift in Sources */,
 				387D8D6F20703769006ABD14 /* XCTarget.swift in Sources */,
@@ -858,7 +853,6 @@
 				387F2D282078B13B00D93881 /* main.swift in Sources */,
 				387F2D1F2078A02B00D93881 /* XCDocumentable.swift in Sources */,
 				387F2D212078A03100D93881 /* XCTarget.swift in Sources */,
-				387F2D232078A04100D93881 /* FileManagerExtension.swift in Sources */,
 				387F2D222078A03100D93881 /* XCWorkspace.swift in Sources */,
 				387F2D1E2078A02400D93881 /* Xcode.swift in Sources */,
 				387F2D1B20789F7B00D93881 /* CommandRunner.swift in Sources */,
