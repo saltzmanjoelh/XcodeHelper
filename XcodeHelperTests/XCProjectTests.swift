@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import XcodeHelperKit
 @testable import XcodeHelper
 
 class XCProjectTests: XcodeHelperTestCase {
@@ -59,7 +60,7 @@ class XCProjectTests: XcodeHelperTestCase {
         let result = projectOne.getTargetType(for: schemes?.allKeys.first as! String, from: [xcSchemesUrl!])
         
         XCTAssertNotNil(result)
-        XCTAssertEqual(result!, XcodeHelper.XCTarget.TargetType.binary)
+        XCTAssertEqual(result!, XCTarget.TargetType.binary)
     }
     func testGetSharedTargetType(){
         let userXcSchemesUrl = projectTwo.getUserXcSchemesURL(projectTwo.currentUser!, at: projectTwo.path)
@@ -71,7 +72,7 @@ class XCProjectTests: XcodeHelperTestCase {
         let result = projectTwo.getTargetType(for: key, from: [userXcSchemesUrl!, sharedXcSchemesUrl!])
         
         XCTAssertNotNil(result)
-        XCTAssertEqual(result!, XcodeHelper.XCTarget.TargetType.binary)
+        XCTAssertEqual(result!, XCTarget.TargetType.binary)
     }
     func testTargetTypes(){
         let xcSharedSchemesUrl = projectTwo.getSharedXcSchemesURL(at: projectTwo.path)
@@ -126,7 +127,7 @@ class XCProjectTests: XcodeHelperTestCase {
     func testContentsOfDirectory() {
         let path = XCProjectTests.projectOnePath
         
-        let result = FileManager.default.recursiveContents(of: URL(fileURLWithPath: path))
+        let result: [URL]? = FileManager.default.recursiveContents(of: URL(fileURLWithPath: path))
         
         XCTAssertNotNil(result)
         XCTAssertEqual(result!.count, 12)
@@ -145,7 +146,8 @@ class XCProjectTests: XcodeHelperTestCase {
         let result = projectOne.getTargetNames()
         
         XCTAssertNotNil(result)
-        XCTAssertEqual(result!, ["ProjectOne", "TargetB"])
+        XCTAssertTrue(result!.contains("ProjectOne"))
+        XCTAssertTrue(result!.contains("TargetB"))
     }
     func testGetTargetTypes() {
         let targetNames = projectTwo.getTargetNames()!
@@ -154,7 +156,7 @@ class XCProjectTests: XcodeHelperTestCase {
         
         XCTAssertNotNil(result)
         XCTAssertTrue(result!.count > 0, "No target types were found")
-        XCTAssertEqual(result!["Application"], XcodeHelper.XCTarget.TargetType.app)
+        XCTAssertEqual(result!["Application"], XCTarget.TargetType.app)
     }
     func testGetTargetType_nilReturn() {
 

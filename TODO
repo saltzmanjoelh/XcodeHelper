@@ -1,7 +1,6 @@
 -- TODO --
-Create HelloDependencies project where we have an OSX project with a Dependencies subdirectory for testing. Test with CLI Kit
-Remote run debugger
 Add "Add Docker Build Phase" under Build in Docker
+Remote run debugger
 Include option for Update Packages to be recursive. This will allow for a dependencies project to be updated as well
 Update app icon to handle dark mode
 Update status menu to show progress when it's chewing on something
