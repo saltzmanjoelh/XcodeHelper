@@ -18,10 +18,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     var menuController: StatusMenuController?
     let xcode = Xcode()
 //    public var appIsActive: Bool = true
-
-    
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
         NSUserNotificationCenter.default.delegate = self
         menuController = StatusMenuController(statusItem: NSStatusBar.system.statusItem(withLength: 30.0),
                                               xcode: xcode)
@@ -31,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSAppleEventManager.shared().setEventHandler(self, andSelector: #selector(AppDelegate.handleGetURL(event:reply:)), forEventClass: UInt32(kInternetEventClass), andEventID: UInt32(kAEGetURL) )
         
         //Statusbar Icon
-        if let image = NSImage.init(named: NSImage.Name(rawValue: "Icon")) {
+        if let image = NSImage.init(named: "Icon") {
             let percentage: CGFloat = 0.13
             image.size = NSMakeSize(image.size.width * percentage, image.size.height * percentage)
             statusItem.image = image

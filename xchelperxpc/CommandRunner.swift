@@ -42,7 +42,13 @@ public class CommandRunner: XchelperServiceable {
                     results["output"] = output
                 }
                 if let error = processResults.first?.error {
-                    results["error"] = error
+                    if let exitCode = processResults.first?.exitCode,
+                        exitCode != 0 {
+                        results["error"] = error
+                        XcodeHelper.logger?.errorWithNotification("%@", error)
+                    } else {
+                        results["output"] = error
+                    }
                 }
                 if let exitCode = processResults.first?.exitCode {
                     results["exitCode"] = "\(exitCode)"

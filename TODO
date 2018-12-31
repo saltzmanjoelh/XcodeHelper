@@ -1,20 +1,17 @@
 -- TODO --
 Add "Add Docker Build Phase" under Build in Docker
 Remote run debugger
-Include option for Update Packages to be recursive. This will allow for a dependencies project to be updated as well
-Update app icon to handle dark mode
-Update status menu to show progress when it's chewing on something
-Got Update Packages - Docker working with XPC. Make sure that everything else does as well
-Remove Symlink Dependencies?
-Add targets that I had to remove like kernel ext, iokit driver, metal lib, spotlight index extension
-Provide a browser for create archive or specify env vars
 
 
 -- Backlog --
-There should be a Console tab in the main window that shows output
-    it should be html based so maybe just a webview
-    errors are red, don't show empty error output like we currently do
-Replace disabled name of current target with app image
+Update app icon to handle dark mode
+Update status menu to show progress when it's chewing on something
+Got Update Packages - Docker working with XPC. Make sure that everything else does as well
+remove the need to use -- in the cli args
+remove the ProcessResult requirement so we can execute functions and not have to return (nil, nil, 0) in some cases
+Provide a browser for create archive or specify env vars
+Add targets that I had to remove like kernel ext, iokit driver, metal lib, spotlight index extension
+Remove Symlink Dependencies?
 
 -- Bugs --
 

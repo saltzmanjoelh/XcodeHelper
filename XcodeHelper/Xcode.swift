@@ -10,6 +10,7 @@
 
 import Foundation
 import ProcessRunner
+import XcodeHelperKit
 
 public protocol XCItem: CustomStringConvertible {
     var imagePath: String { get }

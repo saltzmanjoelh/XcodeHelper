@@ -74,12 +74,10 @@
 		38EAF7FA206B7B5200F6192F /* S3Kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D0206B7AAA00F6192F /* S3Kit.framework */; };
 		38EAF7FB206B7B5200F6192F /* XcodeHelperCliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */; };
 		38EAF7FC206B7B5200F6192F /* XcodeHelperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D4206B7AAA00F6192F /* XcodeHelperKit.framework */; };
-		38EAF7FD206B7B5200F6192F /* xcproj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D8206B7AAA00F6192F /* xcproj.framework */; };
 		38EAF7FE206B7B5200F6192F /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; };
 		38EAF800206B7B5D00F6192F /* ProcessRunner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7CE206B7AAA00F6192F /* ProcessRunner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38EAF801206B7B5D00F6192F /* Yaml.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38EAF802206B7B5D00F6192F /* XcodeHelperCliKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		38EAF803206B7B5D00F6192F /* xcproj.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D8206B7AAA00F6192F /* xcproj.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38EAF804206B7B5E00F6192F /* S3Kit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D0206B7AAA00F6192F /* S3Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38EAF805206B7B5E00F6192F /* XcodeHelperKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D4206B7AAA00F6192F /* XcodeHelperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38EAF806206B7B5E00F6192F /* AEXML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7C2206B7AAA00F6192F /* AEXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -88,7 +86,6 @@
 		38EAF809206B7B5E00F6192F /* CliRunnable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7C4206B7AAA00F6192F /* CliRunnable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACB3B940207ADD38006F0FB9 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7C2206B7AAA00F6192F /* AEXML.framework */; };
 		ACB3B941207ADD38006F0FB9 /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7CC206B7AAA00F6192F /* PathKit.framework */; };
-		ACB3B942207ADD38006F0FB9 /* xcproj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D8206B7AAA00F6192F /* xcproj.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,12 +187,19 @@
 			remoteGlobalIDString = "Yaml::Yaml::Product";
 			remoteInfo = Yaml;
 		};
-		38EAF7D7206B7AAA00F6192F /* PBXContainerItemProxy */ = {
+		38EFCE3221D1B2540084DC3D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 38EAF7A6206B7AAA00F6192F /* Dependencies.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = "xcproj::xcproj::Product";
-			remoteInfo = xcproj;
+			remoteGlobalIDString = "SwiftShell::SwiftShell::Product";
+			remoteInfo = SwiftShell;
+		};
+		38EFCE3421D1B2540084DC3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38EAF7A6206B7AAA00F6192F /* Dependencies.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = "xcodeproj::xcodeproj::Product";
+			remoteInfo = xcodeproj;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -241,7 +245,6 @@
 				38EAF800206B7B5D00F6192F /* ProcessRunner.framework in CopyFiles */,
 				38EAF801206B7B5D00F6192F /* Yaml.framework in CopyFiles */,
 				38EAF802206B7B5D00F6192F /* XcodeHelperCliKit.framework in CopyFiles */,
-				38EAF803206B7B5D00F6192F /* xcproj.framework in CopyFiles */,
 				38EAF804206B7B5E00F6192F /* S3Kit.framework in CopyFiles */,
 				38EAF805206B7B5E00F6192F /* XcodeHelperKit.framework in CopyFiles */,
 				38EAF806206B7B5E00F6192F /* AEXML.framework in CopyFiles */,
@@ -311,7 +314,6 @@
 				38EAF7FA206B7B5200F6192F /* S3Kit.framework in Frameworks */,
 				38EAF7FB206B7B5200F6192F /* XcodeHelperCliKit.framework in Frameworks */,
 				38EAF7FC206B7B5200F6192F /* XcodeHelperKit.framework in Frameworks */,
-				38EAF7FD206B7B5200F6192F /* xcproj.framework in Frameworks */,
 				38EAF7FE206B7B5200F6192F /* Yaml.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +346,6 @@
 			files = (
 				ACB3B940207ADD38006F0FB9 /* AEXML.framework in Frameworks */,
 				ACB3B941207ADD38006F0FB9 /* PathKit.framework in Frameworks */,
-				ACB3B942207ADD38006F0FB9 /* xcproj.framework in Frameworks */,
 				381C125A2078C5EB006B66B6 /* CliRunnable.framework in Frameworks */,
 				381C125C2078C5EB006B66B6 /* DockerProcess.framework in Frameworks */,
 				381C125E2078C5EB006B66B6 /* ProcessRunner.framework in Frameworks */,
@@ -496,10 +497,11 @@
 				38EAF7CC206B7AAA00F6192F /* PathKit.framework */,
 				38EAF7CE206B7AAA00F6192F /* ProcessRunner.framework */,
 				38EAF7D0206B7AAA00F6192F /* S3Kit.framework */,
+				38EFCE3321D1B2540084DC3D /* SwiftShell.framework */,
 				38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */,
 				38EAF7D4206B7AAA00F6192F /* XcodeHelperKit.framework */,
 				38EAF7D6206B7AAA00F6192F /* Yaml.framework */,
-				38EAF7D8206B7AAA00F6192F /* xcproj.framework */,
+				38EFCE3521D1B2540084DC3D /* xcodeproj.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -597,11 +599,14 @@
 					384E51A31DC6B36700FAC6C1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A43A74F4MB;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
+							};
+							com.apple.HardenedRuntime = {
+								enabled = 1;
 							};
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -611,14 +616,14 @@
 					384E51B41DC6B36700FAC6C1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A43A74F4MB;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 384E51A31DC6B36700FAC6C1;
 					};
 					384E51C71DC6B38500FAC6C1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = A43A74F4MB;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
@@ -631,7 +636,7 @@
 					};
 					387F2CFE2077F9DF00D93881 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -733,11 +738,18 @@
 			remoteRef = 38EAF7D5206B7AAA00F6192F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		38EAF7D8206B7AAA00F6192F /* xcproj.framework */ = {
+		38EFCE3321D1B2540084DC3D /* SwiftShell.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = xcproj.framework;
-			remoteRef = 38EAF7D7206B7AAA00F6192F /* PBXContainerItemProxy */;
+			path = SwiftShell.framework;
+			remoteRef = 38EFCE3221D1B2540084DC3D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		38EFCE3521D1B2540084DC3D /* xcodeproj.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = xcodeproj.framework;
+			remoteRef = 38EFCE3421D1B2540084DC3D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -795,7 +807,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#We want the xchelper binary so that we don't have to access the xcodehelper:// urls which activates the main app. This also gives us a path to add to the Run Script phase of targets\n#We need to use the xchelper swift package to create a binary with statically linked libraries\nif [ ! -d \"$SOURCE_ROOT/xchelper\" ]; then\ngit clone \"https://github.com/saltzmanjoelh/xchelper.git\" \"$SOURCE_ROOT/xchelper\"\nfi\ncd \"$SOURCE_ROOT/xchelper\"\n#swift build -c release\nEXECUTABLES_DIR=\"$CONFIGURATION_BUILD_DIR/$EXECUTABLES_FOLDER_PATH\"\nif [ ! -d $EXECUTABLES_DIR ]; then\nmkdir $EXECUTABLES_DIR\nfi\ncp \"$SOURCE_ROOT/xchelper/.build/release/xchelper\" \"$EXECUTABLES_DIR/xchelper\"";
+			shellScript = "#We want the xchelper binary so that we don't have to access the xcodehelper:// urls which activates the main app. This also gives us a path to add to the Run Script phase of targets\n#We need to use the xchelper swift package to create a binary with statically linked libraries\nif [ ! -d \"$SOURCE_ROOT/xchelper\" ]; then\ngit clone \"https://github.com/saltzmanjoelh/xchelper.git\" \"$SOURCE_ROOT/xchelper\"\nfi\ncd \"$SOURCE_ROOT/xchelper\"\n#swift build -c release\nEXECUTABLES_DIR=\"$CONFIGURATION_BUILD_DIR/$EXECUTABLES_FOLDER_PATH\"\nif [ ! -d $EXECUTABLES_DIR ]; then\nmkdir $EXECUTABLES_DIR\nfi\ncp \"$SOURCE_ROOT/xchelper/.build/release/xchelper\" \"$EXECUTABLES_DIR/xchelper\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1016,6 +1028,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = A43A74F4MB;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = XcodeHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1029,8 +1042,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1044,6 +1056,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = A43A74F4MB;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = XcodeHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1057,8 +1070,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1079,8 +1091,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XcodeHelper.app/Contents/MacOS/XcodeHelper";
 			};
 			name = Debug;
@@ -1102,8 +1113,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XcodeHelper.app/Contents/MacOS/XcodeHelper";
 			};
 			name = Release;
@@ -1132,8 +1142,7 @@
 				PRODUCT_NAME = "Xcode Helper";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR) $(SDKROOT)/usr/lib";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1161,8 +1170,7 @@
 				PRODUCT_NAME = "Xcode Helper";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR) $(SDKROOT)/usr/lib";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1197,7 +1205,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1231,7 +1239,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

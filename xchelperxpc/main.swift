@@ -59,7 +59,9 @@ class ServiceDelegate : NSObject, NSXPCListenerDelegate, NSUserNotificationCente
                                                      environment: nil)
 //        print("RESULT: \(result)")
         let path = "/tmp/XcodeHelper.log"
-        if let output = result.output?.replacingOccurrences(of: "Df ", with: "").replacingOccurrences(of: "[\(Logger.subsystemIdentifier):\(category)]", with: "[\(category)]") {
+        if let output = result.output?.replacingOccurrences(of: "Df ", with: "")
+            .replacingOccurrences(of: " E  ", with: " ")
+            .replacingOccurrences(of: "[\(Logger.subsystemIdentifier):\(category)]", with: "[\(category)]") {
             DispatchQueue.main.async {
                 FileManager.default.createFile(atPath: path,
                                                contents: output.data(using: .utf8),

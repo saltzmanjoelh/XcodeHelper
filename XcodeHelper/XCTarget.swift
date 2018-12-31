@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import xcproj
+import xcodeproj
 
 public struct XCTarget: CustomStringConvertible, XCItem, Equatable {
     

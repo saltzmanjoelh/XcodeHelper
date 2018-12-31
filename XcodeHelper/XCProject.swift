@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import xcproj
+import xcodeproj
 
 public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equatable, XCItem {
     
@@ -92,8 +92,9 @@ public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equa
 //        guard let contents = FileManager.default.recursiveContents(of: URL(fileURLWithPath: projectPath)) else { return nil }
 //        let targetNames: [String] = contents.compactMap{ return $0.pathExtension == "xcscheme" ? $0.lastPathComponent : nil }
 //        return targetNames.count > 0 ? targetNames.sorted{ $0 < $1 } : nil
-        let targets = xcproj?.pbxproj.objects.nativeTargets.map({ $0.value.name }) ?? []
-        return targets
+        return xcproj?.pbxproj.nativeTargets.compactMap({ (target: PBXNativeTarget) -> String? in
+            target.name
+        }) ?? []
     }
     
     //returns an index of TargetName.xcscheme:XCTarget.TargetType
@@ -109,10 +110,10 @@ public struct XCProject: XCDocumentable, CustomStringConvertible, Hashable, Equa
     //xcproj version
     func getTargetTypes() -> [String: XCTarget.TargetType]? {
         var targetTypes: [String:XCTarget.TargetType] = [:]
-        if let nativeTargets = xcproj?.pbxproj.objects.nativeTargets {
+        if let nativeTargets = xcproj?.pbxproj.nativeTargets {
             for target in nativeTargets {
-                if let fileExtension = target.value.productType?.fileExtension {
-                    targetTypes[target.value.name] = XCTarget.TargetType.init(from: fileExtension)
+                if let fileExtension = target.productType?.fileExtension {
+                    targetTypes[target.name] = XCTarget.TargetType.init(from: fileExtension)
                 }
             }
         }
