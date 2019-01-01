@@ -1,7 +1,5 @@
 -- TODO --
-Add "Add Docker Build Phase" under Build in Docker
 Remote run debugger
-
 
 -- Backlog --
 Update app icon to handle dark mode
@@ -9,9 +7,10 @@ Update status menu to show progress when it's chewing on something
 Got Update Packages - Docker working with XPC. Make sure that everything else does as well
 remove the need to use -- in the cli args
 remove the ProcessResult requirement so we can execute functions and not have to return (nil, nil, 0) in some cases
-Provide a browser for create archive or specify env vars
+Provide a file browser for create archive or specify env vars
 Add targets that I had to remove like kernel ext, iokit driver, metal lib, spotlight index extension
 Remove Symlink Dependencies?
+Add a way to read a ~/.xcodehelper directory of appName.xcodehelper files to use as settings that will override the settings that are included in the project dir
 
 -- Bugs --
 

@@ -40,7 +40,8 @@ class TargetSettingsViewController: NSViewController {
             for option in reqArguments+optionalArguments {
                 let optionName = option.keys[1]
                 let optionValues = ConfigController.sharedConfig[commandName]?[optionName]
-                if let control = view.subview(named: "\(commandName).\(optionName)") as? NSControl {
+                let viewName = "\(commandName).\(optionName)"
+                if let control = view.subview(named: viewName) as? NSControl {
                     updateControl(control, using: optionValues?.first)
                 }
             }

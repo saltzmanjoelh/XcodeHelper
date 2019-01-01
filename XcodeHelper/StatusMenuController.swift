@@ -34,7 +34,7 @@ class StatusMenuController: NSObject {
     }
     func hasAutomationPermission() -> Bool {
         if #available(OSX 10.14, *) {
-            let eventDescriptor = NSAppleEventDescriptor.init(bundleIdentifier: "com.apple.xcode")
+            let eventDescriptor = NSAppleEventDescriptor.init(bundleIdentifier: "com.apple.dt.Xcode")
             let status = AEDeterminePermissionToAutomateTarget(eventDescriptor.aeDesc, typeWildCard, typeWildCard, true)
             return status == noErr
         } else {
@@ -62,6 +62,7 @@ class StatusMenuController: NSObject {
             self.document = self.xcode.getCurrentDocumentable(using: self.xcode.currentDocumentScript)
             self.commandRunner = CommandRunner()
             DispatchQueue.main.async {
+                self.refreshConfig()
                 self.refreshMenu(self.statusItem.menu, currentDocument: self.document)
             }
         }

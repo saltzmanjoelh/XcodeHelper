@@ -46,6 +46,7 @@
 		387F2D212078A03100D93881 /* XCTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6620703769006ABD14 /* XCTarget.swift */; };
 		387F2D222078A03100D93881 /* XCWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D8D6920703769006ABD14 /* XCWorkspace.swift */; };
 		387F2D282078B13B00D93881 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387F2D0E2077FBB800D93881 /* main.swift */; };
+		389025EC21DAA122002B678F /* xcodeproj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCE3521D1B2540084DC3D /* xcodeproj.framework */; };
 		38958AEF2079D5A100A3830E /* CliRunnable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7C4206B7AAA00F6192F /* CliRunnable.framework */; };
 		38958AF02079D5A100A3830E /* DockerProcess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7CA206B7AAA00F6192F /* DockerProcess.framework */; };
 		38958AF12079D5A100A3830E /* ProcessRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7CE206B7AAA00F6192F /* ProcessRunner.framework */; };
@@ -306,6 +307,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				389025EC21DAA122002B678F /* xcodeproj.framework in Frameworks */,
 				38EAF7F4206B7B5200F6192F /* AEXML.framework in Frameworks */,
 				38EAF7F5206B7B5200F6192F /* CliRunnable.framework in Frameworks */,
 				38EAF7F7206B7B5200F6192F /* DockerProcess.framework in Frameworks */,
@@ -515,10 +517,9 @@
 			buildPhases = (
 				384E51A01DC6B36700FAC6C1 /* Sources */,
 				384E51A11DC6B36700FAC6C1 /* Frameworks */,
+				38DFD6BC1E2AB28100C3D931 /* CopyFiles */,
 				384E51A21DC6B36700FAC6C1 /* Resources */,
 				384E51DA1DC6B38500FAC6C1 /* Embed App Extensions */,
-				38DFD6BC1E2AB28100C3D931 /* CopyFiles */,
-				38DBF3022075208E008F3064 /* ShellScript */,
 				387F2CD92077F1F800D93881 /* Embed XPC Services */,
 			);
 			buildRules = (
@@ -794,22 +795,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		38DBF3022075208E008F3064 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#We want the xchelper binary so that we don't have to access the xcodehelper:// urls which activates the main app. This also gives us a path to add to the Run Script phase of targets\n#We need to use the xchelper swift package to create a binary with statically linked libraries\nif [ ! -d \"$SOURCE_ROOT/xchelper\" ]; then\ngit clone \"https://github.com/saltzmanjoelh/xchelper.git\" \"$SOURCE_ROOT/xchelper\"\nfi\ncd \"$SOURCE_ROOT/xchelper\"\n#swift build -c release\nEXECUTABLES_DIR=\"$CONFIGURATION_BUILD_DIR/$EXECUTABLES_FOLDER_PATH\"\nif [ ! -d $EXECUTABLES_DIR ]; then\nmkdir $EXECUTABLES_DIR\nfi\ncp \"$SOURCE_ROOT/xchelper/.build/release/xchelper\" \"$EXECUTABLES_DIR/xchelper\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		384E51A01DC6B36700FAC6C1 /* Sources */ = {
