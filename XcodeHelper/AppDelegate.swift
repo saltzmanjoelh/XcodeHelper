@@ -17,7 +17,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     
     var menuController: StatusMenuController?
     let xcode = Xcode()
-//    public var appIsActive: Bool = true
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
@@ -41,41 +40,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         
         //Refresh the config file so that the Pref menu controls update
         menuController!.refreshConfig()
-        
-//        if var helper = menuController?.xcodeHelper {
-//            helper.logger.postMessage("AppDelegate", withTitle: "AppDelegate")
-//        }
     }
-//    func applicationWillResignActive(_ notification: Notification) {
-//        appIsActive = false
-//    }
-    
-    //We use the extension to activate the main app because Xcode requires sandboxed extensions.
-    //We bypass sandboxing with the main app so that we can have better access to the filesystem
-    //handle xcodehelper:// urls
+
     @objc
     func handleGetURL(event: NSAppleEventDescriptor, reply:NSAppleEventDescriptor) {
-        //        if let currentDocument = document ?? xcode.getCurrentDocumentable(using: xcode.currentDocumentScript) {
-        //            refreshMenu(statusItem.menu, currentDocument: currentDocument)
-        //        }
-//        if !appIsActive {
-//            for window in NSApp.windows {
-//                window.orderOut(nil)
-//            }
-//        }
-        
         //xcodehelper://com.joelsaltzman.XcodeHelper.SourceExtension.docker-build
         if let identifier = event.paramDescriptor(forKeyword: keyDirectObject)?.stringValue,
             let commandString = identifier.components(separatedBy: "//").last {
             let command = Command.init(title: "", description: "", cliName: commandString, envName: "")
             menuController?.executeCommand(command)
         }
-
     }
     
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         return true
     }

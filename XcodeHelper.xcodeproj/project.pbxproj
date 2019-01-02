@@ -14,6 +14,33 @@
 		381C12602078C5EB006B66B6 /* XcodeHelperCliKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */; };
 		381C12612078C5EB006B66B6 /* XcodeHelperKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D4206B7AAA00F6192F /* XcodeHelperKit.framework */; };
 		381C12632078C5EB006B66B6 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; };
+		381CAD7E21DBCFA60018B6ED /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7C2206B7AAA00F6192F /* AEXML.framework */; };
+		381CAD7F21DBCFA60018B6ED /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7CC206B7AAA00F6192F /* PathKit.framework */; };
+		381CAD8021DBCFA60018B6ED /* SwiftShell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCE3321D1B2540084DC3D /* SwiftShell.framework */; };
+		381CAD8121DBCFA60018B6ED /* xcodeproj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCE3521D1B2540084DC3D /* xcodeproj.framework */; };
+		381CAD8321DBDAD20018B6ED /* Yaml.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8421DBDAD20018B6ED /* PathKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7CC206B7AAA00F6192F /* PathKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8521DBDAD20018B6ED /* xcodeproj.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EFCE3521D1B2540084DC3D /* xcodeproj.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8621DBDAD20018B6ED /* DockerProcess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7CA206B7AAA00F6192F /* DockerProcess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8721DBDAD20018B6ED /* S3Kit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D0206B7AAA00F6192F /* S3Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8821DBDAD20018B6ED /* SwiftShell.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EFCE3321D1B2540084DC3D /* SwiftShell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8921DBDAD20018B6ED /* AEXML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7C2206B7AAA00F6192F /* AEXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8A21DBDAD20018B6ED /* ProcessRunner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7CE206B7AAA00F6192F /* ProcessRunner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8B21DBDAD20018B6ED /* CliRunnable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7C4206B7AAA00F6192F /* CliRunnable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8C21DBDAD20018B6ED /* XcodeHelperKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D4206B7AAA00F6192F /* XcodeHelperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD8E21DBDAD20018B6ED /* XcodeHelperCliKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CAD9221DBDB240018B6ED /* xcodeproj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCE3521D1B2540084DC3D /* xcodeproj.framework */; };
+		381CAD9F21DBFC220018B6ED /* Yaml.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA021DBFC220018B6ED /* PathKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7CC206B7AAA00F6192F /* PathKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA121DBFC220018B6ED /* xcodeproj.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EFCE3521D1B2540084DC3D /* xcodeproj.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA221DBFC220018B6ED /* DockerProcess.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7CA206B7AAA00F6192F /* DockerProcess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA321DBFC220018B6ED /* S3Kit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D0206B7AAA00F6192F /* S3Kit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA421DBFC220018B6ED /* SwiftShell.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EFCE3321D1B2540084DC3D /* SwiftShell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA521DBFC220018B6ED /* AEXML.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7C2206B7AAA00F6192F /* AEXML.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA621DBFC220018B6ED /* ProcessRunner.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7CE206B7AAA00F6192F /* ProcessRunner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA721DBFC220018B6ED /* CliRunnable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7C4206B7AAA00F6192F /* CliRunnable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA821DBFC220018B6ED /* XcodeHelperKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D4206B7AAA00F6192F /* XcodeHelperKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		381CADA921DBFC220018B6ED /* XcodeHelperCliKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		381E29F71E544DDB00557BB1 /* XCTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E29F61E544DDB00557BB1 /* XCTargetTests.swift */; };
 		381EF0E71E73092B008A3717 /* TargetSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381EF0E61E73092B008A3717 /* TargetSettingsViewController.swift */; };
 		3836A7661E3B302B0098CE9A /* XCWorkspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7651E3B302B0098CE9A /* XCWorkspaceTests.swift */; };
@@ -57,13 +84,6 @@
 		3898C9362078C05600A51743 /* xchelperxpc.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 387F2CFF2077F9DF00D93881 /* xchelperxpc.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		38A7D48D1F0D30B900213122 /* ConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A7D48C1F0D30B900213122 /* ConfigController.swift */; };
 		38C9122F20E68D7B00B92379 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C9122D20E68D7B00B92379 /* Main.storyboard */; };
-		38D6B3942079D8ED000DCB82 /* ProcessRunner.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7CE206B7AAA00F6192F /* ProcessRunner.framework */; };
-		38D6B3952079D8ED000DCB82 /* S3Kit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7D0206B7AAA00F6192F /* S3Kit.framework */; };
-		38D6B3962079D8ED000DCB82 /* XcodeHelperCliKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */; };
-		38D6B3972079D8ED000DCB82 /* CliRunnable.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7C4206B7AAA00F6192F /* CliRunnable.framework */; };
-		38D6B3982079D8ED000DCB82 /* DockerProcess.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7CA206B7AAA00F6192F /* DockerProcess.framework */; };
-		38D6B3992079D8ED000DCB82 /* Yaml.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; };
-		38D6B39A2079D8ED000DCB82 /* XcodeHelperKit.framework in Resources */ = {isa = PBXBuildFile; fileRef = 38EAF7D4206B7AAA00F6192F /* XcodeHelperKit.framework */; };
 		38DFD6C91E2AB8F300C3D931 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */; };
 		38E7A2AA1E3FA463007EA9A6 /* XCProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */; };
 		38E8F7951E471AF400097EEC /* TargetListControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E8F7941E471AF400097EEC /* TargetListControllerTests.swift */; };
@@ -86,7 +106,6 @@
 		38EAF808206B7B5E00F6192F /* PathKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7CC206B7AAA00F6192F /* PathKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38EAF809206B7B5E00F6192F /* CliRunnable.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7C4206B7AAA00F6192F /* CliRunnable.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACB3B940207ADD38006F0FB9 /* AEXML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7C2206B7AAA00F6192F /* AEXML.framework */; };
-		ACB3B941207ADD38006F0FB9 /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7CC206B7AAA00F6192F /* PathKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +224,46 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		381CAD8221DBDAB70018B6ED /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				381CAD8321DBDAD20018B6ED /* Yaml.framework in CopyFiles */,
+				381CAD8421DBDAD20018B6ED /* PathKit.framework in CopyFiles */,
+				381CAD8521DBDAD20018B6ED /* xcodeproj.framework in CopyFiles */,
+				381CAD8621DBDAD20018B6ED /* DockerProcess.framework in CopyFiles */,
+				381CAD8721DBDAD20018B6ED /* S3Kit.framework in CopyFiles */,
+				381CAD8821DBDAD20018B6ED /* SwiftShell.framework in CopyFiles */,
+				381CAD8921DBDAD20018B6ED /* AEXML.framework in CopyFiles */,
+				381CAD8A21DBDAD20018B6ED /* ProcessRunner.framework in CopyFiles */,
+				381CAD8B21DBDAD20018B6ED /* CliRunnable.framework in CopyFiles */,
+				381CAD8C21DBDAD20018B6ED /* XcodeHelperKit.framework in CopyFiles */,
+				381CAD8E21DBDAD20018B6ED /* XcodeHelperCliKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		381CAD9E21DBFC1A0018B6ED /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				381CAD9F21DBFC220018B6ED /* Yaml.framework in CopyFiles */,
+				381CADA021DBFC220018B6ED /* PathKit.framework in CopyFiles */,
+				381CADA121DBFC220018B6ED /* xcodeproj.framework in CopyFiles */,
+				381CADA221DBFC220018B6ED /* DockerProcess.framework in CopyFiles */,
+				381CADA321DBFC220018B6ED /* S3Kit.framework in CopyFiles */,
+				381CADA421DBFC220018B6ED /* SwiftShell.framework in CopyFiles */,
+				381CADA521DBFC220018B6ED /* AEXML.framework in CopyFiles */,
+				381CADA621DBFC220018B6ED /* ProcessRunner.framework in CopyFiles */,
+				381CADA721DBFC220018B6ED /* CliRunnable.framework in CopyFiles */,
+				381CADA821DBFC220018B6ED /* XcodeHelperKit.framework in CopyFiles */,
+				381CADA921DBFC220018B6ED /* XcodeHelperCliKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		384E51DA1DC6B38500FAC6C1 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,6 +390,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381CAD7E21DBCFA60018B6ED /* AEXML.framework in Frameworks */,
+				381CAD7F21DBCFA60018B6ED /* PathKit.framework in Frameworks */,
+				381CAD8021DBCFA60018B6ED /* SwiftShell.framework in Frameworks */,
+				381CAD8121DBCFA60018B6ED /* xcodeproj.framework in Frameworks */,
 				38958AEF2079D5A100A3830E /* CliRunnable.framework in Frameworks */,
 				38958AF02079D5A100A3830E /* DockerProcess.framework in Frameworks */,
 				38958AF12079D5A100A3830E /* ProcessRunner.framework in Frameworks */,
@@ -347,7 +410,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACB3B940207ADD38006F0FB9 /* AEXML.framework in Frameworks */,
-				ACB3B941207ADD38006F0FB9 /* PathKit.framework in Frameworks */,
 				381C125A2078C5EB006B66B6 /* CliRunnable.framework in Frameworks */,
 				381C125C2078C5EB006B66B6 /* DockerProcess.framework in Frameworks */,
 				381C125E2078C5EB006B66B6 /* ProcessRunner.framework in Frameworks */,
@@ -355,6 +417,7 @@
 				381C12602078C5EB006B66B6 /* XcodeHelperCliKit.framework in Frameworks */,
 				381C12612078C5EB006B66B6 /* XcodeHelperKit.framework in Frameworks */,
 				381C12632078C5EB006B66B6 /* Yaml.framework in Frameworks */,
+				381CAD9221DBDB240018B6ED /* xcodeproj.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +622,7 @@
 				384E51C51DC6B38500FAC6C1 /* Frameworks */,
 				384E51C61DC6B38500FAC6C1 /* Resources */,
 				3898C9352078C04200A51743 /* CopyFiles */,
+				381CAD8221DBDAB70018B6ED /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -576,7 +640,7 @@
 			buildPhases = (
 				387F2CFB2077F9DF00D93881 /* Sources */,
 				387F2CFC2077F9DF00D93881 /* Frameworks */,
-				38D6B3932079D885000DCB82 /* Resources */,
+				381CAD9E21DBFC1A0018B6ED /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -777,20 +841,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		38D6B3932079D885000DCB82 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				38D6B3942079D8ED000DCB82 /* ProcessRunner.framework in Resources */,
-				38D6B3952079D8ED000DCB82 /* S3Kit.framework in Resources */,
-				38D6B3962079D8ED000DCB82 /* XcodeHelperCliKit.framework in Resources */,
-				38D6B3972079D8ED000DCB82 /* CliRunnable.framework in Resources */,
-				38D6B3982079D8ED000DCB82 /* DockerProcess.framework in Resources */,
-				38D6B3992079D8ED000DCB82 /* Yaml.framework in Resources */,
-				38D6B39A2079D8ED000DCB82 /* XcodeHelperKit.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,7 +1235,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "$(PROJECT_DIR)/../module.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.xchelperxpc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper.xchelperxpc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";
@@ -1220,7 +1270,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MODULEMAP_FILE = "$(PROJECT_DIR)/../module.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.xchelperxpc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joelsaltzman.XcodeHelper.xchelperxpc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)";

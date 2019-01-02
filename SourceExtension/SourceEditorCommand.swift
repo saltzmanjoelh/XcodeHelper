@@ -10,15 +10,16 @@ import Foundation
 import AppKit
 import XcodeKit
 import ProcessRunner
+import XcodeHelperKit
+import XcodeHelperCliKit
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
-    let xpcConnection = NSXPCConnection.init(serviceName: "com.joelsaltzman.xchelperxpc")
+    let xpcConnection = NSXPCConnection.init(serviceName: "com.joelsaltzman.XcodeHelper.xchelperxpc")
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
         defer {
             completionHandler(nil)
         }
         guard let commandIdentifier = invocation.commandIdentifier.components(separatedBy: ".").last else{ return }
-        
         //Xcode will only run sandboxed extensions. Can't do something like this because we won't have permission
         //to read the files at the path
         //commandRunner.run(command, atSourcePath: "/Users/joelsaltzman/Sites/hangar_rig/ethosManager")
@@ -33,10 +34,14 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             //ProcessRunner.synchronousRun("/Applications/XcodeHelper.app/Contents/Executables/xchelper", arguments: [commandIdentifier, "--chdir", sourcePath])
         }*/
         
+        
         xpcConnection.remoteObjectInterface = NSXPCInterface.init(with: XchelperServiceable.self)
         xpcConnection.exportedObject = self
         xpcConnection.resume()
-        if let service = xpcConnection.remoteObjectProxy as? XchelperServiceable {
+        let object = xpcConnection.remoteObjectProxyWithErrorHandler { (error: Error) in
+            print("ERROR: \(error)")
+        }
+        if let service = object as? XchelperServiceable {
             service.run(commandIdentifier:  commandIdentifier) { (result) in
                 guard let processResult = result as? [String: String] else { return }
                 print(processResult)

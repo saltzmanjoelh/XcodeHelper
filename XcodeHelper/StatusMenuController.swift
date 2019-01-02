@@ -19,28 +19,13 @@ class StatusMenuController: NSObject {
     
     public let statusItem: NSStatusItem
     public let xcodeHelper = XcodeHelper()
-    var windowController: NSWindowController?
-    var commandRunner: CommandRunner?
-    
-//    let logger = Logger()
-    
     public let xcode: Xcode
     public var document: XCDocumentable?
+    
+    var windowController: NSWindowController?
+    var commandRunner: CommandRunner?
     var projectModificationDate: NSDate? //if the document is an XCProject, this is the modification date from the scheme management plist
-    var target: XCTarget? {
-        didSet {
-//            updateSelectedTarget()
-        }
-    }
-    func hasAutomationPermission() -> Bool {
-        if #available(OSX 10.14, *) {
-            let eventDescriptor = NSAppleEventDescriptor.init(bundleIdentifier: "com.apple.dt.Xcode")
-            let status = AEDeterminePermissionToAutomateTarget(eventDescriptor.aeDesc, typeWildCard, typeWildCard, true)
-            return status == noErr
-        } else {
-            return true
-        }
-    }
+    var target: XCTarget?
     
     init(statusItem: NSStatusItem, xcode: Xcode) {
         self.statusItem = statusItem
@@ -50,6 +35,15 @@ class StatusMenuController: NSObject {
         }
         super.init()
         prepareDocument()
+    }
+    func hasAutomationPermission() -> Bool {
+        if #available(OSX 10.14, *) {
+            let eventDescriptor = NSAppleEventDescriptor.init(bundleIdentifier: "com.apple.dt.Xcode")
+            let status = AEDeterminePermissionToAutomateTarget(eventDescriptor.aeDesc, typeWildCard, typeWildCard, true)
+            return status == noErr
+        } else {
+            return true
+        }
     }
     func prepareDocument() {
         DispatchQueue.global().async {
@@ -109,23 +103,6 @@ class StatusMenuController: NSObject {
     @discardableResult
     func refreshMenu(_ menu: NSMenu?, currentDocument: XCDocumentable?) -> NSMenu {
         self.document = currentDocument
-        /*if let menuItem = menu?.items[safe: 1],
-            let submenu = menuItem.submenu,
-            let theDocument = currentDocument,
-            let menuItems = targetMenuItems(for: theDocument) {
-            //Using shouldRefresh to check this
-//            let newTargets = menuItems.compactMap({ $0.representedObject as? XCTarget})
-//            let oldTargets = submenu.items.compactMap({ $0.representedObject as? XCTarget })
-//            if newTargets != oldTargets { //we only want to update the menu if we have to
-                submenu.removeAllItems()
-                for menuItem in menuItems {
-                    submenu.addItem(menuItem)
-                }
-//            }
-        } else {
-            print("Remove all items 111")
-            menu?.removeAllItems()
-        }*/
         let returnMenu = menu ?? NSMenu()
         returnMenu.delegate = self
         returnMenu.removeAllItems()
@@ -168,82 +145,8 @@ class StatusMenuController: NSObject {
         NSUserNotificationCenter.default.deliver(notification)
     }
 }
-// MARK: prepare the menu
+// MARK: NSMenuDelegate
 extension StatusMenuController: NSMenuDelegate {
-    /*
-    func newStatusMenu() -> NSMenu {
-        let menu = NSMenu()
-        menu.delegate = self
-        
-        /*//Auto Target
-        menu.addItem(withTitle: "Automatic Target", action: #selector(StatusMenuController.selectTarget), keyEquivalent: "")
-        menu.items.last!.state = NSControl.StateValue.on
-        menu.items.last!.target = self
-        
-        //Manual Targets
-        menu.addItem(withTitle: "Manual Target", action: nil, keyEquivalent: "")
-        menu.items.last?.submenu = NSMenu()
-        if let menuItems = targetMenuItems(for: document), //document was just set during init
-            let subMenu = menu.items.last?.submenu {
-            for menuItem in menuItems {
-                subMenu.addItem(menuItem)
-            }
-        }
-        menu.addItem(NSMenuItem.separator())*/
-        
-        //Commands
-        for command in Command.allCommands {
-            menu.addItem(withTitle: command.title,
-                         action: #selector(menuItemClicked(_:)),
-                         keyEquivalent: "")
-            menu.items.last?.target = self
-            menu.items.last?.representedObject = command
-        }
-        
-        // Prefs and Quit
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(withTitle: "Preferences", action: #selector(StatusMenuController.preferences), keyEquivalent: ",")
-        menu.items.last?.target = self
-        menu.addItem(NSMenuItem.separator())
-        menu.addItem(withTitle: "Quit", action: #selector(StatusMenuController.quit), keyEquivalent: "q")
-        menu.items.last?.target = self
-        return menu
-    }*/
-
-    /*func targetMenuItems(for document: XCDocumentable?) -> [NSMenuItem]? {
-        guard let theDocument = document else { return nil }
-        
-        var menuItems = [NSMenuItem]()
-        let projects = xcode.getProjects(from: theDocument)
-        for project in projects {
-            menuItems.append(NSMenuItem.separator())
-            for target in project.orderedTargets() {
-                menuItems.append(NSMenuItem.init(title: target.description, action:  #selector(StatusMenuController.selectTarget), keyEquivalent: ""))
-                menuItems.last?.target = self
-                menuItems.last?.representedObject = target
-                if let imageData = target.imageData() {
-                    menuItems.last?.image = NSImage.init(data: imageData)
-                    menuItems.last?.image?.size = NSMakeSize(16.0, 16.0)
-                }else{
-                    print("NO IMAGE?")
-                }
-            }
-        }
-        return menuItems
-    }
-    func updateSelectedTarget() {
-        guard let menu = statusItem.menu else { return }
-        guard let autoItem = menu.items[safe: 0], let manualItem = menu.items[safe: 1] else { return }
-        autoItem.state = target == nil ? NSControl.StateValue.on : NSControl.StateValue.off
-        manualItem.state = target != nil ? NSControl.StateValue.on : NSControl.StateValue.off
-        if let submenu = manualItem.submenu {
-            for item in submenu.items {
-                if let itemTarget = item.representedObject as? XCTarget {
-                    item.state = target == itemTarget ? NSControl.StateValue.on : NSControl.StateValue.off
-                }
-            }
-        }
-    }*/
     @objc
     func menuItemClicked(_ sender: NSMenuItem) {
         if let command = sender.representedObject as? Command {
@@ -251,8 +154,7 @@ extension StatusMenuController: NSMenuDelegate {
         }
     }
     public func executeCommand(_ command: Command) {
-//        self.xcodeHelper.logger.log("Test", for: command)
-        let xpcConnection = NSXPCConnection.init(serviceName: "com.joelsaltzman.xchelperxpc")
+        let xpcConnection = NSXPCConnection.init(serviceName: "com.joelsaltzman.XcodeHelper.xchelperxpc")
         xpcConnection.remoteObjectInterface = NSXPCInterface.init(with: XchelperServiceable.self)
         xpcConnection.exportedObject = self
         xpcConnection.resume()
@@ -270,10 +172,6 @@ extension StatusMenuController: NSMenuDelegate {
 
 // MARK: handle commands
 extension StatusMenuController {
-    @IBAction
-    func showLogs(_ sender: Any){
-//        commandRunner.xcodeHelper.logger.showLogs()
-    }
     @IBAction
     func preferences(sender: Any){
         print("Logging: \(UserDefaults.standard.bool(forKey: "XcodeHelperKit.Logging"))")
