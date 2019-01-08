@@ -13,16 +13,17 @@ import ProcessRunner
 import XcodeHelperKit
 import XcodeHelperCliKit
 
-class SourceEditorExtension: NSObject, XCSourceEditorExtension {
+class SourceEditorExtension: NSObject, XCSourceEditorExtension, NSUserNotificationCenterDelegate {
     
     
     func extensionDidFinishLaunching() {
+        NSUserNotificationCenter.default.delegate = self
         // If your extension needs to do any work at launch, implement this optional method.
-//        XcodeHelper.logger = Logger(category: Command.updateMacOSPackages.title)
-//        XcodeHelper.logger?.logWithNotification("Testing %i %i %i", 1, 2, 3)
     }
-    
-    
+    public func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool
+    {
+        return true
+    }
     /*
     var commandDefinitions: [[XCSourceEditorCommandDefinitionKey: Any]] {
         // If your extension needs to return a collection of command definitions that differs from those in its Info.plist, implement this optional property getter.

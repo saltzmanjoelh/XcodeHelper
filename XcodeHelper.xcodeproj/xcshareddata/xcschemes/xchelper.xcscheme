@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1010"
-   wasCreatedForAppExtension = "YES"
-   version = "2.0">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -15,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "384E51C71DC6B38500FAC6C1"
-               BuildableName = "Xcode Helper.appex"
-               BlueprintName = "SourceExtension"
-               ReferencedContainer = "container:XcodeHelper.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "384E51A31DC6B36700FAC6C1"
-               BuildableName = "XcodeHelper.app"
-               BlueprintName = "XcodeHelper"
+               BlueprintIdentifier = "384B4BB021E41CEB00714577"
+               BuildableName = "xchelper"
+               BlueprintName = "xchelper"
                ReferencedContainer = "container:XcodeHelper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "384E51C71DC6B38500FAC6C1"
-            BuildableName = "Xcode Helper.appex"
-            BlueprintName = "SourceExtension"
+            BlueprintIdentifier = "384B4BB021E41CEB00714577"
+            BuildableName = "xchelper"
+            BlueprintName = "xchelper"
             ReferencedContainer = "container:XcodeHelper.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -58,29 +43,24 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "2">
-      <RemoteRunnable
-         runnableDebuggingMode = "0"
-         BundleIdentifier = "com.apple.dt.Xcode"
-         RemotePath = "/Applications/Xcode.app">
-      </RemoteRunnable>
-      <MacroExpansion>
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "384E51A31DC6B36700FAC6C1"
-            BuildableName = "XcodeHelper.app"
-            BlueprintName = "XcodeHelper"
+            BlueprintIdentifier = "384B4BB021E41CEB00714577"
+            BuildableName = "xchelper"
+            BlueprintName = "xchelper"
             ReferencedContainer = "container:XcodeHelper.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -89,15 +69,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES"
-      launchAutomaticallySubstyle = "2">
+      debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "384E51A31DC6B36700FAC6C1"
-            BuildableName = "XcodeHelper.app"
-            BlueprintName = "XcodeHelper"
+            BlueprintIdentifier = "384B4BB021E41CEB00714577"
+            BuildableName = "xchelper"
+            BlueprintName = "xchelper"
             ReferencedContainer = "container:XcodeHelper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

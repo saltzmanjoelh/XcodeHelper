@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -750,7 +750,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="488" height="601"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdt-3r-qM8">
+                            <textField toolTip="Runs `swift package update` on your package." verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdt-3r-qM8">
                                 <rect key="frame" x="18" y="564" width="176" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Update Packages - macOS" id="oJk-HW-fK0">
                                     <font key="font" metaFont="systemBold"/>
@@ -766,13 +766,14 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZy-vv-YsC">
+                            <textField toolTip="Fires up a docker container and runs `swift build` in the container." verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZy-vv-YsC">
                                 <rect key="frame" x="93" y="423" width="101" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Build in Docker" id="FR2-LI-s1o">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <accessibility description="Fires up a docker container and runs `swift build` in the container."/>
                             </textField>
                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VsQ-c1-064">
                                 <rect key="frame" x="91" y="257" width="103" height="21"/>
@@ -821,9 +822,9 @@
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Kk9-pv-u3N">
                                 <rect key="frame" x="20" y="67" width="448" height="5"/>
                             </box>
-                            <button identifier="update-macos-packages.--generate" toolTip="Generate a new Xcode project after updating packages. Useful if you have new files and/or aren't symlinking the dependencies" translatesAutoresizingMaskIntoConstraints="NO" id="UkI-1E-KFL">
-                                <rect key="frame" x="198" y="563" width="197" height="18"/>
-                                <buttonCell key="cell" type="check" title="Generate New Xcode Project" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tX4-xy-KUe">
+                            <button identifier="update-macos-packages.--recursive" toolTip="Recursively check subdirectories for projects to update. Skips hidden directories like .build" translatesAutoresizingMaskIntoConstraints="NO" id="UkI-1E-KFL">
+                                <rect key="frame" x="198" y="563" width="81" height="18"/>
+                                <buttonCell key="cell" type="check" title="Recursive" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tX4-xy-KUe">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -831,9 +832,9 @@
                                     <action selector="saveButtonValue:" target="3JJ-rG-R3R" id="VPA-Yi-Fe5"/>
                                 </connections>
                             </button>
-                            <button identifier="update-macos-packages.--recursive" toolTip="Recursively check subdirectories for projects to update. Skips hidden directories like .build" translatesAutoresizingMaskIntoConstraints="NO" id="kMA-RC-kfO">
-                                <rect key="frame" x="198" y="544" width="81" height="18"/>
-                                <buttonCell key="cell" type="check" title="Recursive" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0Tj-wj-Yga">
+                            <button identifier="update-macos-packages.--generate" toolTip="Generate a new Xcode project after updating packages. Useful if you have new files and/or aren't symlinking the dependencies." translatesAutoresizingMaskIntoConstraints="NO" id="kMA-RC-kfO">
+                                <rect key="frame" x="198" y="544" width="197" height="18"/>
+                                <buttonCell key="cell" type="check" title="Generate New Xcode Project" bezelStyle="regularSquare" imagePosition="left" inset="2" id="0Tj-wj-Yga">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -841,7 +842,7 @@
                                     <action selector="saveButtonValue:" target="3JJ-rG-R3R" id="ewV-n1-Z81"/>
                                 </connections>
                             </button>
-                            <textField toolTip="Name of image to use with Docker when updating packages" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yy1-sc-dTA">
+                            <textField toolTip="Name of volume to store build artifacts across builds. Storing the .build directory in a volume helps with build times." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yy1-sc-dTA">
                                 <rect key="frame" x="106" y="460" width="88" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Volume Name" id="Egs-Yz-z5v">
                                     <font key="font" metaFont="system"/>
@@ -868,7 +869,7 @@
                                     <action selector="saveTextFieldValue:" target="3JJ-rG-R3R" id="qL0-Yi-R2T"/>
                                 </connections>
                             </textField>
-                            <textField identifier="update-docker-packages.--volume" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MvI-xg-hDC">
+                            <textField identifier="update-docker-packages.--volume" toolTip="Name of volume to store build artifacts across builds. Storing the .build directory in a volume helps with build times." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MvI-xg-hDC">
                                 <rect key="frame" x="200" y="457" width="268" height="22"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="docker_volume" drawsBackground="YES" id="hN2-9Q-ESF">
                                     <font key="font" metaFont="system"/>
@@ -879,8 +880,8 @@
                                     <action selector="saveTextFieldValue:" target="3JJ-rG-R3R" id="V44-Pi-SIZ"/>
                                 </connections>
                             </textField>
-                            <popUpButton identifier="docker-build.--build-configuration" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4RD-PZ-s6d">
-                                <rect key="frame" x="198" y="373" width="82" height="26"/>
+                            <popUpButton identifier="docker-build.--build-configuration" toolTip="The swift build configuration to use when building in docker." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4RD-PZ-s6d">
+                                <rect key="frame" x="198" y="373" width="82" height="25"/>
                                 <popUpButtonCell key="cell" type="push" title="debug" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="iXR-7b-WB4" id="ITd-pz-f1o">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -895,7 +896,7 @@
                                     <action selector="savePopUpValue:" target="3JJ-rG-R3R" id="ath-hX-5TP"/>
                                 </connections>
                             </popUpButton>
-                            <textField identifier="docker-build.--image-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yaa-dE-5nv">
+                            <textField identifier="docker-build.--image-name" toolTip="Name of image to use with Docker when building." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yaa-dE-5nv">
                                 <rect key="frame" x="200" y="349" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="swift" drawsBackground="YES" id="eon-iv-sRg">
                                     <font key="font" metaFont="system"/>
@@ -906,7 +907,7 @@
                                     <action selector="saveTextFieldValue:" target="3JJ-rG-R3R" id="MOf-XD-Vay"/>
                                 </connections>
                             </textField>
-                            <textField identifier="docker-build.--container-name" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZ2-oT-h6n">
+                            <textField identifier="docker-build.--container-name" toolTip="Name of container to use with Docker when building." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZ2-oT-h6n">
                                 <rect key="frame" x="200" y="322" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="LinuxSwiftContainer" drawsBackground="YES" id="DE1-yj-oY3">
                                     <font key="font" metaFont="system"/>
@@ -917,7 +918,7 @@
                                     <action selector="saveTextFieldValue:" target="3JJ-rG-R3R" id="Yd7-tc-8Ud"/>
                                 </connections>
                             </textField>
-                            <textField identifier="docker-build.--volume" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3mV-Wn-ZNt">
+                            <textField identifier="docker-build.--volume" toolTip="Name of volume to store build artifacts across builds. Storing the .build directory in a volume helps with build times." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3mV-Wn-ZNt">
                                 <rect key="frame" x="200" y="295" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="docker_volume" drawsBackground="YES" id="iU0-ar-fWn">
                                     <font key="font" metaFont="system"/>
@@ -928,17 +929,18 @@
                                     <action selector="saveTextFieldValue:" target="3JJ-rG-R3R" id="OlQ-r6-i2E"/>
                                 </connections>
                             </textField>
-                            <button identifier="docker-build.--after-success" toolTip="Only build in Docker if the macOS build was successful" translatesAutoresizingMaskIntoConstraints="NO" id="FL7-eY-HYh">
+                            <button identifier="docker-build.--after-success" toolTip="Only build in Docker if the macOS build was successful." translatesAutoresizingMaskIntoConstraints="NO" id="FL7-eY-HYh">
                                 <rect key="frame" x="198" y="422" width="126" height="18"/>
                                 <buttonCell key="cell" type="check" title="Build on Success" bezelStyle="regularSquare" imagePosition="left" inset="2" id="kSF-xp-yqf">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <accessibility description="Only build in Docker if the macOS build was successful."/>
                                 <connections>
                                     <action selector="saveButtonValue:" target="3JJ-rG-R3R" id="Ymp-hD-srM"/>
                                 </connections>
                             </button>
-                            <button identifier="docker-build.--rm" toolTip="Delete the Docker container after building" translatesAutoresizingMaskIntoConstraints="NO" id="cDI-ZW-iEl">
+                            <button identifier="docker-build.--rm" toolTip="Delete the Docker container after building." translatesAutoresizingMaskIntoConstraints="NO" id="cDI-ZW-iEl">
                                 <rect key="frame" x="198" y="403" width="93" height="18"/>
                                 <buttonCell key="cell" type="check" title="Auto Delete" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3ui-90-hBz">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -949,14 +951,14 @@
                                 </connections>
                             </button>
                             <textField toolTip="Build configuration to use with `swift build --configuration`. Project defaults to the project's current setting." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Js6-7B-Ixa">
-                                <rect key="frame" x="107" y="379" width="87" height="17"/>
+                                <rect key="frame" x="107" y="378" width="87" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Configuration" id="6C8-Nr-mRV">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField toolTip="Name of image to use with Docker when building" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Afw-5S-I6u">
+                            <textField toolTip="Name of image to use with Docker when building." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Afw-5S-I6u">
                                 <rect key="frame" x="114" y="352" width="80" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Name" id="Yjd-pb-5Ba">
                                     <font key="font" metaFont="system"/>
@@ -964,7 +966,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField toolTip="Name of container to use with Docker when building" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6N-K6-3tJ">
+                            <textField toolTip="Name of container to use with Docker when building." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j6N-K6-3tJ">
                                 <rect key="frame" x="92" y="325" width="102" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Container Name" id="VEQ-JZ-3aV">
                                     <font key="font" metaFont="system"/>
@@ -980,7 +982,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button identifier="create-archive.--flat-list" toolTip="Flat list of files in archive" translatesAutoresizingMaskIntoConstraints="NO" id="Bci-1J-jLv">
+                            <button identifier="create-archive.--flat-list" toolTip="Flat list of files in archive." translatesAutoresizingMaskIntoConstraints="NO" id="Bci-1J-jLv">
                                 <rect key="frame" x="198" y="257" width="70" height="18"/>
                                 <buttonCell key="cell" type="check" title="Flat List" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tuN-m9-BNx">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -990,7 +992,7 @@
                                     <action selector="saveButtonValue:" target="3JJ-rG-R3R" id="dOo-Jc-iQG"/>
                                 </connections>
                             </button>
-                            <textField toolTip="S3 region" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EgT-wP-RcZ">
+                            <textField toolTip="The S3 region you want to upload to." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EgT-wP-RcZ">
                                 <rect key="frame" x="148" y="169" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Region" id="nmB-Yk-wc9">
                                     <font key="font" metaFont="system"/>
@@ -1006,7 +1008,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField toolTip="S3 bucket name" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-zh-4Zq">
+                            <textField toolTip="S3 bucket name you want to upload to." horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-zh-4Zq">
                                 <rect key="frame" x="148" y="194" width="46" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Bucket" id="fTt-1h-uGk">
                                     <font key="font" metaFont="system"/>
@@ -1014,7 +1016,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField identifier="upload-archive.--bucket" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MeN-Ry-oJS">
+                            <textField identifier="upload-archive.--bucket" toolTip="S3 bucket name you want to upload to." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MeN-Ry-oJS">
                                 <rect key="frame" x="200" y="191" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="archives/app_name" drawsBackground="YES" id="8hT-iY-gQf">
                                     <font key="font" metaFont="system"/>
@@ -1025,7 +1027,7 @@
                                     <action selector="saveTextFieldValue:" target="3JJ-rG-R3R" id="cFc-4E-te7"/>
                                 </connections>
                             </textField>
-                            <textField identifier="upload-archive.--region" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cGb-MH-WUk">
+                            <textField identifier="upload-archive.--region" toolTip="The S3 region you want to upload to." verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cGb-MH-WUk">
                                 <rect key="frame" x="200" y="166" width="268" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="us-east-1" drawsBackground="YES" id="LKD-fp-AhC">
                                     <font key="font" metaFont="system"/>

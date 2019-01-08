@@ -43,6 +43,7 @@
 		381CADA921DBFC220018B6ED /* XcodeHelperCliKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EAF7D2206B7AAA00F6192F /* XcodeHelperCliKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		381E29F71E544DDB00557BB1 /* XCTargetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381E29F61E544DDB00557BB1 /* XCTargetTests.swift */; };
 		381EF0E71E73092B008A3717 /* TargetSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381EF0E61E73092B008A3717 /* TargetSettingsViewController.swift */; };
+		3824AF8E21E25EB40061BF10 /* xcodeproj.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EFCE3521D1B2540084DC3D /* xcodeproj.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3836A7661E3B302B0098CE9A /* XCWorkspaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3836A7651E3B302B0098CE9A /* XCWorkspaceTests.swift */; };
 		384E51A81DC6B36700FAC6C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384E51A71DC6B36700FAC6C1 /* AppDelegate.swift */; };
 		384E51AC1DC6B36700FAC6C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 384E51AB1DC6B36700FAC6C1 /* Assets.xcassets */; };
@@ -83,6 +84,8 @@
 		38958AF52079D5A100A3830E /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EAF7D6206B7AAA00F6192F /* Yaml.framework */; };
 		3898C9362078C05600A51743 /* xchelperxpc.xpc in CopyFiles */ = {isa = PBXBuildFile; fileRef = 387F2CFF2077F9DF00D93881 /* xchelperxpc.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		38A7D48D1F0D30B900213122 /* ConfigController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A7D48C1F0D30B900213122 /* ConfigController.swift */; };
+		38AEE55021E25FDE00DB5256 /* SwiftShell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38EFCE3321D1B2540084DC3D /* SwiftShell.framework */; };
+		38AEE55121E25FDE00DB5256 /* SwiftShell.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 38EFCE3321D1B2540084DC3D /* SwiftShell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		38C9122F20E68D7B00B92379 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38C9122D20E68D7B00B92379 /* Main.storyboard */; };
 		38DFD6C91E2AB8F300C3D931 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DFD6C81E2AB8F300C3D931 /* StatusMenuController.swift */; };
 		38E7A2AA1E3FA463007EA9A6 /* XCProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E7A2A91E3FA463007EA9A6 /* XCProjectTests.swift */; };
@@ -136,6 +139,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 387F2CFE2077F9DF00D93881;
 			remoteInfo = xchelperxpc;
+		};
+		38AEE55221E25FDE00DB5256 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 38EAF7A6206B7AAA00F6192F /* Dependencies.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = "SwiftShell::SwiftShell";
+			remoteInfo = SwiftShell;
 		};
 		38EAF7C1206B7AAA00F6192F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -302,6 +312,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3824AF8E21E25EB40061BF10 /* xcodeproj.framework in CopyFiles */,
 				38EAF800206B7B5D00F6192F /* ProcessRunner.framework in CopyFiles */,
 				38EAF801206B7B5D00F6192F /* Yaml.framework in CopyFiles */,
 				38EAF802206B7B5D00F6192F /* XcodeHelperCliKit.framework in CopyFiles */,
@@ -310,6 +321,7 @@
 				38EAF806206B7B5E00F6192F /* AEXML.framework in CopyFiles */,
 				38EAF807206B7B5E00F6192F /* DockerProcess.framework in CopyFiles */,
 				38EAF808206B7B5E00F6192F /* PathKit.framework in CopyFiles */,
+				38AEE55121E25FDE00DB5256 /* SwiftShell.framework in CopyFiles */,
 				38EAF809206B7B5E00F6192F /* CliRunnable.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +387,7 @@
 				38EAF7FA206B7B5200F6192F /* S3Kit.framework in Frameworks */,
 				38EAF7FB206B7B5200F6192F /* XcodeHelperCliKit.framework in Frameworks */,
 				38EAF7FC206B7B5200F6192F /* XcodeHelperKit.framework in Frameworks */,
+				38AEE55021E25FDE00DB5256 /* SwiftShell.framework in Frameworks */,
 				38EAF7FE206B7B5200F6192F /* Yaml.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,12 +597,14 @@
 				384E51A21DC6B36700FAC6C1 /* Resources */,
 				384E51DA1DC6B38500FAC6C1 /* Embed App Extensions */,
 				387F2CD92077F1F800D93881 /* Embed XPC Services */,
+				384B4BF221E421E300714577 /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				384E51D51DC6B38500FAC6C1 /* PBXTargetDependency */,
 				387F2D092077F9DF00D93881 /* PBXTargetDependency */,
+				38AEE55321E25FDE00DB5256 /* PBXTargetDependency */,
 			);
 			name = XcodeHelper;
 			productName = XcodeHelper;
@@ -657,7 +672,7 @@
 		384E519C1DC6B36700FAC6C1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Joel Saltzman";
 				TargetAttributes = {
@@ -668,7 +683,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.HardenedRuntime = {
 								enabled = 1;
@@ -692,7 +707,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -702,6 +717,11 @@
 					387F2CFE2077F9DF00D93881 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -846,6 +866,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		384B4BF221E421E300714577 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		384E51A01DC6B36700FAC6C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -928,6 +968,11 @@
 			isa = PBXTargetDependency;
 			target = 387F2CFE2077F9DF00D93881 /* xchelperxpc */;
 			targetProxy = 3898C9382078C14F00A51743 /* PBXContainerItemProxy */;
+		};
+		38AEE55321E25FDE00DB5256 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftShell;
+			targetProxy = 38AEE55221E25FDE00DB5256 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1218,6 +1263,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = xchelperxpc/xchelperxpc.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1253,6 +1299,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = xchelperxpc/xchelperxpc.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

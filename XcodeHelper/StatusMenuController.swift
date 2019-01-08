@@ -174,7 +174,6 @@ extension StatusMenuController: NSMenuDelegate {
 extension StatusMenuController {
     @IBAction
     func preferences(sender: Any){
-        print("Logging: \(UserDefaults.standard.bool(forKey: "XcodeHelperKit.Logging"))")
         NSApplication.shared.activate(ignoringOtherApps: true)
         refreshConfig()
         DispatchQueue.main.async {
